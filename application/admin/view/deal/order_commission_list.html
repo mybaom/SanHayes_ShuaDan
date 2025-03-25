@@ -1,0 +1,47 @@
+<div class="think-box-shadow">
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>订单号</th>
+            <th class='text-left nowrap'>用户名</th>
+            <th class='text-left nowrap'>交易额</th>
+            <th class='text-left nowrap'>交易类型</th>
+            <th class='text-left nowrap'>收入/支出</th>
+            <th class='text-left nowrap'>交易时间</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='text-left nowrap'>{$vo.oid}</td>
+            <td class='text-left nowrap'>{$vo.username}</td>
+            <td class='text-left nowrap'>{:config("currency")}{$vo.num}</td>
+            <td class='text-left nowrap'>
+                {switch $vo.type}
+                {case 0}{literal}系统操作{/literal} {/case}
+                {case 1}充值{/case}
+                {case 2}交易{/case}
+                {case 3}返佣{/case}
+                {case 4}强制交易{/case}
+                {case 5}推广返佣{/case}
+                {case 6}下级交易返佣{/case}
+                {case 7}提现{/case}
+                {/switch}
+            </td>
+            <td class='text-left nowrap'>
+                {switch $vo.status}
+                {case 1}收入{/case}
+                {case 2}支出{/case}
+                {/switch}
+            </td>
+            <td class='text-left nowrap'>
+                {$vo.addtime|format_datetime}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>

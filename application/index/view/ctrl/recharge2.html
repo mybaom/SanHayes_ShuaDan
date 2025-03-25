@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 37.5px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>充值详情</title>
+    <link href="/static_new6/css/app.7b22fa66c2af28f12bf32977d4b82694.css" rel="stylesheet">
+    <script charset="utf-8" src="/static_new/js/jquery.min.js"></script>
+    <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+    <script charset="utf-8" src="/static_new/js/common.js"></script>
+    <link rel="stylesheet" href="/static_new/css/public.css">
+
+
+    <style type="text/css" title="fading circle style">
+        .circle-color-8 > div::before {
+            background-color: #ccc;
+        }
+        .file_container {
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        .file {
+            width: 60%;
+            margin: 0 auto;
+            height: 4rem;
+            background: #dedede;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .file::before {
+            content: "";
+            height: 1px;
+            width: 3rem;
+            background: white;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 5px;
+        }
+
+        .file::after {
+            content: "";
+            width: 1px;
+            height: 3rem;
+            background: white;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .file input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            opacity: 0;
+            z-index: 233;
+            border-radius: 5px;
+        }
+
+        .file img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            z-index: 230;
+            border-radius: 5px;
+        }
+        .tright[data-v-7d84025e] {
+            border: 0.013333rem solid #0b2886;
+            color: #0b1572;
+        }
+        
+        .material-icons {
+                font-family: 'Material Icons';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-feature-settings: 'liga';
+                -webkit-font-smoothing: antialiased;
+            }
+    </style>
+</head>
+<body style="font-size: 12px;background: -webkit-linear-gradient(top, #fcedff 0%, #ffffff 100%);">
+<div id="app">
+    <div data-v-7d84025e="" class="main">
+        <div data-v-7d84025e="" class="header">
+            <div class="left_btn" onclick="window.history.back(-1)">
+             <img src="/t.png" alt=""  class="return">
+            </div>
+            <div class="Maintitle" style="background: linear-gradient(135deg, #a700ff 0%, #00189a 100%);">
+                <h3 style="color: #fff;">{$Think.lang.pay_order}</h3>
+            </div>
+            <div class="right_btn"></div>
+        </div>
+        <div data-v-7d84025e="" class="box">
+            <div data-v-7d84025e="" class="p1" style="padding-bottom: 5px;">
+                <p data-v-7d84025e="" style="text-align: center;">{$Think.lang.qxyxzhzz}</p>
+                <p data-v-7d84025e="" style="text-align: center;">{$Think.lang.dzsj}</p>
+            </div>
+           <!-- <ul data-v-7d84025e="" id="tran" class="list-group">
+            </ul>
+            <ul data-v-7d84025e="" class="list-group">
+                <li data-v-7d84025e="" id="tran4" class="list-group-item" style="text-align: center;">
+                    <p data-v-7d84025e="">APP请手动截屏，保存到本地扫码</p>
+                    <p data-v-7d84025e="">微信端可直接长按识别二维码</p>
+                </li>
+            </ul>-->
+            <div data-v-7d84025e="" class="list-group">
+
+                <div data-v-7d84025e="" style="">
+                    <?php
+                        if(isset($_GET['type']) && $_GET['type']=='wx') {
+                    ?>
+                    <li data-v-7d84025e="" class="list-group-item">
+                        <label data-v-7d84025e="">支付方式</label>
+                        {$pay.name2}
+                        <img src="{$pay.ico}" style="width: 30px" alt="">
+                        <span data-v-7d84025e="" data-clipboard-text="回执单" class="tright copy">{$pay.name2}</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">充值金额</label>
+                        {$info.num}
+                        <input type="hidden" name="price" value="{$info.num}">
+                        <span data-v-7d84025e="" data-clipboard-text="100" class="tright copy" onclick="copy_txt({$info.num})">复制</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item" style="padding:0;margin-top: -40px">
+                        <div class="meun-item" style="height: 100%;">
+                            <div class="item-line">
+                                <!--<span>开户行</span>-->
+                                <div class="file_container" style="height: auto;margin-top: 40px;">
+                                    <div class="file" style="height: 4rem">
+                                        <img src="{$pay.ewm}" alt="" class="voucher_img2">
+                                    </div>
+                                </div>
+                                <p style="font-size: 11px;text-align: center">保存截图,扫码付款</p>
+                                <p style="font-size: 11px;text-align: center">请付款,{$info.num} 小数点必须填写</p>
+                                <!--<span>转账人姓名</span>-->
+                                <!--<input type="text" placeholder="输入转账人姓名" name="zzrname" autocomplete="off" maxlength="9">-->
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <?php }else if(isset($_GET['type']) && $_GET['type']=='zfb') {?>
+                    <li data-v-7d84025e="" class="list-group-item">
+                        <label data-v-7d84025e="">支付方式</label>
+                        {$pay.name2}<img src="{$pay.ico}" style="width: 30px" alt="">
+                        <span data-v-7d84025e="" data-clipboard-text="回执单" class="tright copy">{$pay.name2}</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">充值金额</label>
+                        {$info.num}
+                        <input type="hidden" name="price" value="{$info.num}">
+                        <span data-v-7d84025e="" data-clipboard-text="100" class="tright copy" onclick="copy_txt({$info.num})">复制</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item" style="padding:0;margin-top: -40px">
+                        <div class="meun-item" style="height: 100%;">
+                            <div class="item-line">
+                                <!--<span>开户行</span>-->
+                                <div class="file_container" style="height: auto;margin-top: 40px;">
+                                    <div class="file" style="height: 4rem">
+                                        <img src="{$pay.ewm}" alt="" class="voucher_img2">
+                                    </div>
+                                </div>
+                                <p style="font-size: 11px;text-align: center">保存截图,扫码付款</p>
+                                <p style="font-size: 11px;text-align: center">请付款,{$info.num} 小数点必须填写</p>
+                                <!--<span>转账人姓名</span>-->
+                                <!--<input type="text" placeholder="输入转账人姓名" name="zzrname" autocomplete="off" maxlength="9">-->
+                            </div>
+                        </div>
+                    </li>
+
+
+
+
+
+
+                    <?php }else{ ?>
+                    <li data-v-7d84025e="" class="list-group-item">
+                        <label data-v-7d84025e="">{$Think.lang.ssyh}</label>
+                        {$info.master_bank}
+                        <span data-v-7d84025e="" onclick="copy_txt('{$info.master_bank}')"  data-clipboard-text="回执单" class="tright copy">{$Think.lang.copy}</span>
+                    </li>
+
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">{$Think.lang.yhkh}</label>
+                        {$info.master_cardnum}
+                        <span data-v-7d84025e="" onclick="copy_txt('{$info.master_cardnum}')" data-clipboard-text="请询问在线客服（平台不定时更换账户）" class="tright copy">{$Think.lang.copy}</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">{$Think.lang.xm}</label>
+                        {$info.master_name}
+                        <span data-v-7d84025e="" onclick="copy_txt('{$info.master_name}')" data-clipboard-text="请咨询在线客服完成充值后" class="tright copy">{$Think.lang.copy}</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">{$Think.lang.khh}</label>
+                        {$info.master_bk_address}
+                        <span data-v-7d84025e="" onclick="copy_txt('{$info.master_bk_address}')" data-clipboard-text="点击(我已完成支付）" class="tright copy">{$Think.lang.copy}</span>
+                    </li>
+                    <li data-v-7d84025e="" class="list-group-item"><label data-v-7d84025e="">{$Think.lang.czje}</label>
+                        {$info.num}
+                        <input type="hidden" name="price" value="{$info.num}">
+                        <span data-v-7d84025e="" data-clipboard-text="100" class="tright copy" onclick="copy_txt({$info.num})">{$Think.lang.copy}</span>
+                    </li>
+                    <?php }?>
+
+
+                    <li data-v-7d84025e="" class="list-group-item" style="padding:0;margin-top: -40px">
+                        <div class="meun-item" style="height: 100%;">
+                            <div class="item-line">
+                                <!--<span>开户行</span>-->
+                                <div class="file_container">
+                                    <div class="file">
+                                        <input type="file" name="" id="voucher">
+                                        <img src="" alt="" class="voucher_img">
+                                    </div>
+                                </div>
+                                <p style="font-size: 11px;text-align: center;margin:10px 0">{$Think.lang.scfkjt}</p>
+                                <!--<span>转账人姓名</span>-->
+                                <!--<input type="text" placeholder="输入转账人姓名" name="zzrname" autocomplete="off" maxlength="9">-->
+                            </div>
+                        </div>
+                    </li>
+                    <input name="" id="webcopyinput" type="text"
+                           style="color: #FF0000; font-size: 20px; width: 1px; height: 1px; border: hidden; font-weight: bold; text-align: center;"
+                           value="">
+
+                </div>
+
+            </div>
+
+
+            <div data-v-7d84025e="" style="">
+                <div data-v-7d84025e="" class="p1">
+                    <p data-v-7d84025e="">
+                        <span data-v-7d84025e="">{$Think.lang.qwbzzjeblxsd}</span>
+                    </p>
+                </div>
+                <div data-v-7d84025e="" class="p2">
+                    <center data-v-7d84025e="">
+                        <a data-v-7d84025e="" href="javascript:void(0)" class="save-btn">
+                            <button data-v-7d84025e="" style="background: linear-gradient(135deg, #a700ff 0%, #00189a 100%);">{$Think.lang.ok_pay}</button>
+                        </a>
+                    </center>
+                </div>
+            </div>
+            <div data-v-7d84025e="" class="p1">
+                <p data-v-7d84025e="">{$Think.lang.pay_desc0}</p>
+                <p data-v-7d84025e="">{$Think.lang.pay_desc1}</p>
+                <p data-v-7d84025e="">{$Think.lang.pay_desc2}</p>
+                <p data-v-7d84025e="">{$Think.lang.pay_desc3}</p>
+                <p data-v-7d84025e="">{$Think.lang.pay_desc4}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="application/javascript">
+    var pic ='';
+    $(function () {
+        function check() {
+            if ($("input[name=pic]").val() == '') {
+                $(document).dialog({infoText: '{$Think.lang.qscfkpz}'});
+                return false;
+            }
+            return true;
+        }
+
+        // 上传凭证
+        $('#voucher').change(function () {
+            var file = $("#voucher").get(0).files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function () {
+                $(".voucher_img").attr("src", reader.result);
+                pic = reader.result;
+                $("input[name=pic]").val(pic)
+            }
+        })
+
+        $(".save-btn").on('click', function () {
+            if (pic==''){
+                $(document).dialog({infoText: '{$Think.lang.qscfkpz}'});
+                return false;
+            }
+
+            if (check()) {
+                var loading = null;
+                var price = $("input[name=price]").val();
+                
+                $.ajax({
+                    url: '/index/ctrl/recharge_do',
+                    data: {pic:pic,price:price,type:"card"},
+                    type: 'POST',
+                    beforeSend: function () {
+                        loading = $(document).dialog({
+                            type: 'notice',
+                            infoIcon: '/static_new/img/loading.gif',
+                            infoText: '{$Think.lang.bank_loding}',
+                            autoClose: 0
+                        });
+                    },
+                    success: function (data) {
+
+                        if (data.code == 0) {
+                            $(document).dialog({infoText: '{$Think.lang.tjcgqdd}'});
+                            setTimeout(function () {
+                                window.location.href = '/index/my/index';
+                            }, 2000);
+                        } else {
+                            loading.close();
+                            $(document).dialog({infoText: data.info});
+                        }
+                    }
+                });
+            }
+        })
+    })
+
+    function copy_txt(xx) {
+        //var text = document.createElement('input');
+        var text = document.getElementById("webcopyinput");
+        text.id = 'webcopyinput';
+        text.value = '' + xx + '';
+        //text.style.position = 'fixed';
+        // text.style.top = '- 10000px';
+        // document.body.appendChild(text);
+        text.focus();//给input输入框聚焦
+        text.setSelectionRange(0, text.value.length);//设置input框选中的范围
+        copied = document.execCommand('Copy');//执行复制操作
+        text.blur();
+        copied = false;
+        document.body.scrollTop = 0;
+        $(document).dialog({infoText: '复制成功'});
+    }
+</script>
+
+</body>
+</html>

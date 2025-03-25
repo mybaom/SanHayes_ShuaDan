@@ -1,0 +1,31 @@
+{notempty name='bk_info'}
+{volist name='bk_info' id='vo'}
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <p class="help-block" style="text-align: center">只有部分信息能用到 酌情修改</p>
+        <div class="layui-form-item">
+            <label class="layui-form-label">区块链网络</label>
+            <div class="layui-input-block">
+                <input name="name" placeholder="区块链网络" value="{$vo.network}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">钱包地址</label>
+            <div class="layui-input-block">
+                <input name="address" placeholder="请输入钱包地址" value="{$vo.address}" class="layui-input">
+                <input type="hidden" name="_csrf_" value="{:systoken('edit_user_wallet')}">
+                <input type="hidden" name="id" value="{$vo.id}">
+            </div>
+        </div>
+        
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>
+{/volist}
+{/notempty}
+

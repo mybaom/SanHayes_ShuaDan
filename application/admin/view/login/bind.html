@@ -1,0 +1,59 @@
+{extend name="admin@index/index"}
+{block name="body"}
+<div class="login-container"
+     data-supersized="__ROOT__/static/theme/img/login/bg1.jpg,__ROOT__/static/theme/img/login/bg2.jpg">
+    <div class="header notselect layui-hide-xs">
+        <a href="{:url('@')}" class="title">{:sysconf('app_name')}<span class="padding-left-5 font-s10">{:sysconf('app_version')}</span></a>
+    </div>
+    <form id="bind-google" class="layui-form">
+        <h2 class="notselect">绑定谷歌令牌</h2>
+        <div style="padding: 10px;background: #ffffff">
+            <img src="{$googleQrCode}" style="width: 100%">
+        </div>
+        <ul>
+            <li class="password">
+                <label>
+                    <i class="layui-icon layui-icon-auz"></i>
+                    <input class="layui-input" name="google_code" maxlength="32"
+                           type="text" autocomplete="off"
+                           required
+                           placeholder="谷歌令牌" title="请输入谷歌令牌">
+                </label>
+            </li>
+            <li class="text-center">
+                <input type="hidden" name="_csrf_" value="{:systoken('bind')}">
+                <button type="submit" class="layui-btn full-width">
+                    立即绑定
+                </button>
+            </li>
+        </ul>
+    </form>
+    <div class="footer notselect">
+        <p class="layui-hide-xs"><a target="_blank" href="https://www.google.cn/chrome">推荐使用谷歌浏览器</a></p>
+        {:sysconf('site_copy')}
+        {if sysconf('miitbeian')}<span class="padding-5">|</span><a target="_blank" href="http://beian.miit.gov.cn">{:sysconf('miitbeian')}</a>{/if}
+    </div>
+</div>
+
+{/block}
+{block name='style'}
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<script>if (location.href.indexOf('#') > -1) location.replace(location.href.split('#')[0])</script>
+<link rel="stylesheet" href="__ROOT__/static/theme/css/login.css">
+{/block}
+
+{block name='script'}
+<script>
+    $(function () {
+        $('#bind-google').serializeArray()
+        $('#bind-google').on('submit', function () {
+            var data = {};
+            $.each($(this).serializeArray(), function () {
+                data[this.name] = this.value;
+            });
+            $.form.load(window.location.href, data, 'post');
+            return false;
+        });
+    })
+</script>
+{/block}

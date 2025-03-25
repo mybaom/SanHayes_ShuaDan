@@ -1,0 +1,68 @@
+{extend name='main'}
+
+{block name="button"}
+<div class="layui-form-item layui-inline" style="margin-right: 10px">
+{if auth("add")}
+<button data-modal='{:url("add")}?uid={$uid}' data-title="添加打针" class='layui-btn layui-btn-sm layui-btn-normal'>添加打针</button>
+<button class='layui-btn layui-btn-sm layui-btn-danger' onclick="history.go(-1)">返回</button>
+{/if}
+</div>
+{/block}
+{block name="content"}
+<div class="think-box-shadow">
+    <!--<p class="help-block">打针：就是在用户固定某个订单，增加金额。计算方式： 用户本金 * 叠加金额 * 打针幅度 = 订单金额</p>-->
+    <p class="help-block">打针：就是在用户固定某个订单，增加金额。计算方式： 账号余额 + 打针金额 = 订单金额</p>
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>ID</th>
+            <th class='text-left nowrap'>UID</th>
+            <th class='text-left nowrap'>打针日期</th>
+            <th class='text-left nowrap'>打针订单</th>
+            <th class='text-left nowrap'>打针金额</th>
+            <th class='text-left nowrap'>佣金比例</th>
+            <th class='text-left nowrap'>是否完成</th>
+            <th class='text-left nowrap'>任务单号</th>
+            <th class='text-left nowrap'>完成时间</th>
+            <th class='text-left nowrap'>创建时间</th>
+            <th class='text-left nowrap'></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.uid}</td>
+            <td class='text-left nowrap'>{$vo.date}</td>
+            <td class='text-left nowrap'>{$vo.order_num}</td>
+            <td class='text-left nowrap'>{$vo.scale}</td>
+            <td class='text-left nowrap'>{$vo.multiple}</td>
+            <td class='text-left nowrap'>
+                {if $vo.status == 2}
+                <a class="layui-btn layui-btn-xs">完成</a>
+                {elseif $vo.status == 1}
+                <a class="layui-btn layui-btn-xs layui-btn-danger">未完成</a>
+                {/if}
+            </td>
+            <td class='text-left nowrap'>{$vo.in_oid}</td>
+            <td class='text-left nowrap'>{$vo.in_time|format_datetime|default="-"}</td>
+            <td class='text-left nowrap'>{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑打针"
+                   data-modal='{:url("edit")}?id={$vo.id}'>编辑</a>
+                {/if}
+                {if auth("remove")}
+                <a class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要删除吗？"
+                   data-action="{:url('remove')}" data-value="id#{$vo.id}" data-csrf="{:systoken('remove')}">删除</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

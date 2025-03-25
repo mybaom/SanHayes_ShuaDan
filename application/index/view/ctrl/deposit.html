@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.with_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+    <style>
+        .switch-type {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .form-control:focus{
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .bg1130 {
+            background-image: url(/img/tixian.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+            padding: 20px 15px;
+            color: #fff;
+        }
+        .form-control::placeholder {
+            color: #000;
+        }
+ .form-group::webkit-input-placeholder{
+    color:red;
+
+    </style>
+</head>
+<body>
+<a href="javascript:void(0)" class="closesidemenu">
+    <i class="material-icons icons-raised bg-dark ">close</i></a>
+<div class="wrapper homepage" style="  background: linear-gradient(#0066ff, #fff);">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center">
+                <button class="btn w-100 text-white">{$Think.lang.with_title}</button>
+            </div>
+            <div class="col-auto">
+                <a href="{$csURL}" class="btn  btn-link text-white position-relative">
+                    <i class="material-icons">support_agent</i></a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <!-- header ends -->
+
+        <div class="row no-gutters" style=" padding-top:0!important;margin-left: 10px;margin-right: 10px;">
+
+            <div class="col">
+                <!--<a class="text-dark" href="/app" style="width: 120px; color: #ffde41 !important;font-weight:bold;">-->
+                <!--    {$Think.lang.withdraw_now}-->
+                <!--</a>-->
+                 <a class="text-dark" href="javascript:;" style="width: 120px; color: #ffde41 !important;font-weight:bold;">
+                    {$Think.lang.withdraw_now}
+                </a>
+
+            </div>
+            <div class="col-auto">
+                <a class="text-dark" href="/index/ctrl/deposit_admin" style="width: 100px; color: #adadad !important;font-weight:bold;">
+                    <span style="margin-top:20px;vertical-align: middle;height: 20px;line-height: 20px;"> {$Think.lang.withdraw_history}</span>
+                </a>
+
+            </div>
+        </div>
+
+    <div class="row no-gutters" style="margin-top:10px;margin-left: 10px;margin-right: 10px;border-bottom: 1px solid #666;">
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <form id="main-form" style="margin-top: 80px;">
+
+
+        <div class="container top-50">
+            <div class="card shadow  bg1130" style="height: 100px;">
+                <div class="card-body">
+                    <div class="row text-dark">
+                        <dt class="col-10  small" style="margin-top: -28px;"><h5>{$Think.lang.total_balance}</h5></dt>
+
+                        <dt class="col-10  small"><h5> {$user.balance|round=###,2} USDT</h5></dt>
+
+
+                        <!--<dt class="col-10  small"> {$Think.lang.withdraw_tip}</dt>-->
+
+
+                    </div>
+                </div>
+                <!--<div id="usdt_code_div"  style="display: none;background: rgb(37 42 50);color: white;">-->
+                <!--    <input type="tel" class="form-control form-control-lg" name="USDT_code" id="USDT_code"  autocomplete="off" placeholder="₱ code" style="background: rgb(37 42 50);color: white;">-->
+                <!--</div>-->
+            </div>
+        </div>
+		  
+                        <!--<dt class="col-12 text-secondary small switch-type">-->
+                        <!--    <div class="custom-control custom-radio">-->
+                        <!--        <input type="radio" name="type" class="custom-control-input" id="customradio4"-->
+                        <!--               value="bank">-->
+                        <!--        <label class="custom-control-label" for="customradio4">-->
+                        <!--            {$Think.lang.with_new_bank}-->
+                        <!--        </label>-->
+                        <!--    </div>-->
+                        <!--</dt>-->
+                     
+							
+                        <dt class="col-12 text-secondary small switch-type"><div class="custom-control custom-radio"><input type="radio" name="type" class="custom-control-input" id="customradio5"
+                                       value="USDT" ><label class="custom-control-label" for="customradio5">
+                                           {$Think.lang.withdraw_cash}</label></div></dt>
+
+
+
+
+
+
+
+
+
+
+        <div class="container">
+            <h6 class="subtitle">{$Think.lang.with_money}</h6>
+            <div class="form-group">
+                <input type="tel"  autocomplete="off" class="form-control form-control-lg" name="num" id="num"
+                       style="    background: #bbd6ff;     font-size: 14px;
+    color: white;
+    border-radius: 0;"
+                       placeholder="{$Think.lang.with_q_money}"></div>
+            <div class="form-group">
+                <input type="password" autocomplete="new-password" class="form-control form-control-lg" name="paypassword"
+                       style="    background:#bbd6ff;
+    color: white;
+    border-radius: 0;     font-size: 14px;"
+
+                       placeholder="{$Think.lang.with_q_zjmm}">
+            </div>
+            <button type="button" class="btn btn-default btn-block btn-rounded shadow mt-4 submit-btn save-btn"style="background: #18aa56;
+    width: 90%;
+    position: fixed;
+    bottom: 68px;
+    left: 50%;
+    transform: translate(-50%, 50%)">
+                {$Think.lang.submit}
+            </button>
+            <!--<div class="text-mute small mt-3" style="color: #A4A7B2">-->
+            <!--    {$desc_info|raw}-->
+            <!--</div>-->
+            <input type="hidden" id="_csrf_" name="_csrf_" value="60436ac94ba92">
+            <input type="hidden" id="whats_verify" name="whats_verify" value="0"></div>
+    </form>
+    <div class="notification shadow pt-0 pl-0 pr-0 border-0 bg-template-light">
+        <div id="notification_countdown"></div>
+        <div class="row pt-2 pl-3 pr-3">
+            <div class="col-auto align-self-center pr-0">
+                <i class="material-icons text-template md-36">redeem</i></div>
+            <div class="col small notification-content">loading...</div>
+            <div class="col-auto align-self-center pl-0">
+                <button class="btn btn-link closenotification">
+                    <i class="material-icons text-template md-18 ">close</i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-overlay" class="modal-overlay"></div>
+<div id="modal" class="modal">
+    <div class="modal-inner">
+        <div class="dasd-title">{$Think.lang.lxb_qrzr}</div>
+        <div class="btn-box">
+            <div class="confirm-btn">{$Think.lang.queding}</div>
+            <div class="cancel-btn">{$Think.lang.quxiao}</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">var app = {
+    'online_popup': "",
+}</script>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script src="/public/js/layer_mobile/layer.js"></script>
+<script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script type="application/javascript">
+
+    $(function () {
+        $('input[name="type"]').on('change', function () {
+            if ($(this).val() == 'USDT') {
+                $('#usdt_code_div').show();
+            } else $('#usdt_code_div').hide();
+        })
+        $("input[name=num]").focus();
+
+        function check() {
+            if ($("input[name=num]").val() == '') {
+                $(document).dialog({infoText: '{$Think.lang.with_q_money}'});
+                return false;
+            }
+            if ($("input[name=paypassword]").val() == '') {
+                $(document).dialog({infoText: '{$Think.lang.with_q_pass}'});
+                return false;
+            }
+            
+            if(!$(".custom-radio input:radio[name='type']:checked").length)
+            {
+             $(document).dialog({
+                  type: 'notice',
+                  infoText: '{$Think.lang.select_method}',
+             })
+             return false
+            }
+            return true;
+        }
+
+        /*点击提交*/
+        var sx = parseFloat("{$shouxu}");
+        $(".save-btn").on('click', function () {
+        //   const xy=  $(".custom-radio input :checkd").length
+        //   alert(xy)
+            if (check()) {
+                if(sx==0){
+                    submit_deposit();
+                    return;
+                }
+                layer.open({
+                    content: '{$Think.lang.lxb_qdquchu}&nbsp;&nbsp;{$shouxu*100}%&nbsp;&nbsp;{$Think.lang.lxb_qdsxf}'
+                    , btn: ['{$Think.lang.queding}', '{$Think.lang.quxiao}']
+                    , yes: function (index) {
+                        submit_deposit();
+                        layer.close(index);
+                    }
+                });
+            }
+        });
+
+        function submit_deposit() {
+            var loading = null;
+            $.ajax({
+                url: '/index/ctrl/do_deposit',
+                data: $("#main-form").serialize(),
+                type: 'POST',
+                beforeSend: function () {
+                    loading = $(document).dialog({
+                        type: 'notice',
+                        infoIcon: '/static_new/img/loading.gif',
+                        infoText: 'loading...',
+                        autoClose: 0
+                    });
+                },
+                success: function (data) {
+                    loading.close();
+                 
+                    if (data.code == 0) {
+                        $(document).dialog({infoText: '{$Think.lang.with_q_ok}'});
+                        setTimeout(function () {
+                            window.location.href = '/index/my/index';
+                        }, 2000);
+                    } else {
+                        if (data.code == -1) {
+                            $(document).dialog({infoText: data.info, autoClose: 3000});
+                            setTimeout(function () {
+                                window.location.href = '/index/ctrl/recharge';
+                            }, 3000);
+                        } else {
+                            $(document).dialog({infoText: data.info});
+                            if (data.url) {
+                                setTimeout(function () {
+                                    window.location.href = data.url;
+                                }, 3000);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    })
+</script>
+</body>
+</html>

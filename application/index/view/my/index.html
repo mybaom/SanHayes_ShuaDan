@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.my_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.34" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+        .list-group-item{ background:url('/public/img/MYlistbgc.png') no-repeat;color: white !important}
+        .avatar { background:url('/public/img/MYlistbgc.png') no-repeat!important;}
+        .flexAll a{
+            width: 80px;
+            height: 120px;
+            border:1px solid gray;
+          
+        }
+       /*.flexAll a>.card-body {*/
+       /*      display: flex;*/
+       /*     justify-content: center;*/
+       /*     align-items: center;*/
+       /*     flex-direction: column;*/
+       /*}*/
+      
+      .monry{
+        font-size: 18px;
+      }
+       @media (min-width: 390px ) {
+        .monry {
+            font-size: 28px;
+        }
+}
+ @media (min-width: 820px) and  (max-width:912px){
+        .monry {
+            font-size: 33px;
+        }
+}
+    </style>
+</head>
+
+<body class="">
+<div class="wrapper homepage" style="background: linear-gradient(#0066ff, #fff);">
+
+    <!-- header -->
+    <div class="header" style="margin-top:0px;height: 60px;">
+        <div class="row no-gutters" style="height: 60px;line-height: 60px;">
+            <div class="col">
+                <a class="text-dark"  style="width: 120px; color: #FFFFFF !important;margin-left: 10px;">
+                   {:sysconf('site_name')}
+                </a>
+
+            </div>
+            <div class="col-auto">
+
+                <!--<img src="/img/my_profile.png" alt="" class="header-logo"  style="width: 20px;height:20px;"/>-->
+                <!--<a href="/index/my/index.html" style="width: 100px; color: #FFFFFF !important;">-->
+                <!--    <span style="margin-top:20px;vertical-align: middle;height: 20px;line-height: 20px;margin-right: 10px;">{$Think.lang.my_info}</span>-->
+                <!--</a>-->
+
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+
+
+    <!-- header -->
+    <div class="header" style="backdrop-filter:none;    background-color: rgb(0 0 0 / 0%);position: absolute;" >
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <!--<button class="btn  btn-link text-dark">
+                  <i class="material-icons">menu</i>
+                  <span class="new-notification"></span>
+                </button>-->
+            </div>
+            <div class="col text-center">
+
+                <!--<img src="/red/logo-header.png" alt="" class="header-logo">--></div>
+            <div class="col-auto" style="display: none">
+                <a href="/index/my/msg" class="btn  btn-link text-dark position-relative">
+                    <i class="material-icons" style="  color: white;">notifications_none</i></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container" style="padding-top:0px !important">
+        <div class="card bg-template shadow h-190" style="background:url('/img/my.jpg') no-repeat;background-size: 100% 100%; ">
+            <div class="card-body">
+                <div class="row text-dark">
+                    <div class="col-3" onclick="location.href=`/index/my/headimg.html`">
+                        <figure class="avatar avatar-60" style="width: 56px;height: 52px;background: black;border-radius: 50%">
+                            <img src="{$info.headpic}" onerror="this.src='/public/img/avatar.png'" alt=""></figure>
+                    </div>
+                    <div class="col-auto pl-0 align-self-center"  >
+                        <h5 class="mb-1">{$info.username}&nbsp;
+                            <span class="text-mute small" style="background: url('/public/img/MYvip.png') no-repeat;display: inline-block;color:#C56810;width: 66px;background-size: 100% 100%;font-size: 10px;height: 36px;vertical-align: middle;line-height: 42px;padding-left: 34px">{$level_name}</span></h5>
+                        <p style="line-height: 20px">
+                  <span class="text-mute small" >{$Think.lang.my_tgcode}&nbsp;
+                    <b>{$info.invite_code}</b>
+                  </span>
+                            <!--
+                            <a href="/index/my/invite" style="display: inline-block; margin-left: 10px">
+                                <i class="material-icons text-template" style="font-size: 20px;    color: white;">card_giftcard</i></a>
+                                -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="container top-100 text-center
+   " style="width:90%;height:50px;position:relative">
+        <div class="row text-dark" style="margin-top:10px">
+            <div class="col-6">
+             <p>
+                <span   class="monry" style="font-size:22px;">
+                   <!--<span style="font-size：22px;font-weight:900">  </span> -->
+                  
+               <span style="font-weight:900">{if $info.balance} <?php echo  round($info['balance'],2); ?>{else}{$info.balance}{/if} </span> 
+                
+                &nbsp;{:config('currency')}
+                </span>
+                <br>
+                <small  style="font-size:16px!important;font-weight:bold">{$Think.lang.qd_kyye}</small></p>
+        </div>
+        <div class="col-6 " style="    border-left: 2px dashed #eee !important;" >
+            <p>
+                <span  class="monry" style="font-size:22px;"> <spans style="font-weight:900">{$jinri}</span> 
+                
+                &nbsp;{:config('currency')} </span>
+                <br>
+                <small  style="font-size:16px!important;font-weight:bold">{$Think.lang.todayincome}</small></p>
+        </div>
+        </div>
+   </div>
+   
+    <!--<div class="container top-100" style="padding-right: 0px;padding-left: 0px;)">-->
+    <!--    <div class="card mb-4 shadow" >-->
+    <!--        <div class="card-body">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col" style="display: flex;justify-content: space-around">-->
+    <!--                    <p class="text-mute"style=" margin-left: 10px; margin-top: -9px;-->
+    <!--color: white;display:none">{$Think.lang.my_money}</p>-->
+    <!--                    <h3 class="mb-0 font-weight-normal" style="    font-size: 18px;-->
+    <!--margin-left: 10px;-->
+    <!--color: white;-->
+    <!--margin-top: -9px;display:none">{:config('currency')}-->
+    <!--                        {$info.balance+$info.freeze_balance}</h3>-->
+    <!--                    <div class="col-auto" style="margin-top: -28px;display:none">-->
+    <!--                        <button class="btn btn-default btn-rounded-54 shadow"-->
+    <!--                                onclick="window.location.href=`/index/ctrl/recharge`">-->
+    <!--                            <i class="material-icons">add</i></button>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="card-footer bg-none">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col text-center">-->
+    <!--                    <p>-->
+    <!--                        <span  style="color: red;font-size: 18px;font-weight: 900">{:config('currency')}  -->
+    <!--                        {if $info.balance} <?php echo  round($info['balance'],2); ?>{else}{$info.balance}{/if}-->
+    <!--                        </span>-->
+    <!--                        <br>-->
+    <!--                        <small class="text-mute" style="color: red">{$Think.lang.qd_kyye}</small></p>-->
+    <!--                </div>-->
+    <!--                <div class="col text-center border-left-dotted">-->
+    <!--                    <p>-->
+    <!--                        <span style="color: red;font-size: 18px;font-weight: 900">{:config('currency')}  {$jinri}</span>-->
+    <!--                        <br>-->
+    <!--                        <small class="text-mute" style="color: red">{$Think.lang.todayincome}</small></p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+
+    <div class="container flexAll " style="width:95%;margin-top:70px">
+            <div class="swiper-container icon-slide mb-4 swiper-container-horizontal swiper-container-ios">
+
+                <div class="" style="justify-content: center;    display: flex;text-align: center;" >
+
+
+                    <a href="javascript:;" style="flex: 1;">
+                        <div class="card-body " style="color: white ;flex: 1;">
+                            <img src="/img/my.png" style="width:60px;height:50px;" onclick="tixian()">
+                            <p >{$Think.lang.deposit}</p>
+
+                        </div>
+                    </a>
+
+                    <a href="/index/ctrl/deposit" style="flex: 1;">
+                        <div class="card-body" style="color: white ;flex: 1;">
+                            <img src="/img/my1.png" style="width:60px;height:50px">
+                            <p style="background-position: 10px,center;">{$Think.lang.with}</p>
+
+                        </div>
+                    </a>
+
+                    <a href="/index/ctrl/set" style="flex: 1;">
+                        <div class="card-body" style="color: white ;flex: 1;">
+                            <img src="/img/my2.png" style="width:60px;height:50px">
+                            <p style="background-position: 10px,center;">{$Think.lang.personal_info}</p>
+
+                        </div>
+                    </a>
+
+                </div>
+
+
+                <div class="" style="justify-content: center;    display: flex;text-align: center;" >
+
+                    <a href="/index/my/caiwu"  style="flex: 1;">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my3.png" style="width:60px;height:50px">
+                            <p style="background-position: 10px,center;">{$Think.lang.my_alllog}</p>
+
+                        </div>
+                    </a>
+                    <!--<a href="/index/wallet/index"   style="flex: 1;">-->
+                       <a href="/index/my/bind_bank"   style="flex: 1;"> 
+                       
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my4.png" style="width:60px;height:50px">
+                            <p style="">{$Think.lang.linkcard}</p>
+
+                        </div>
+                    </a>
+                    <!--  -->
+                    <?php if(is_array($csURL)):?>
+                     <a href="javascript:xian();"   style="flex: 1;">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my5.png" style="width:60px;height:50px">
+
+                            <h5 class="mb-0 font-weight-normal" style="margin-bottom: 10px;font-size: 17px">{$Think.lang.contactus}</h5>
+
+                        </div>
+                    </a>
+                    <div style="position:absolute;top:-100rem" id="kefudiv">
+                        <div style="
+    padding: 1rem;
+">
+                    {foreach $csURL as $key=>$vo}
+                    <p onclick="window.location.href='{$vo.url}'" style="
+    background-color: #0072ff;
+    color: #fff;
+    border-radius: 0.5rem;
+">{$Think.lang.Service}{$key+1}</p>
+                    {/foreach}
+                    </div>
+                    </div>
+                    <?php else:?>
+                    <a href="{$csURL}"   style="flex: 1;">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my5.png" style="width:60px;height:50px">
+
+                            <h5 class="mb-0 font-weight-normal" style="margin-bottom: 10px;font-size: 17px">{$Think.lang.contactus}</h5>
+
+                        </div>
+                    </a>
+                    <?php endif;?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+                <div class="" style="justify-content: center;    display: flex;text-align: center;" >
+
+                    <a href="/index/message/index"  style="flex: 1;">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my6.png" style="width:60px;height:50px">
+                            <p style="background-position: 10px,center;">{$Think.lang.notifications}</p>
+
+                        </div>
+                    </a>
+
+                    <a href="/index/user/lang"  style="flex: 1;">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my7.png" style="width:60px;height:50px">
+                            <p style="background-position: 10px,center;">{$Think.lang.lang}</p>
+
+                        </div>
+                    </a>
+
+
+                    <a href="javascript:void(0);"   style="flex: 1;"  id="logoutID">
+                        <div class="card-body" style="color: white ;">
+                            <img src="/img/my8.png" style="width:60px;height:50px">
+                            <p style="">{$Think.lang.logout}</p>
+
+                        </div>
+                    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+
+    <!-- footer-->
+    {include file="public/floor" /}
+    <!-- footer ends-->
+    <!--tj--></div>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+<script src="/public/js/layer_mobile/layer.js"></script>
+
+<!-- page level script -->
+<script>
+function tixian(){
+    $(document).dialog({
+        type:"notice",
+        infoText: "{$Think.lang.tixian_new}"
+    });
+}
+    var msg = '{$msg|RAW}';
+    function xian(){
+        layer.open({
+  type: 0,
+//   shade: false,
+//  btn: ['关闭'],
+  btn: ['{$Think.lang.task_qx}'],
+  title: '{$Think.lang.contactus}', //不显示标题
+  content: $('#kefudiv').html(),
+  cancel: function(){
+  }
+});
+    }
+    $(function () {
+        if (msg.length > 1) {
+            $(document).dialog({
+                type: 'alert',
+                titleText: '',
+                content: msg,
+                buttonTextConfirm: "{$Think.lang.queding}",
+                autoClose: 0,
+            });
+        }
+        $('.footer').find('.btn-link-default').eq(4).addClass("active");
+
+        $('#logoutID').click(function () {
+            $(document).dialog({
+                type: 'confirm',
+                titleText: "{$Think.lang.my_logout}",
+                buttonTextConfirm: "{$Think.lang.queding}",
+                buttonTextCancel: "{$Think.lang.quxiao}",
+                autoClose: 0,
+                onClickConfirmBtn: function () {
+                    window.location.href = "/index/user/logout.html";
+                },
+                onClickCancelBtn: function () {
+
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label">日期</label>
+            <div class="layui-input-block">
+                <input name="date" data-date-input value='{$vo.date|default=""}'
+                       placeholder="日期"
+                       class="layui-input">
+                {:token()}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">可做单数</label>
+            <div class="layui-input-block">
+                <input name="order_num" type="number"
+                       value='{$vo.order_num|default=""}' placeholder="用户今日可以做多个单"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">佣金比例</label>
+            <div class="layui-input-block">
+                <input name="bili" value='{$vo.bili|default=""}' type="number"
+                       placeholder="佣金比例" class="layui-input">
+                <p class="help-block">0.1 = 10% ，0.0001 = 0.1%，最多四位数小数点，慎重设置</p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最低金额</label>
+            <div class="layui-input-block">
+                <input name="min_money" value='{$vo.min_money|default=""}' type="number"
+                       placeholder="需要多少钱才能做单" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">提现限制</label>
+            <div class="layui-input-block">
+                <input name="min_deposit_order" value='{$vo.min_deposit_order|default=""}' type="number"
+                       placeholder="完成多少单可提现" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <input type='hidden' value='{$vo.uid|default=$uid}' name='uid'>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

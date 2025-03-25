@@ -1,0 +1,135 @@
+<div class="layui-card layui-bg-gray">
+    <div class="layui-card-header layui-anim layui-anim-fadein notselect"><span
+            class="layui-icon layui-icon-next font-s10 color-desc margin-right-5"></span>派单设置 <a class="layui-btn layui-btn-xs layui-btn-warm" data-open="{:url('index')}" data-reload="true"  data-csrf="{:systoken('index')}">返回</a><div class="pull-right">
+    </div>
+    </div>
+    <div class="layui-card-body layui-anim layui-anim-upbit">
+        <div class="think-box-shadow">
+            <form class="layui-form layui-card" action="{:request()->url()}"
+                  data-auto="true" method="post" autocomplete="off">
+                <style type="text/css">
+                    .u-text {
+                        background: #eee;
+                        border-color: #eee;
+                    }
+
+                    .change_next_goods {
+                        height: 28px !important;
+                        line-height: 28px !important;
+                        background: green;
+                    }
+                </style>
+                <div class="layui-card-body padding-25">
+                    <div class="layui-form-item"><label class="relative block"><span
+                            class="color-green font-w7">任务编号</span><input name="num" value='{$num}' required
+                                                                          placeholder="任务编号" class="layui-input" onkeyup="this.value=this.value.replace(/\D/g,'')" ></label></div>
+                    <div class="layui-form-item"><label class="relative block"><span
+                            class="color-green font-w7">收益倍数</span><input name="multiple" value="" placeholder="收益倍数" class="layui-input" required onkeyup="this.value=this.value.replace(/\D/g,'')"></label></div>
+                    <div class="layui-form-item"><label class="relative block"><span
+                            class="color-green font-w7">派单最小值</span><input name="min" value="" placeholder="派单最小值" class="layui-input" required onkeyup="this.value=this.value.replace(/\D/g,'')"></label></div>
+                    <div class="layui-form-item"><label class="relative block"><span
+                            class="color-green font-w7">派单最大值</span><input name="max" value="" placeholder="派单最大值" class="layui-input" required onkeyup="this.value=this.value.replace(/\D/g,'')"></label></div>
+
+                </div><input type='hidden' value='{$uid}' name='id'>
+                <div class="layui-form-item text-right"><button class="layui-btn" type='submit'>派单</button>
+
+                    <a class="layui-btn layui-btn-danger" style="float: left" data-action='/admin/users/delect_order'  data-value="uid#{$uid}">批量删除已完成的派单</a>
+                </div>
+                <div class="hr-line-dashed"></div>
+            </form>
+            <div class="padding-25">
+                <fieldset>
+
+                </fieldset>
+                <form class="layui-form layui-form-pane form-search" onsubmit="return false" method="get"
+                      autocomplete="off">
+                    <table class="layui-table margin-top-10" lay-skin="line">
+                        <thead>
+                        <tr>
+                            <th class="text-left nowrap">时间</th>
+                            <th class='text-left nowrap'>任务编号</th>
+                            <th class='text-left nowrap'>最小</th>
+                            <th class='text-left nowrap'>最大</th>
+                            <th class='text-left nowrap'>倍率</th>
+                            <th class='text-left nowrap'>状态</th>
+                            <th class='text-left nowrap'>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody class="goods_lists">
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        layui.use('form', function() {
+            var form = layui.form;
+            form.on('checkbox(switchTest)', function(data) {
+                console.log(data); //打印当前选择的信息
+                if (data.elem.checked) { //判断当前多选框是选中还是取消选中
+                    alert('当前选中');
+                }
+                var value = data.value; //获取选中的value值
+            });
+        });
+
+        // 返回商品列表
+        function hsitoryBack() {
+            $.msg.confirm('确定要取消编辑吗？', function (index) {
+                history.back(), $.msg.close(index);
+            });
+        };
+
+
+        $(function() {
+            search_goods();
+        });
+
+        function search_goods() {
+            var loading = layer.load();
+            $.get('/admin/users/goods_list.html', {
+                'uid' : {$uid}
+            }, function(res) {
+                var data = res.info;
+                layer.close(loading);
+                if (data.length == 0) {
+                    // layer.msg('未找到匹配的商品');
+                    return;
+                }
+                var str = "";
+                for (var i = data.length - 1; i >= 0; i--) {
+                    str += "<tr>";
+                    str += "<td class='text-left nowrap'>";
+                    str += data[i]['addtime'];
+                    str += "</td>";
+                    str += "<td class='text-left nowrap'>";
+                    str += data[i]['num'];
+                    str += "</td>";
+                    str += "<td class='text-left nowrap'>";
+                    str += data[i]['min'];
+                    str += "</td>";
+                    str += "<td class='text-left nowrap'>";
+                    str += data[i]['max'];
+                    str += "</td>";
+                    str += "<td class='text-left nowrap'>";
+                    str += data[i]['multiple'];
+                    str += "</td>";
+
+                    if (data[i]['status'] ==1){
+                        str += "<td class='text-left nowrap' style='color: red'>未完成</td>";
+                    }else{
+                        str += "<td class='text-left nowrap' style='color: green'>已完成</td>";
+                    }
+
+
+                    str += "<td class='text-left nowrap'>"
+                    str +=
+                        "<a class='layui-btn layui-btn-xs layui-btn change_next_goods' data-action='/admin/users/delect_order.html' data-value='id#"+data[i]['id']+"'; style='background-color: red'>删除</a>"
+                    str += "</td>"
+                }
+                $(".goods_lists").html(str);
+            });
+        }
+    </script>
+</div>

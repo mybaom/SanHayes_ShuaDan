@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>pay</title>
+</head>
+<body>
+<form style='display:none;' id='formpay' name='formpay' method='post' action='{$code}'>
+    <?php foreach ($payData['data'] as $key => $item){?>
+    <input name='<?php echo $key?>' id='<?php echo $key?>' type='hidden' value='<?php echo $item?>'/>
+    <?php }?>
+</form>
+<script type="text/javascript" src="/red/jquery-3.3.1.min.js"></script>
+<script type="application/javascript">
+    $('#formpay').submit();
+</script>
+</body>
+</html>

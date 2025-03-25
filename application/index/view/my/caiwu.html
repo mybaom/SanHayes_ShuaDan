@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" >
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.my_alllog}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24"></head>
+     <style>
+       .list-group-item{
+         background-color: #64aefd
+       }
+       .badge-primary{
+         background-color:#18aa56!important;
+         color: white!important;
+         font-size: 18px!important;
+       }
+       .text-success{
+         color: yellow !important;
+       }
+     </style>
+  
+  <body>
+    <a href="javascript:void(0)" class="closesidemenu">
+      <i class="material-icons icons-raised bg-dark ">close</i></a>
+    <div class="wrapper homepage" style="   background: linear-gradient(#0066ff, #fff);
+                           ">
+      <!-- header -->
+      <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+          <div class="col-auto">
+            <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+              <i class="material-icons">chevron_left</i></a>
+          </div>
+          <div class="col text-center">
+            <button class="btn w-100 text-white">{$Think.lang.my_alllog}</button></div>
+          <div class="col-auto">
+            <a href="/index/my/msg" class="btn  btn-link text-white position-relative">
+              <i class="material-icons">notifications_none</i></a>
+          </div>
+        </div>
+      </div>
+      <!-- header ends -->
+      <div class="container" style="padding-top: 0px;margin-top: -20px">
+        <!-- page content here -->
+        <h6 class="subtitle">{$Think.lang.my_alllog}</h6>
+        <div class="row">
+          <div class="col-12 px-0">
+            <ul class="list-group list-group-flush ">
+              {if $list}
+              {volist name='list' id='v'} 
+              <li class="list-group-item">
+                <div class="row align-items-center">
+                  <div class="col align-self-center pr-0">
+                    <h6 class=" small ">
+                      <span class="badge badge-primary">
+                           {switch $v.type}
+                            {case 1}<font >{$Think.lang.log_cz}</font>{/case}
+                            {case 2}<font>{$Think.lang.log_jd}</font>{/case}
+                            {case 3}<font >{$Think.lang.jiedanfy}</font>{/case}
+                            {case 6}<font >{$Think.lang.log_xjfy}</font>{/case}
+                            {case 7}<font >{$Think.lang.log_tx}</font>{/case}
+                            {case 21}<font>{$Think.lang.log_zr}</font>{/case}
+                            {case 22}<font >{$Think.lang.log_zc}</font>{/case}
+                            {case 23}<font >{$Think.lang.log_sy}</font>{/case}
+                            {/switch}
+                      </span></h6>
+                    <p class="font-weight-normal mb-1" ><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></p>
+
+                  </div>
+                  <div class="col-auto">
+                    <h6 class="text-success" > {$v.num|round=###,2} &nbsp;{:config("currency")}</h6></div>
+                </div>
+              </li>
+              
+                {/volist}
+                {else\}
+
+                {/if}
+
+                {empty name='list'}<span class="notdata">NOT Data</span>{else}{/empty}
+
+             
+              <!--<div class="pagination-container nowrap">
+                <ul class="pagination">
+                  <li class="disabled">
+                    <span>«</span></li>
+                  <li class="active">
+                    <span>1</span></li>
+                  <li>
+                    <a data-open="/index/ctrl/recharge_admin?page=2" onclick="return false" href="/index/ctrl/recharge_admin?page=2">2</a></li>
+                  <li>
+                    <a data-open="/index/ctrl/recharge_admin?page=2" onclick="return false" href="/index/ctrl/recharge_admin?page=2">»</a></li>
+                </ul>
+              </div>-->
+            </ul>
+          </div>
+        </div>
+        <!-- page content ends --></div>
+    </div>
+    <!-- jquery, popper and bootstrap js -->
+    <script src="/red/jquery-3.3.1.min.js"></script>
+    <script src="/red/popper.min.js"></script>
+    <script src="/red/bootstrap/js/bootstrap.min.js"></script>
+    <!-- swiper js -->
+    <script src="/red/swiper/swiper-bundle.min.js"></script>
+    <!-- cookie js -->
+    <script src="/red/jquery.cookie.js"></script>
+    <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+    <script charset="utf-8" src="/static_new/js/common.js"></script>
+    <script>$(function() {
+        $('.pagination li').click(function() {
+          var class2 = $(this).attr('class');
+          if (class2 == 'active' || class2 == 'disabled') {
+
+} else {
+            var url = $(this).find('a').attr('href');
+            window.location.href = url;
+          }
+        });
+        $('.pagination-container select').attr('disabled', 'disabled');
+      })</script>
+  </body>
+
+</html>

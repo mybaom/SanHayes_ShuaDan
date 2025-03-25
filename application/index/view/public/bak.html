@@ -1,0 +1,38 @@
+
+<div class="footer" style="background: rgb(37 42 50) !important">
+    <div class="no-gutters">
+        <div class="col-auto mx-auto">
+            <div class="row no-gutters justify-content-center" style="display: flex;text-align: center;justify-content:space-between;">
+
+                <div class="col-auto" style="flex: 1;text-align: center;align-self: center;">
+                    <a href="/index/index/home.html" class="btn btn-link-default  <?php if($request->controller()=='Index'){ ?>active<?php }else{ ?><?php } ?>">
+                        <img style="margin-top: -17px;"  src="/public/img/HOME.png">
+                        <p style="margin-top: -19px;color:#ffffff;">{$Think.lang.home}</p>
+                    </a>
+                </div>
+
+
+
+                <div class="col-auto"  style="flex: 1;text-align: center;align-self: center;">
+                    <a href="/index/rot_order/index.html" style="height: 100%;"
+                       class="btn btn-link-default <?php if($request->controller()=='RotOrder'){ ?>active<?php }else{ ?><?php } ?>">
+                        <img   src="/public/img/mone.png" style="max-width: 55px!important;margin-top: -29px;">
+                        <!--                  <p style="margin-top: -17px;">{$Think.lang.grab}</p>-->
+                    </a>
+                </div>
+
+
+
+                <div class="col-auto"   style="flex: 1;text-align: center;align-self: center;">
+                    <a href="/index/order/index.html" class="btn btn-link-default <?php if($request->controller()=='Order'){ ?>active<?php }else{ ?><?php } ?>">
+                        <img style="margin-top: -17px;" src="/public/img/RECORD.png">
+                        <!--                  <i class="material-icons">playlist_add_check</i>-->
+                        <p style="margin-top: -19px;color:#ffffff;">{$Think.lang.Record}</p>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

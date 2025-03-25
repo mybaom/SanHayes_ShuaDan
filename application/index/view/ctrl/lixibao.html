@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$Think.lang.lxb_title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/alllang/static/css/light7.css">
+    <link rel="stylesheet" href="/alllang/static/css/light7-swiper.css">
+    <link rel="stylesheet" href="/alllang/static/css/iconfont.css">
+    <link rel="stylesheet" href="/alllang/static/css/common.css">
+    <link rel="stylesheet" href="/alllang/static/css/deposit.css">
+    <link rel="stylesheet" href="/alllang/static/css/account.css"></head>
+  <style>
+    .sjakeh-title-11{
+      color: #FF0E0E !important;
+    }
+  </style>
+  
+  <body>
+    <div class="page bgc-f3" id="unlock">
+      <header class="bar bar-nav fxbt">
+        <a href="{:url('index/home')}" class="icon icon-left pull-left"></a>
+        <div class="title" style="  color: #fff;
+  background-color: black;border-bottom: 1px solid #282828">{$Think.lang.lxb_title}</div></header>
+      <div class="content scroll-wrapper" style="background-color: black">
+        <div class="big-box">
+          <div class="level-box" style="background: black">
+            <div class="level-box--item">
+              <img src="/static_indonesia/img/Bicon01.png" style="margin-top: 10px;margin-left: 10px">
+              <img src="/static_indonesia/img/xianred.png" style="width: 90px;margin-left: 10px">
+              <div class="ddoekjh">{$ubalance}</div>
+              <div class="dajkeh">{$Think.lang.lxb_zzc}</div>
+            </div>
+            <div class="level-box--item">
+              <img src="/static_indonesia/img/Bicon02.png" style="margin-top: 10px;margin-left: 10px">
+              <img src="/static_indonesia/img/xianred.png" style="width: 90px;margin-left: 10px">
+              <div class="ddoekjh">+{$balance}</div>
+              <div class="dajkeh">{$Think.lang.lxb_yeb}</div></div>
+            <div class="level-box--item">
+              <img src="/static_indonesia/img/icon01.png" style="margin-top: 10px;margin-left: 10px">
+              <img src="/static_indonesia/img/xiangreen.png" style="width: 90px;margin-left: 10px">
+              <div class="ddoekjh">+{$balance_shouru}</div>
+              <div class="dajkeh">{$Think.lang.lxb_zsy}</div></div>
+            <div class="level-box--item">
+              <img src="/static_indonesia/img/Bicon04.png" style="margin-top: 10px;margin-left: 10px">
+              <img src="/static_indonesia/img/xiangreen.png" style="width: 90px;margin-left: 10px">
+              <div class="ddoekjh">{$yes_shouyi}</div>
+              <div class="dajkeh">{$Think.lang.lxb_zrsy}</div></div>
+          </div>
+          <div style="margin-top: 120px; background: rgb(37 42 50);border-radius: 5px">
+          <div class="wdal-box">
+            <div class="label dwa">{$Think.lang.lxb_zrje}&nbsp;&nbsp;</div>
+            <div class="value">
+              <input type="number" name="price" id="price" placeholder="{$Think.lang.lxb_qsrzrje}" style="background: rgb(37 42 50)"></div>
+          </div>
+          <div class="wdal-box">
+            <div class="label dwa">{$Think.lang.lxb_yjsy}</div>
+            <div class="value" id="revenue">0.00
+              <!-- <input type="password" name="" placeholder="Input fund password"> --></div></div>
+          <div class="product__wrap" style="justify-content: space-around">
+            {if $lixibao}
+            {volist name='lixibao' id='v'}
+            <div class="sjakeh" data-id="{$v.id}" onclick="yjsy1({$v.id})">
+              <div class="sjakeh-title-1">{$v.name}</div>
+              <div class="sjakeh-title-1 sjakeh-title-11">+{$v.bili*100}&nbsp;%</div>
+              <div class="djakew">
+                <div>[{$Think.lang.lxb_ding}]</div>
+                <div>{$v.day}&nbsp;{$Think.lang.lxb_day}</div></div>
+            </div>
+            {/volist}
+            {else\}
+
+            {/if}
+  
+          </div>
+          </div>
+          <input type="button" class="choice-btn" id="depositSub" value="{$Think.lang.lxb_zr}">
+          <input type="button" class="choice-btn choice-btn-line" value="{$Think.lang.lxb_zrjl}" style="margin-bottom: 100px;" onclick="window.location.href=`/index/ctrl/lixibao_chu`"></div>
+      </div>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="modal" class="modal">
+      <div class="modal-inner">
+        <div class="dasd-title">{$Think.lang.lxb_qrzr}</div>
+        <div class="btn-box">
+          <div class="cancel-btn">{$Think.lang.quxiao}</div>
+          <div class="confirm-btn">{$Think.lang.queding}</div></div>
+      </div>
+    </div>
+
+    <script type='text/javascript' src='/alllang/static/js/jquery.min.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/light7.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/light7-swiper.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/utils.js'></script>
+    <script>    
+        var lcid=1;
+        function check() {
+            if ($("input[name=price]").val() == '') {
+                $.toast('{$Think.lang.lxb_qsrzrje}');
+                return false;
+            }
+            return true;
+        }
+    
+        $(function () {
+            $('.product__wrap>div').eq(0).trigger("click");
+        });
+    
+        $('.product__wrap>div').click(function () {
+            $('.product__wrap>div').removeClass('current');
+            $(this).addClass('current')
+        });
+    
+        $("#price").keyup(function () {
+            yjsy();
+        })
+    
+        function yjsy1(id) {
+            lcid=id;
+            window.yjsy();
+        }
+    
+        function yjsy() {
+            var price = $("#price").val();
+            if(price<=0) return false;
+            $.ajax({
+                url: '/index/ctrl/deposityj',
+                data: {price: price, lcid: lcid},
+                type: 'POST',
+                success: function (data) {
+                    $("#revenue").html(data.data);
+                }
+            });
+        }
+    
+        $('#depositSub').on('click', function () {
+            $('#modal-overlay').addClass('modal-overlay-visible');
+            $('#modal').show();
+            setTimeout(function(){
+                $('#modal').removeClass('modal-out').addClass('modal-in');
+            }, 50)
+        });
+        $('#modal-overlay').click(function() {
+            return false;
+        });
+        $('.cancel-btn').click(function(){
+            $('#modal-overlay').removeClass('modal-overlay-visible');
+            $('#modal').removeClass('modal-in').addClass('modal-out');
+            setTimeout(function(){
+                $('#modal').hide();
+            }, 200)
+        })
+        $('.confirm-btn').click(function(){
+            $('#modal-overlay').removeClass('modal-overlay-visible');
+            $('#modal').removeClass('modal-in').addClass('modal-out');
+    
+            if (check()) {
+                var price = $("input[name=price]").val();
+                $.ajax({
+                    url: "/index/ctrl/lixibao_ru.html",
+                    data: {price:price,lcid:lcid},
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.code == 0) {
+                            $.toast(data.info);
+                            setTimeout(function () {
+                                window.location.href = '/index/ctrl/lixibao';
+                            }, 2000);
+                        } else {
+                            $('#modal').hide();
+                            $.toast(data.info);
+                        }
+                    }
+                });
+            }else {
+                $('#modal').hide();
+            }
+        })
+    
+    </script>
+  </body>
+
+</html>

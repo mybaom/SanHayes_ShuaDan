@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.hometitle}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<link href="/red/materializeicon/material-icons.css" rel="stylesheet">-->
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!--<link href="/red/roboto/css.css" rel="stylesheet">-->
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .icon-slide .swiper-slide {
+    width: 40%;
+margin-right: 10px;
+margin-left: 8px;
+  
+         margin-bottom: 1em;
+     
+}
+.avatar.no-shadow{
+       padding: 0.3em;
+           width: 100%;
+}
+.avatar.no-shadow p{
+padding-left: 1rem;
+background: none;
+width: 8rem;
+/*padding-right: 2rem;*/
+}
+.avatar.no-shadow img{
+    width: 35px;
+    height: 35px;
+    float: left;
+}
+.avatar-61{
+    width: 100%;
+    
+}
+.icon-slide .swiper-slide{
+    padding: 0px;
+}
+
+    </style>
+</head>
+
+<body class="">
+<div class="wrapper homepage" style="background:#0066ff">
+    <!-- header -->
+    <div class="header active" style="backdrop-filter:none;margin-top: 20px;">
+        <div class="row no-gutters">
+            <div class="col">
+                <a class="text-dark"  style="width: 120px; color: #FFFFFF !important;margin-left: 10px;">
+                  {:sysconf('site_name')}
+                  </a>
+               
+            </div>
+            <div class="col-auto">
+                <!--
+                <a href="{$user_service_chats}" class="btn  btn-link text-dark position-relative" style="color: #A3A5AF !important;">
+                    <i class="material-icons" style="    color: white;" >support_agent</i></a>
+                -->
+                <!--<img src="/img/my_profile.png" alt="" class="header-logo"  style="width: 20px;height:20px;"/>-->
+                <!--<a href="/index/my/index.html" style="width: 100px; color: #FFFFFF !important;">-->
+                <!--    <span style="margin-top:20px;vertical-align: middle;height: 20px;line-height: 20px;margin-right: 10px;">{$Think.lang.my_info}</span>-->
+                <!--    </a>-->
+                 
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+
+    <div class="container" style="margin-top: -60px;">
+        <div class="row no-gutters">
+            <div class="col" style="color: #ffffff;font-weight: bold;">
+              {$Think.lang.hi_welcome_to} {$info.username}<img src="{$vip_img_path0}" style="width: 20px;height: 20px;">VIP{$info.level+1}
+            </div>
+
+        </div>
+    </div>
+
+    <!--
+    <div class="container" style="margin-top: 10px;">
+
+        <div class="swiper-container swiper-container-banner swiper-container-horizontal swiper-container-ios">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                {foreach $banner as $vo}
+                <div class="swiper-slide swiper-slide-active" style="width: 375px;height: 180px">
+                    <a href="{$vo.url}">
+                        <img src="{$vo.image}" style="width: 100%; height: 100%"></a>
+                </div>
+                {/foreach}
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+    </div>
+    -->
+    <div class="container" style="width:95%;margin:0 auto;background:red">
+        <div class="row">
+            <div class="col-4">1</div>
+            <div class="col-4">2</div>
+            <div class="col-4">3</div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="swiper-container icon-slide mb-4 swiper-container-horizontal swiper-container-ios">
+                
+                <div class="" style="justify-content: center;    display: flex;text-align: center;" >
+                    
+                    <a href="/index/start/index.html" style="flex: 1;">
+                        <div class="card-body" style="color: white ;padding: 10px;">
+                           
+                            <img src="/static_new/img/icon07.png" style="width:50px;height:50px">
+                            <p  style="line-height: 35px;">{$Think.lang.starting}</p>
+                          
+                            </div>
+                    </a>
+                   
+                    <a href="/index/certificate/index"  style="flex: 1;">
+                        <div class="card-body" style="color: white ;padding: 10px;flex: 1;">
+                           
+                            <img src="/static_new/img/icon09.png" style="width:50px;height:50px">
+                            <p style="line-height: 35px">{$Think.lang.cert}</p>
+                          
+                            </div>
+                    </a>
+                    <a href="/index/ctrl/deposit" style="flex: 1;">
+                        <div class="card-body" style="color: white ;padding: 10px;flex: 1;">
+                            <img src="/static_new/img/icon03.png" style="width:50px;height:50px">
+                            <p style="line-height: 35px;background-position: 10px,center;">{$Think.lang.with}</p>
+                           
+                            </div>
+                    </a>
+                    <a href="/index/ctrl/recharge" style="flex: 1;">
+                        <div class="card-body" style="color: white ;padding: 10px;flex: 1;">
+                            <img src="/static_new/img/icon08.png" style="width:50px;height:50px">
+                            <p style="line-height: 35px;">{$Think.lang.deposit}</p>
+                           
+                            </div>
+                        </a>
+                       
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <div class="" style="justify-content: center;    display: flex;text-align: center;" >
+                    
+                   <a href="javascript:void(0);"  style="flex: 1;"  id="tcID">
+                        <div class="card-body" style="color: white ;padding: 10px;">
+                            <img src="/static_new/img/icon015.png" style="width:50px;height:50px">
+                            <p style="line-height: 35px;background-position: 10px,center;">{$Think.lang.tc}</p>
+                           
+                            </div>
+                    </a>
+                    <a href="javascript:void(0);"   style="flex: 1;"  id="latesteventID">
+                        <div class="card-body" style="color: white ;padding: 10px;">
+                            <img src="/static_new/img/icon02.png" style="width:50px;height:50px">
+                            <p style="line-height: 35px;">{$Think.lang.latest_events}</p>
+                           
+                            </div>
+                        </a>
+                        <!--  -->
+                        <a href="javascript:void(0);"   style="flex: 1;"  id="faqID">
+                             <div class="card-body" style="color: white ;padding: 10px;">
+                                    <img src="/static_new/img/icon07.png" style="width:50px;height:50px">
+                                   
+                                    <h5 class="mb-0 font-weight-normal" style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{$Think.lang.faq}</h5>
+                                    
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);"   style="flex: 1;"  id="aboutusID">
+                            <div class="card-body" style="color: white ;padding: 10px;">
+                                <img src="/static_new/img/icon04.png" style="width:50px;height:50px">
+                               
+                                <h5 class="mb-0 font-weight-normal" style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{$Think.lang.About}</h5>
+                                
+                             </div>
+                        </a>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container"  style="margin-top: -48px;">
+        <div class="row">
+            <div class="col">
+              <h5 class="subtitle mb-1  "> <span class="subtitle01"></span> {$Think.lang.get_income}</h5></div>
+        </div>
+         <div class=" mt-1">
+            <div class="col-6 col-md-3" style="padding-left:0px;display:inline-block">
+                <div class="card shadow border-0 mb-3" style="background-color: black;">
+                    <div class="card-body" style="background: rgb(43,42,100);color: white ;padding: 10px;border-radius: 10px;">
+                        <img src="/static_indonesia/img/Bicon01.png">
+                        <img src="/static_indonesia/img/xianred.png" style="width: 90px;margin-left: 10px">
+                        <h5 class="mb-0 font-weight-normal" style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{:config("currency")} {if $today_income}<?php echo round($today_income,2); ?> {else}{$today_income}{/if}</h5>
+                        <p class="text-secondary text-mute small">{$Think.lang.todayincome}</p></div>
+                </div>
+            </div>
+             <div class="col-6 col-md-3" style="padding-left:0px;display:inline-block">
+                 <div class="card shadow border-0 mb-3" style="background-color: black;">
+                     <div class="card-body" style="background: rgb(43,42,100);color: white ;padding: 10px;border-radius: 10px;">
+                         <img src="/static_indonesia/img/Bicon02.png">
+                         <img src="/static_indonesia/img/xiangreen.png" style="width: 90px;margin-left: 10px">
+                        <h5 class="mb-0 font-weight-normal"  style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{:config("currency")}  
+                        {if $tod_user_yongjin}<?php echo round($tod_user_yongjin,2); ?> {else}{$tod_user_yongjin}{/if}
+                        </h5>
+                        <p class="text-secondary text-mute small">{$Think.lang.today_comm}</p></div>
+                </div>
+            </div>
+             <div class="col-6 col-md-3"  style="padding-left:0px;display:inline-block">
+                 <div class="card shadow border-0 mb-3" style="background-color: black;">
+
+                     <div class="card-body" style="background: rgb(43,42,100);color: white ;padding: 10px;border-radius: 10px;">
+                         <img src="/static_indonesia/img/Bicon03.png">
+                         <img src="/static_indonesia/img/xianred.png" style="width: 90px;margin-left: 10px">
+                        <h5 class="mb-0 font-weight-normal"  style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{:config("currency")} {$user_yongjin|round=###,2}</h5>
+                        <p class="text-secondary text-mute small">{$Think.lang.get_income}</p></div>
+                </div>
+            </div>
+            {if config('enable_lxb')==1}
+             <div class="col-6 col-md-3"  style="padding-left:0px;display:inline-block">
+                 <div class="card shadow border-0 mb-3" style="background-color: black;">
+                     <div class="card-body" style="background: rgb(43,42,100);color: white ;padding: 10px;border-radius: 10px;">
+                         <img src="/static_indonesia/img/icon01.png">
+                         <img src="/static_indonesia/img/xiangreen.png" style="width: 90px;margin-left: 10px">
+                        <h5 class="mb-0 font-weight-normal"  style="margin-top: 10px;margin-bottom: 10px;font-size: 17px">{:config("currency")} {$lixi_count}</h5>
+                        <p class="text-secondary text-mute small">{$Think.lang.Monthly_report}</p></div>
+                </div>
+            </div>
+            {/if}
+        </div>
+    </div>
+    <div class="container">
+
+    </div>
+    <div class="container">
+        <style>
+            html {
+                overflow-y: scroll;
+            }
+
+            :root {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            :root body {
+                position: absolute;
+            }
+
+            body {
+                width: 100vw;
+                overflow: hidden;
+            }
+            div::-webkit-scrollbar {
+                display: none;
+            }
+            div { -ms-overflow-style: none; }
+            .vip_bg_0 {
+                background: linear-gradient(240deg, rgb(12, 36, 66), rgb(79, 116, 146)) !important;
+            }
+
+            .vip_bg_1 {
+                background: url(/static/img/vip1.png) center center / 160px 64px no-repeat, linear-gradient(240deg, rgb(89, 112, 149), rgb(118, 138, 170)) !important;
+            }
+
+            .vip_bg_2 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(219, 111, 33, 0.99), rgb(249, 153, 5)) !important;
+            }
+
+            .vip_bg_3 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(39, 53, 131, 0.99), rgb(47, 67, 177)) !important;
+            }
+
+            .vip_bg_4 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(61, 147, 181, 0.99), rgb(49, 179, 139)) !important;
+            }
+
+            .vip_bg_5 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(33, 35, 39, 0.99), rgb(67, 69, 73)) !important;
+            }
+
+            .vip_bg_6 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(72, 0, 154, 0.99), rgb(97, 0, 160)) !important;
+            }
+
+            .vip_bg_7 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(to right, rgb(186, 139, 2), rgb(209, 145, 60)) !important;
+            }
+            .minwhite{
+                width: 145px !important;
+            }
+        </style>
+        <h6 class="subtitle"><span class="subtitle01"></span>{$Think.lang.my_level}
+            <img src="/img1203/more.png" style="width: 30px;height: 30px;float: right;margin-right: 10px;" onclick="levelPage();">
+            <div style=" overflow-y: auto;margin-top: 10px ">
+        <div style=" width: max-content; display: flex ;">
+        {foreach name="$level_list" item="vo" key="k" }
+        <div class="card shadow border-0 mb-3 bg-template vip_bg_{$k}" style=" width: 150px;
+   display: inline-block;margin-right: 20px; background: rgb(43,42,100) !important;">
+            <div class="card-body" style="padding: .5rem"
+            <?php if($vo['level']>$info['level']){ ?>
+          <?php } ?>>
+            <div class="row" style="align-items: center; flex-direction: column">
+                <div class=" pr-0" style="position: relative">
+
+                    <?php if($vo['id']==1){ ?>
+                    <img src="/static/img/vip1.png" alt="" class="mw-60"  style="width: 30px;height: 30px;">
+                    <?php }?>
+                    <?php if($vo['id']==2){ ?>
+                    <img src="/static/img/vip2.png" alt="" class="mw-60"  style="width: 30px;height: 30px;">
+                    <?php }?>
+
+                    <?php if($vo['id']==3){ ?>
+                    <img src="/static/img/vip3.png" alt="" class="mw-60"  style="width: 30px;height: 30px;">
+                    <?php }?>
+                    <?php if($vo['id']==4){ ?>
+                    <img src="/static/img/vip4.png" alt="" class="mw-60"  style="width: 30px;height: 30px;">
+                    <?php }?>
+
+                </div>
+                <div class="col align-self-center" >
+                    <h5 class="mb-2 font-weight-normal" style=" font-size:14px;margin-top: 10px;text-align: center">
+                        <span style="">{$Think.lang.cur_level}：</span>
+                        <?php if($vo['level']<=$info['level']){ ?>
+                        <span style="">{$vo.name}</span>
+                    </h5>
+                    
+                    <?php }else{ ?>
+                    <span style="">{$vo.name}</span>
+                    <span style="float: right;display:none">{$Think.lang.join}&gt;&gt;</span>
+                    <?php } ?>
+                    <div style="clear: both;"></div>
+                    <p class="text-mute" style="margin-bottom: 0;font-size: 12px;text-align: center;line-height: initial;">
+                         <?php if($vo['id']==1){ ?>
+                   100USDT<br>
+                    3 withdrawals per day Maximum of 3 sets of tasks per day, 120 orders Commission of 0.5% per order
+                    <?php }?>
+                    <?php if($vo['id']==2){ ?>
+                   1500USDT<br>
+                     5 withdrawals per day Maximum of 3 sets of tasks per day, 150 orders Commission of 0.6% per order
+                    <?php }?>
+
+                    <?php if($vo['id']==3){ ?>
+                   5000USDT<br>
+                    8 withdrawals per day Maximum of 4 sets of tasks per day, 220 orders Commission of 0.8% per order
+                    <?php }?>
+                    <?php if($vo['id']==4){ ?>
+                  10000USDT<br>
+                    10 withdrawals per day Maximum of 5 sets of tasks per day, 300 orders 1% commission per order
+                    <?php }?>
+                       
+                    </p>
+                    <p class="text-mute" style="font-size: 12px;text-align: center"> {$Think.lang.vip_desc}</p>
+                    <!--<p class="text-mute" style="margin-bottom: 0;font-size: 12px;text-align: center">{$Think.lang.sxtz}&nbsp;{:config("currency")}-->
+                    <!--    {$vo.num}</p>-->
+                    <!--<p class="text-mute" style="font-size: 12px;text-align: center">{$Think.lang.commission}&nbsp;{$vo.bili*100}% |-->
+                    <!--    {$vo.order_num}&nbsp;{$Think.lang.Record}</p>-->
+              </div>
+            </div>
+        </div>
+            <div>
+        </div>
+        </div>
+    {/foreach}
+            </div>
+</div>
+<div class="container">
+    <h6 class="subtitle " style="margin-top: 10px"><span class="subtitle01"></span>{$Think.lang.index_sr_list}</h6>
+    <div class="agent_box" style="    min-height: 69px; display: block;overflow:hidden;">
+        <div style="transition: transform 0s ease 0s; transform: translateY(0px); margin-top: 0px; background: rgb(43,42,100)!important;color: white ;border-radius: 15px">
+            {foreach $list as $vo}
+            <div class="card shadow border-0 mb-3" style="border-radius: 15px ;background: rgb(43,42,100)!important ">
+                <div class="card-body" style="background: rgb(43,42,100)!important;padding: 0px;    border-radius: 5px;" >
+                    <div class="row align-items-center" style="justify-content: space-between">
+                        <div class="col-3 pr-0 text-center" style="max-width: 26%">
+<!--                            <div class="avatar avatar-30 no-shadow border-0">-->
+<!--                                <img src="" alt=""></div>-->
+                            <h6 class="font-weight-normal mb-1" style="margin-left: 10px;padding: 10px 0px">{$vo.tel}</h6></div>
+                        <div class="col-auto align-self-center "style="padding: 10px 0px;">
+                            <h6 class="font-weight-normal mb-1" style="padding-right: 32px;color: #71DDED">{:config("currency")} {$vo.today_income|round=###,2}</h6>
+<!--                            <p class="text-mute small text-secondary">{$Think.lang.todayincome}</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</div>
+
+<div class="container" style="display:none">
+    <h6 class="subtitle "><span class="subtitle01"></span>{$Think.lang.index_partner}</h6>
+    <div class="row" style="font-size: 12px;margin-left: 8px;flex-wrap: nowrap;">
+        <a class="col-3 text-center" href="javascript:void(0)" style="padding-top:5px ;
+    border-radius: 5px; flex: 0 0 22%;  background: rgb(43,42,100) !important;"
+           onclick="window.location.href=`/index/my/detail.html?id=2`">
+            <img style="width:50%;" src="/static_indonesia/img/Bintroduce.png">
+            <br>{$Think.lang.jieshao}</a>
+        <a class="col-3 text-center" href="javascript:void(0)"  style="margin-left: 9px;padding-top:5px ;
+    border-radius: 5px;flex: 0 0 22%;   background: rgb(43,42,100) !important;"
+           onclick="window.location.href=`/index/my/detail.html?id=3`">
+            <img style="width:54%;" src="/static_indonesia/img/Brule.png">
+            <br>{$Think.lang.guize}</a>
+        <a class="col-3 text-center" href="javascript:void(0)"  style="margin-left: 9px;padding-top:5px ;
+    border-radius: 5px ;flex: 0 0 22%; background: rgb(43,42,100) !important;"
+           onclick="window.location.href=`/index/my/detail.html?id=4`">
+            <img style="width:50%;" src="/static_indonesia/img/Bacting.png">
+            <br>{$Think.lang.diali}</a>
+        <a class="col-3 text-center" href="javascript:void(0)"  style="margin-left: 9px;padding-top:5px ;
+    border-radius: 5px;     flex: 0 0 22%; background: rgb(43,42,100) !important;"
+           onclick="window.location.href=`/index/my/detail.html?id=12`">
+            <img style="width:50%;" src="/static_indonesia/img/Bqualifications.png">
+            <br><span style=" font-size: 10px;
+            transform: scale(0.80);
+            transform-origin: 0 0;
+            white-space: nowrap;"">{$Think.lang.zige}</span></a></div>
+    </div>
+<!-- footer-->
+{include file="public/floor" /}
+<!-- footer ends-->
+<!--tj--></div>
+<!-- notification ends -->
+<div class="modal fade in tanchuang" tabindex="-1" role="dialog" aria-modal="true"  id="tanchuang">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document" >
+        <div class="modal-content">
+            <button type="button" class="close close-rounded tanchuangClose" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+            <div class="modal-header border-0"
+                 style="height: 100px;background: url(/red/tanchuang_header.png); background-size: cover;"></div>
+            <div class="modal-body text-center pt-4" style="max-height: 300px; overflow: scroll">
+                {$notice|RAW}
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button"
+                        class="btn btn-default btn-lg btn-rounded shadow btn-block btn-important tanchuangClose"
+                        data-dismiss="modal">OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- t&c  -->
+<div class="modal fade in tanchuang" tabindex="-1" role="dialog" aria-modal="true"  id="tcWindow">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content"  style="background-color:#575757;">
+            <button type="button" class="close close-rounded tanchuangClose" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+
+            <div class="modal-header border-0"
+                style="height: 40px;background-size: cover;">
+            
+                <img src="/img1203/let_top.png" style="width:30px;height: 30px;"></img>
+
+            </div>
+            <div class="modal-header border-0"
+                style="height: 30px;background-size: cover;color: #999;">
+                <p>apptweak</p>
+                 
+            </div>
+            <div class="modal-header border-0"
+                style="height: 30px;background-size: cover;color: #FFFFFF;font-weight: bold;font-size: 20;">
+               
+                <p>Rules Conditions</p>
+            </div>
+            <div class="modal-body text-center pt-4" style="max-height: 300px; overflow: scroll;color: #FFFFFF;font-size: 12px;">
+                <span style="text-align: left;">{$tc|RAW}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest Events  -->
+<div class="modal fade in tanchuang" tabindex="-1" role="dialog" aria-modal="true"  id="latesteventWindow">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content"  style="background-color:#575757;">
+            <button type="button" class="close close-rounded tanchuangClose" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+
+            <div class="modal-header border-0"
+                style="height: 40px;background-size: cover;">
+            
+                <img src="/img1203/let_top.png" style="width:30px;height: 30px;"></img>
+
+            </div>
+            <div class="modal-header border-0"
+                style="height: 20px;background-size: cover;color: #999;">
+                <p>apptweak</p>
+                 
+            </div>
+            <div class="modal-header border-0"
+                style="height:50px;background-size: cover;color: #FFFFFF;font-weight: bold;font-size: 20;">
+               
+                <p>Latest Events</p>
+            </div>
+            <div class="modal-body text-center pt-4" style="max-height: 300px; overflow: scroll;color: #FFFFFF;font-size: 12px;margin-top: -50px;">
+                <span style="text-align: left;margin-top: -50px;">{$latestevents|RAW}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ  -->
+<div class="modal fade in tanchuang" tabindex="-1" role="dialog" aria-modal="true"  id="faqWindow">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content"  style="background-color:#575757;">
+            <button type="button" class="close close-rounded tanchuangClose" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+
+            <div class="modal-header border-0"
+                style="height: 40px;background-size: cover;">
+            
+                <img src="/img1203/let_top.png" style="width:30px;height: 30px;"></img>
+
+            </div>
+            <div class="modal-header border-0"
+                style="height: 20px;background-size: cover;color: #999;">
+                <p>apptweak</p>
+                 
+            </div>
+            <div class="modal-header border-0"
+                style="height:50px;background-size: cover;color: #FFFFFF;font-weight: bold;font-size: 20;">
+               
+                <p>Ask Questions</p>
+            </div>
+            <div class="modal-body text-center pt-4" style="max-height: 300px; overflow: scroll;color: #FFFFFF;font-size: 12px;margin-top: -20px;">
+                <span style="text-align: left;margin-top: -20px;">{$faq|RAW}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About US  -->
+<div class="modal fade in tanchuang" tabindex="-1" role="dialog" aria-modal="true"  id="aboutusWindow">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content"  style="background-color:#575757;">
+            <button type="button" class="close close-rounded tanchuangClose" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+
+            <div class="modal-header border-0"
+                style="height: 40px;background-size: cover;">
+            
+                <img src="/img1203/let_top.png" style="width:30px;height: 30px;"></img>
+
+            </div>
+            <div class="modal-header border-0"
+                style="height: 20px;background-size: cover;color: #999;">
+                <p>apptweak</p>
+                 
+            </div>
+            <div class="modal-header border-0"
+                style="height:50px;background-size: cover;color: #FFFFFF;font-weight: bold;font-size: 20;">
+               
+                <p>About Us</p>
+            </div>
+            <div class="modal-body text-center pt-4" style="max-height: 300px; overflow: scroll;color: #FFFFFF;font-size: 12px;margin-top: -20px;">
+                <span style="text-align: left;margin-top: -20px;">{$aboutus|RAW}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="notification shadow pt-0 pl-0 pr-0 border-0 bg-template-light">
+    <div id="notification_countdown"></div>
+    <div class="row pt-2 pl-3 pr-3">
+        <div class="col-auto align-self-center pr-0">
+            <i class="material-icons text-template md-36">redeem</i></div>
+        <div class="col small notification-content">loading...</div>
+        <div class="col-auto align-self-center pl-0">
+            <button class="btn btn-link closenotification">
+                <i class="material-icons text-template md-18 ">close</i></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">var app = {'online_popup': ""}</script>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+<script src="/public/js/layer_mobile/layer.js"></script>
+<script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<!-- page level script -->
+<script>
+    function levelPage(){
+        window.location.href="/index/ctrl/vip";
+    }
+    $(function () {
+        $('#tcID').click(function () {
+            $('#tcWindow').modal('show');
+        });
+        //
+        $('#latesteventID').click(function () {
+            $('#latesteventWindow').modal('show');
+        });
+        //
+        $('#faqID').click(function () {
+            $('#faqWindow').modal('show');
+        });
+        //
+        $('#aboutusID').click(function () {
+            $('#aboutusWindow').modal('show');
+        });
+
+        //
+
+        $('.footer').find('.btn-link-default').eq(0).addClass("active");
+        var bannerSwiper = new Swiper('.swiper-container-banner', {
+            slidesPerView: 1,
+            autoplay: true,
+        });
+        $('.tanchuangClose').click(function () {
+            $('#tanchuang').hide();
+            var date = new Date();
+            var minutes = 60 * 8;
+            date.setTime(date.getTime() + minutes * 60 * 1000);
+            $.cookie('tanchuang', 'none', {
+                expires: date
+            });
+        });
+        $('.announcement-task .a-t-items').click(function () {
+            if (!$(this).hasClass('not')) {
+                cid = $(this).data('cid');
+                window.location.href = '/index/rot_order/index.html?type=' + cid;
+            }
+        });
+        if ("none" != 'none' || sessionStorage.getItem('login_flag') == '1') {
+            setTimeout(function () {
+                    $('#tanchuang').modal('show');
+                },
+                500);
+            sessionStorage.removeItem('login_flag');
+        }
+        /*        $(document).dialog({
+                    type: 'alert',
+                    titleText: "DEPOS",
+                    buttonTextConfirm: "OK",
+                    autoClose: 0,
+                });*/
+    });
+
+    (function ($) {
+        $.fn.textSlider = function (options) {
+            var defaults = {
+                scrollHeight: 25,
+                line: 1,
+                speed: 'normal',
+                timer: 2000
+            };
+            var opts = $.extend(defaults, options);
+            this.each(function () {
+                var timerID;
+                var obj = $(this);
+                var $ul = obj.children(".ul");
+                var $height = $ul.find(".card").height();
+                var $Upheight = 0 - opts.line * $height;
+                obj.hover(function () {
+                        clearInterval(timerID);
+                    },
+                    function () {
+                        timerID = setInterval(moveUp, opts.timer);
+                    });
+
+                function moveUp() {
+                    $ul.animate({
+                            "margin-top": $Upheight
+                        },
+                        opts.speed,
+                        function () {
+                            for (i = 0; i < opts.line; i++) {
+                                $ul.find("li:first").appendTo($ul);
+                            }
+                            $ul.css("margin-top", 0);
+                        });
+                };
+                timerID = setInterval(moveUp, opts.timer);
+            });
+        };
+    })(jQuery);
+
+    $(function () {
+        $(".agent_box").textSlider({
+            line: 1
+        });
+    });</script>
+</body>
+</html>

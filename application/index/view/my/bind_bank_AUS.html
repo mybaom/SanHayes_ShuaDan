@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.bank_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>.document_id.float-label:not(.active) .form-control-label {
+        left: 95px
+    }</style>
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+</head>
+
+<body>
+<a href="javascript:void(0)" class="closesidemenu">
+    <i class="material-icons icons-raised bg-dark ">close</i></a>
+<div class="wrapper homepage">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <a href="{:url('index/my/index')}" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center">
+                <button class="btn w-100 text-white">{$Think.lang.bank_title}</button>
+            </div>
+            <div class="col-auto">
+                <a href="{$user_service_chats}" class="btn  btn-link text-white position-relative">
+                    <i class="material-icons">support_agent</i></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container">
+        <form action="" id="login-form">
+            <h6 class="subtitle">{$Think.lang.bank_infos}</h6>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label active">
+                        <select name="bank_code" class="form-control">
+                            <option value="">select bank</option>
+                            {foreach $bank_list as $key=>$vo}
+                            <option value="{$key}" {if $info.bank_code==$key} selected{/if}>{$vo}</option>
+                            {/foreach}
+                        </select>
+                        <label class="form-control-label">{$Think.lang.bank_code}</label>
+                    </div>
+                </div>
+                <!--<div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.bank_branch?'active':''}">
+                        <input type="number"
+                               class="form-control" required="" name="bank_branch" minlength="4" maxlength="4"  value="{$info.bank_branch}">
+                        <label class="form-control-label">{$Think.lang.bank_branch}</label></div>
+                </div>-->
+                <!--<div class="col-12 col-md-6">
+                  <div class="form-group float-label active">
+                    <select name="bank_type" class="form-control">
+                      <option value="SAVINGS"{if $info.bank_type=="SAVINGS"} selected{/if}>SAVINGS</option>
+                      <option value="CHECKING"{if $info.bank_type=="CHECKING"} selected{/if}>CHECKING</option>
+                    </select>
+                    <label class="form-control-label">The type of beneficiary bank account.</label></div>
+                </div>-->
+                <!--<div class="col-12 col-md-6">
+                  <div class="form-group float-label {$info.account_digit?'active':''}">
+                    <input type="text" class="form-control" required="" name="account_digit" maxlength="2"  value="{$info.account_digit}">
+                    <label class="form-control-label">account digit</label></div>
+                </div>-->
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.username?'active':''}">
+                        <input type="text" class="form-control" required="" name="username" maxlength="60"
+                               value="{$info.username}">
+                        <label class="form-control-label">{$Think.lang.bank_real}</label></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.cardnum?'active':''}">
+                        <input type="text" class="form-control" required="" name="id_number" maxlength="50"
+                               value="{$info.cardnum}">
+                        <label class="form-control-label">{$Think.lang.bank_nums}</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.tel?'active':''}">
+                        <input type="tel" class="form-control" required="" name="tel" maxlength="20"
+                               value="{$info.tel}">
+                        <label class="form-control-label">{$Think.lang.bank_phone}</label></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.document_id?'active':''}">
+                        <input type="text" class="form-control" required="" name="document_id" maxlength="30"
+                               value="{$info.document_id}">
+                        <label class="form-control-label">PAYID</label></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.document_type?'active':''}">
+                        <input type="tel" class="form-control" required="" name="document_type" maxlength="20"
+                               value="{$info.document_type}">
+                        <label class="form-control-label">BSB</label></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label {$info.tel?'active':''}">
+                        <input type="tel" class="form-control" required="" name="tel" maxlength="20"
+                               value="{$info.tel}">
+                        <label class="form-control-label">{$Think.lang.bank_phone}</label></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group float-label active">
+                        <input type="password" class="form-control" required="" name="paypassword" maxlength="60"
+                               value="">
+                        <label class="form-control-label">{$Think.lang.with_q_zjmm}</label></div>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-default text-white btn-block btn-rounded shadow mt-3 mb-2 save-btn">Modify
+                information
+            </button>
+            <p class="text-mute small">{$Think.lang.bind_desc}</p></form>
+    </div>
+</div>
+<div class="notification shadow pt-0 pl-0 pr-0 border-0 bg-template-light">
+    <div id="notification_countdown"></div>
+    <div class="row pt-2 pl-3 pr-3">
+        <div class="col-auto align-self-center pr-0">
+            <i class="material-icons text-template md-36">redeem</i></div>
+        <div class="col small notification-content">loading...</div>
+        <div class="col-auto align-self-center pl-0">
+            <button class="btn btn-link closenotification">
+                <i class="material-icons text-template md-18 ">close</i></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">var app = {
+    'online_popup': "",
+}</script>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+<script src="/public/js/layer_mobile/layer.js"></script>
+<script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<script type="application/javascript">$(function () {
+    var bankname = "";
+    if (bankname) {
+        $('.bank-item').each(function () {
+            let that = this;
+            if ($(this).find('.dropdown-item-text').children().eq(0).text() == bankname) {
+                setTimeout(function () {
+                        $(that).click();
+                    },
+                    150);
+            }
+        })
+    }
+    $('.bank-item').click(function () {
+        var span = $('.bank-select').find('span');
+        span.html('');
+        span.append($(this).find('.dropdown-item-icon').clone().css('height', '28px').css('width', '28px'));
+        span.append(' ');
+        var bankcode = $(this).find('.dropdown-item-text').children().eq(0).clone();
+        span.append(bankcode);
+        $("input[name=bankname]").val(bankcode.text());
+    });
+
+    /*检查表单*/
+    function check() {
+        if ($("input[name=username]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=username]").focus();
+            return false;
+        }
+        if ($("input[name=tel]").is(":visible") && $("input[name=tel]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=tel]").focus();
+            return false;
+        }
+        if ($("input[name=upi_id]").is(":visible") && $("input[name=upi_id]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=upi_id]").focus();
+            return false;
+        }
+        if ($(".bankname").is(":visible") && $("input[name=bankname]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=bankname]").focus();
+            return false;
+        }
+        if ($("input[name=site]").is(":visible")) {
+            if ($("input[name=site]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=site]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=card]").is(":visible")) {
+            if ($("input[name=card]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=card]").focus();
+                return false;
+            }
+            var myreg = /^([0-9]){5,20}$/;
+            if (!myreg.test($("input[name=card]").val())) {
+                $(document).dialog({
+                    infoText: '{$Think.lang.not_empty}'
+                });
+                $("input[name=card]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=account_digit]").is(":visible") && $("input[name=account_digit]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=account_digit]").focus();
+            return false;
+        }
+        if ($("input[name=document_id]").is(":visible")) {
+            if ($("input[name=document_id]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=document_id]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=paypassword]").is(":visible")) {
+            if ($("input[name=paypassword]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=paypassword]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=wallet_document_id]").is(":visible")) {
+            if ($("input[name=wallet_document_id]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=wallet_document_id]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=id_number]").is(":visible")) {
+            if ($("input[name=id_number]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=id_number]").focus();
+                return false;
+            }
+        }
+        if ($("select[name=bank_code]").is(":visible")) {
+            if ($("select[name=bank_code]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=bank_code]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=bank_branch]").is(":visible")) {
+            if ($("input[name=bank_branch]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=bank_branch]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=account_digit]").is(":visible")) {
+            if ($("input[name=account_digit]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=account_digit]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=wallet_tel]").is(":visible")) {
+            if ($("input[name=wallet_tel]").val() == '') {
+                $(document).dialog({
+                    infoText: "{$Think.lang.not_empty}"
+                });
+                $("input[name=wallet_tel]").focus();
+                return false;
+            }
+        }
+        if ($("input[name=ifsc]").is(":visible") && $("input[name=ifsc]").val() == '') {
+            $(document).dialog({
+                infoText: "{$Think.lang.not_empty}"
+            });
+            $("input[name=ifsc]").focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    /*点击登录*/
+    $(".save-btn").on('click',
+        function () {
+            if (check()) {
+                var loading = null;
+                $.ajax({
+                    url: '/index/my/bind_bank',
+                    data: $("#login-form").serialize(),
+                    type: 'POST',
+                    beforeSend: function () {
+                        loading = $(document).dialog({
+                            type: 'notice',
+                            infoIcon: '/static_new/img/loading.gif',
+                            infoText: 'loading...',
+                            autoClose: 0
+                        });
+                    },
+                    success: function (data) {
+                        loading.close();
+                        if (data.code == 0) {
+                            $(document).dialog({
+                                infoText: data.info,
+                                onClosed: function () {
+                                    window.location.href = "{:url('/index/my/index')}";
+                                }
+                            });
+                        } else {
+                            $(document).dialog({
+                                infoText: data.info
+                            });
+                        }
+                    }
+                });
+            }
+            return false;
+        })
+})</script>
+</body>
+
+</html>

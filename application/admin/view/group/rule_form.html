@@ -1,0 +1,84 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label">第几单</label>
+            <div class="layui-input-block">
+                <input type="number" name="order_num" value='{$vo.order_num|default=""}' placeholder="请输入第几单"
+                       required
+                       class="layui-input">
+                {:token()}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">佣金类型</label>
+            <div class="layui-input-block">
+                <select name="commission_type" class="layui-form-select">
+                    <option value="0" {if isset($vo.commission_type) && $vo.commission_type=='0'} selected{/if}>百分比</option>
+                    <option value="1" {if isset($vo.commission_type) && $vo.commission_type=='1'} selected{/if}>固定值</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">佣金</label>
+            <div class="layui-input-block">
+                <input type="number" name="commission_value"
+                       required
+                       value='{$vo.commission_value|default=""}'
+                       placeholder="请输入佣金" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">增加做单数量</label>
+            <div class="layui-input-block">
+                <input type="number" name="add_orders"
+                       value='{$vo.add_orders|default="0"}'
+                       required
+                       placeholder="增加做单数量" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模式</label>
+            <div class="layui-input-block">
+                <select name="order_type" class="layui-form-select">
+                    <option value="0" {if isset($vo.order_type) && $vo.order_type=='0'} selected{/if}>默认模式</option>
+                    <option value="1" {if isset($vo.order_type) && $vo.order_type=='1'} selected{/if}>叠加模式</option>
+                </select>
+                <p class="help-block">普通模式：用户正常做单，不会加价。 叠加模式：根据用户余额来进行百分比加价</p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">做单价格</label>
+            <div class="layui-input-block">
+                <input type="text" name="order_price"
+                       value='{$vo.order_price|default=""}'
+                       required
+                       placeholder="叠加模式，多个用|隔开，默认填 1" class="layui-input">
+                <p class="help-block">普通模式填1，叠加模式该参数才生效。</p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <span class="layui-form-label">弹窗图片</span>
+            <div class="layui-input-block">
+                <p width="auto" class="text-left" id="images">
+                    <input name="image" type="hidden" value="{$vo.image|default=''}">
+                </p>
+                <a id="deleteImage" href="javascript:void(0);">删除图片</a>
+                <script>
+                    $('[name="image"]').uploadOneImage();
+                    $('#deleteImage').on('click',function (){
+                        $('[name="image"]').val('');
+                        $('#images a').attr('style','')
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    {notempty name='group_id'}<input type="hidden" name="group_id" value="{$group_id}">{/notempty}
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

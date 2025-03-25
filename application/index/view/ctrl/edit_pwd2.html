@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.edit_pass2}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+        .float-label .form-control{
+            background-color:     #abcdff      ;
+            border-radius: 5px;
+            color: white;
+        }
+        .form-control{
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+<a href="javascript:void(0)" class="closesidemenu">
+    <i class="material-icons icons-raised bg-dark ">close</i></a>
+<div class="wrapper homepage" style="   background: linear-gradient(#0066ff, #fff);">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <a href="{:url('index/my/index')}" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center">
+                <button class="btn w-100 text-white">{$Think.lang.edit_pass2}</button>
+            </div>
+            <div class="col-auto">
+                <a href="{:url('index/my/msg')}" class="btn  btn-link text-white position-relative">
+                    <i class="material-icons">notifications_none</i></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container"  style="padding-top:0">
+        <form action="" id="forgetpwd-form">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto text-center" >
+<!--                    <h4 class="mt-5">{$Think.lang.edit_pass2}</h4>-->
+                    <br>
+                    {if $user.pwd2}
+                    <div class="form-group float-label">
+                        <input type="password" id="inputPassword" class="form-control form-control-lg" required=""
+                               name="old_pwd">
+                        <label for="inputPassword" class="form-control-label">{$Think.lang.old_pass}</label></div>
+                    {/if}
+                    <div class="form-group float-label">
+                        <input type="password" id="inputPassword1" class="form-control form-control-lg" required=""
+                               name="new_pwd">
+                        <label for="inputPassword1" class="form-control-label">{$Think.lang.new_pass}</label></div>
+                    <div class="form-group float-label">
+                        <input type="password" id="inputPassword2" class="form-control form-control-lg" required=""
+                               name="password_confirm">
+                        <label for="inputPassword2" class="form-control-label">{$Think.lang.qu_newpass}</label></div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <a class="btn btn-default btn-block btn-rounded shadow form-buttom" style="    background: #18aa56 ;
+    width: 90%;
+    position: fixed;
+    bottom: 68px;
+    left: 50%;
+    transform: translate(-50%, 50%);">
+                                <span>{$Think.lang.xyb}</span></a>
+                        </div>
+                    </div>
+                    <p class=" small mt-4" style="color: #F2F2F2">{$Think.lang.qljmima}</p></div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<script type="application/javascript">$(function () {
+    var countdown = 120;
+    var flag = true;
+    var loading = null;
+
+    function check() {
+        //$("input[name=old_pwd]").val() == '' ||
+        if ($("input[name=new_pwd]").val() == '') {
+            $(document).dialog({
+                infoText: 'Enter password'
+            });
+            return false;
+        }
+        if ($("input[name=new_pwd]").val() !== $("input[name=password_confirm]").val()) {
+            $(document).dialog({
+                infoText: 'passwords do not match'
+            });
+            return false;
+        }
+        return true;
+    }
+
+    $(".form-buttom").on('click',
+        function () {
+            if (check()) {
+                $.ajax({
+                    url: '/index/ctrl/set_pwd2',
+                    data: $("#forgetpwd-form").serialize(),
+                    type: 'POST',
+                    beforeSend: function () {
+                        loading = $(document).dialog({
+                            type: 'notice',
+                            infoIcon: '/static_new/img/loading.gif',
+                            infoText: 'loading...',
+                            autoClose: 0
+                        });
+                    },
+                    success: function (data) {
+                        if (data.code == 0) {
+                            $(document).dialog({
+                                infoText: data.info,
+                                onClosed: function () {
+                                    if (data.url) window.location.href = data.url;
+                                }
+                            });
+                        } else {
+                            loading.close();
+                            $(document).dialog({
+                                infoText: data.info
+                            });
+                        }
+                    }
+                });
+            }
+            return false;
+        })
+});
+</script>
+</body>
+</html>

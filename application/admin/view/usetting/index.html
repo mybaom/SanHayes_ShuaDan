@@ -1,0 +1,50 @@
+{extend name='main'}
+
+{block name="button"}
+{if auth("add")}
+<button data-modal='{:url("add")}?uid={$uid}' data-title="添加设置" class='layui-btn layui-btn-sm layui-btn-primary'>添加设置</button>
+{/if}
+{/block}
+{block name="content"}
+<div class="think-box-shadow">
+    <p class="help-block">如果用户加入了叠加组，设置无法生效</p>
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>ID</th>
+            <th class='text-left nowrap'>UID</th>
+            <th class='text-left nowrap'>日期</th>
+            <th class='text-left nowrap'>可做单数</th>
+            <th class='text-left nowrap'>佣金比例</th>
+            <th class='text-left nowrap'>最低金额</th>
+            <th class='text-left nowrap'>完成多少单可提现</th>
+            <th class='text-left nowrap'>创建时间</th>
+            <th class='text-left nowrap'></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.uid}</td>
+            <td class='text-left nowrap'>{$vo.date}</td>
+            <td class='text-left nowrap'>{$vo.order_num}</td>
+            <td class='text-left nowrap'>{$vo.bili}</td>
+            <td class='text-left nowrap'>{$vo.min_money}</td>
+            <td class='text-left nowrap'>{$vo.min_deposit_order}</td>
+            <td class='text-left nowrap'>{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑"
+                   data-modal='{:url("edit")}?id={$vo.id}'>编辑</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

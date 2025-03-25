@@ -1,0 +1,70 @@
+{extend name='admin@main'}
+
+{block name="content"}
+<div class="think-box-shadow">
+    <!--<a class="layui-btn layui-btn layui-btn" data-open="{:url('add_banner',['id'=>0])}" data-value="id#0" style='background:green;'>新增</a>-->
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>
+                <button type="button" data-reload class="layui-btn layui-btn-xs">刷 新</button>
+            </th>
+            <th class='text-left nowrap'>名称</th>
+            <th class='text-left nowrap'>标识</th>
+            <th class='text-left nowrap'>最小金额</th>
+            <th class='text-left nowrap'>最大金额</th>
+            <th class='text-left nowrap'>手续费</th>
+            <th class='text-left nowrap'>状态</th>
+            <!--<th class='text-left nowrap'>代付状态</th>-->
+            {if auth("edit")}
+            <th class='text-left nowrap'>操作</th>
+            {/if}
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-sort-td'>
+                <input data-action-blur="{:request()->url()}" data-value="id#{$vo.id};action#sort;sort#{value}" data-loading="false" value="{$vo.sort}" class="list-sort-input">
+            </td>
+            <td class='text-left nowrap'>{$vo.name}</td>
+            <td class='text-left nowrap'>{$vo.name2}</td>
+            <td class='text-left nowrap'>{$vo.min}</td>
+            <td class='text-left nowrap'>{$vo.max}</td>
+            <td class='text-left nowrap'>{$vo.pay_commission}</td>
+            <td class='text-left nowrap'>
+                {eq name='vo.status' value='0'}<span class="color-red">已禁用</span>{else}<span
+                    class="color-green">使用中</span>{/eq}
+            </td>
+            <!--<td class='text-left nowrap'>-->
+            <!--    {eq name='vo.is_payout' value='0'}-->
+            <!--    <span class="color-red">未使用</span>-->
+            <!--    {else}-->
+            <!--    <span class="color-green">使用中</span>-->
+            <!--    {/eq}-->
+            <!--</td>-->
+            {if auth("edit")}
+            <td class='text-left nowrap'>
+                <a data-dbclick class="layui-btn layui-btn-xs" data-title="编辑"
+                   data-open='{:url("edit")}?id={$vo.id}'>编 辑</a>
+                {if $vo.status eq 1}
+                <a class="layui-btn layui-btn-warm layui-btn-xs" data-action="{:url('forbid')}"
+                   data-value="id#{$vo.id};status#0" data-csrf="{:systoken('forbid')}">禁用代收</a>
+                {elseif $vo.status eq 0}
+                <a class="layui-btn layui-btn-warm layui-btn-xs" data-action="{:url('resume')}"
+                   data-value="id#{$vo.id};status#1" data-csrf="{:systoken('resume')}">启用代收</a>
+                {/if}
+                <!--{if $vo.is_payout eq 0}-->
+                <!--<a class="layui-btn layui-btn-warm layui-btn-xs" data-action="{:url('set_payout')}"-->
+                <!--   data-value="id#{$vo.id};is_payout#1" data-csrf="{:systoken('set_payout')}">启用代付</a>-->
+                <!--{/if}-->
+            </td>
+            {/if}
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</div>
+{/block}

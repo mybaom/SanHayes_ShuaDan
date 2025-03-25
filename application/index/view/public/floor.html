@@ -1,0 +1,41 @@
+
+    <div class="footer" style="background: rgb(255 255 255 / 57%) !important;">
+        <div class="no-gutters">
+          <div class="col-auto mx-auto">
+            <div class="row no-gutters justify-content-center">
+              <div class="col-auto">
+                <a href="/index/index/home.html" class="btn btn-link-default  <?php if($request->controller()=='Index'){ ?>active<?php }else{ ?><?php } ?>">
+                  <img style="margin-top: -17px;"  src="/img/Bhome.png">
+                  <p style="margin-top: -19px; " class="text-dark">{$Think.lang.home}</p>
+                </a>
+              </div>
+              <div class="col-auto">
+                <a href="/index/order/index.html" class="btn btn-link-default <?php if($request->controller()=='Order'){ ?>active<?php }else{ ?><?php } ?>">
+                  <img style="margin-top: -17px;" src="/img/dingdan.png">
+<!--                  <i class="material-icons">playlist_add_check</i>-->
+                  <p style="margin-top: -19px;" class="text-dark">{$Think.lang.Record}</p>
+                </a>
+              </div>
+              <div class="col-auto" style="margin-top:-24px">
+                <a href="/index/start/index.html" style="height: 100%;"
+                   class="btn btn-link-default <?php if($request->controller()=='RotOrder'){ ?>active<?php }else{ ?><?php } ?>">
+                  <img   src="/img/Sart.png" style="max-width: 63px!important;">
+                  <p  class="text-dark">{$Think.lang.starting}</p>
+                </a>
+              </div>
+              <div class="col-auto">
+                <a href="/index/support/index.html" class="btn btn-link-default <?php if($request->controller()=='Support'){ ?>active<?php }else{ ?><?php } ?>">
+                  <img style="margin-top: -17px;" src="/img/BBkefu.png">
+                  <p style="margin-top: -19px;" class="text-dark">{$Think.lang.Service}</p>
+                </a>
+              </div>
+              <div class="col-auto">
+                <a href="/index/my/index.html" class="btn btn-link-default <?php if($request->controller()=='My'){ ?>active<?php }else{ ?><?php } ?>">
+                  <img  style="margin-top: -17px;" src="/img/Bmy.png">
+                  <p style="margin-top: -19px;" class="text-dark">{$Think.lang.Account}</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

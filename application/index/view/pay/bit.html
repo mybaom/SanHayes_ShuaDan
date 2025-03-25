@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.pay_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+        .recharge-slide {
+            height: 170px;
+            padding-bottom: 20px;
+        }
+
+        .recharge-slide .swiper-slide {
+            padding: 0 15px 10px 15px;
+            width: 250px;
+        }
+
+        .recharge-slide .swiper-slide .card {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+        }
+
+        .recharge-slide.swiper-container-horizontal > .swiper-pagination-bullets {
+            margin-bottom: -10px;
+        }
+
+        .recharge-slide .swiper-slide .card {
+            height: auto;
+            padding: 5px;
+        }
+
+        .btn-channel {
+            margin-bottom: 15px;
+        }
+    </style>
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+    <style>
+        .padding-top-20 {
+            padding-top: 20px;
+        }
+
+        .padding-top-10 {
+            padding-top: 10px;
+        }
+
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 5px 10px !important;
+        }
+
+        .pay-item {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background: #64aefd;
+            color: white;
+        }
+
+        .pay-item .txt {
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:void(0)" class="closesidemenu">
+    <i class="material-icons icons-raised bg-dark ">close</i></a>
+<div class="wrapper homepage" style="  background: linear-gradient(#0066ff, #fff);">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center" style="padding-right: 66px">
+                <button class="btn w-100 text-white">{$Think.lang.pay_title}</button>
+            </div>
+            <div class="col-auto">
+                <!--<a href="{$user_service_chats}" class="btn  btn-link text-white position-relative">
+                    <i class="material-icons">support_agent</i></a>-->
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container" style="padding-top: 50px">
+        <h6 class="subtitle">{$Think.lang.Record}</h6>
+        <div class="flex-row padding-top-10 pay-item">
+            <div class="txt">SN: {$op_data.sn}</div>
+        </div>
+        <div class="flex-row padding-top-10 pay-item">
+            <div class="txt">{$Think.lang.qb_money}: {$op_data.amount}</div>
+        </div>
+       <!-- <div class="flex-row padding-top-10 pay-item">
+            <div class="txt">USDT {$Think.lang.qb_money}: ${$op_data.amount2}</div>
+        </div>-->
+        <h6 class="subtitle ">{$pay_info.name}</h6>
+       <!--<div class="row">-->
+           <div  class="col text-center">
+               <button type="button" class="text-dark btn border btn-sm btn-light rounded  ml-1 mr-1 num-list czcd"  style="width:30%;background:#18aa56" >
+                   USDT
+             </button>
+            <!--<button type="button" class="text-dark btn border btn-sm btn-light rounded  ml-1 mr-1 num-list "  style="width:30%;" onclick="check_type(4)">-->
+            <!--        exchange-->
+            <!-- </button>-->
+           </div>
+            
+        <!--</div>-->
+        <div class="row">
+            <div class="col-12 text-center">
+                <img src="{$pay_info.ewm}" style="width: 50%">
+            </div>
+        </div>
+        <div class="padding-top-20">
+          <!--  <div class="flex-row padding-top-10 pay-item" style="padding:0!important;">
+                <div class="txt">{$pay_info.username}</div>
+                <div>
+                    <button onclick="copy_txt('{$pay_info.username}')"
+                            class="btn btn-default shadow btn-rounded btn-block btn-lg">
+                        <span>{$Think.lang.copy}</span>
+                    </button>
+                </div>
+            </div>-->
+           
+            <div class="padding-top-10 pay-item">
+                <div class="text-center">{$Think.lang.TRC_Address}:</div>
+                <div class="txt">{$pay_info.usercode}</div>
+                <div>
+                    <button onclick="copy_txt('{$pay_info.usercode}')" style="    background-color: #18aa56"
+                            class="btn btn-default shadow btn-rounded btn-block btn-lg">
+                        <span>{$Think.lang.copy}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <h6 class="subtitle text-center">{$Think.lang.recharge_u_info}</h6>
+        <div class="row">
+           <div class="col-12">
+               <div class="list-group-item" style="padding: 0;margin-top: -40px;  color: white">
+                    <div class="meun-item" style="height: 100%;">
+                                <div class="item-line">
+                                    <!--<span>开户行</span>-->
+                                    <input type="hidden" name="pic" >
+                                    <input type="hidden" name="type" value="1">
+                                     <input type="hidden" name="pay_address"   value="{$pay_info.usercode}" >
+                                    <div class="file_container">
+                                        <div class="file">
+                                            <input type="file" name="" id="voucher">
+                                            <!--
+                                            <img src="/img/addimg.png" alt="" class="voucher_img">
+                                            -->
+                                            <img src="/img/addimg.png" alt="" class="voucher_img">
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 11px;text-align: center;margin:10px 0">{$Think.lang.scfkjt}</p>
+                                    <!--<span>转账人姓名</span>-->
+                                    <!--<input type="text" placeholder="输入转账人姓名" name="zzrname" autocomplete="off" maxlength="9">-->
+                                </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-12" style="display: none;">
+                <div class="form-group float-label active inp">
+                    <div class="input-group">
+                        <input type="text" id="transNo" class="form-control" value="" placeholder="" required style=" background: #23293a;color: white">
+                    </div>
+                    <label class="form-control-label">{:lang('trans_id')}</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group float-label active inp">
+                    <button type="button" id="save-btn" style="    background-color: #18aa56"
+                            class="btn btn-lg btn-default btn-block btn-rounded shadow submit-btn">
+                        {$Think.lang.recharge_u_btn}
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+       <!-- <div class="card shadow border-0 mb-3" style="margin-top: 20px">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="text-mute small text-secondary">
+                            {$desc_info|raw}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>
+<style>
+    .list-group-item[data-v-7d84025e] {
+    position: relative;
+    display: block;
+    padding: 0.266667rem 0.4rem;
+    background-color: #fff;
+    border-bottom: 0.013333rem solid #ddd;
+    font-size: .32rem;
+    }
+    .file_container {
+    margin-top: 2rem;
+    border-radius: 5px;
+    }
+    .file {
+    width: 60%;
+    margin: 0 auto;
+    height: 12rem;
+    background: #ffffff;
+    position: relative;
+    border-radius: 5px;
+    }
+    .file::before {
+    content: "";
+    height: 1px;
+    width: 3rem;
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    }
+    .file input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+    z-index: 233;
+    border-radius: 5px;
+    }
+    .file img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 230;
+    border-radius: 5px;
+    }
+    img {
+    vertical-align: middle;
+    }
+</style>
+<!-- Modal -->
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+<script src="/public/js/layer_mobile/layer.js"></script>
+<script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<input name="" id="webcopyinput" type="text" style="left: -1000px; position: absolute" value="">
+<script>
+    var price ='';
+    $(function () {
+        window.onload=function(){
+            $("input[name=type]").val('')
+        }
+        function check() {
+            if ($("input[name=price]").val() == '') {
+                $(document).dialog({infoText: '{$Think.lang.qscfkpz}'});
+                return false;
+            }
+            return true;
+        }
+       
+         // 上传凭证
+        $('#voucher').change(function () {
+            console.log(999999)
+            var file = $("#voucher").get(0).files[0];
+            
+            console.log(11111,file)
+            
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            
+            reader.onloadend = function () {
+                
+                console.log(666,reader)
+                
+                $(".voucher_img").attr("src", reader.result);
+                pic = reader.result;
+                
+                console.log(44,pic)
+                $("input[name=pic]").val(pic)
+            }
+        })
+        
+        $('#save-btn').click(function () {
+            var pic = $("input[name=pic]").val();
+            
+            console.log(pic)
+            var tNo = $('#transNo').val();
+
+            // if(tNo==''){
+            //     return $(document).dialog({
+            //         infoText: "{$Think.lang.trans_id}",
+            //         autoClose: 2000
+            //     });
+            // }
+            
+
+            var price = $("input[name=price]").val();
+            if (price==''){
+                $(document).dialog({infoText: '{$Think.lang.qscfkpz}'});
+                return false;
+            }
+            
+            var pic = $("input[name=pic]").val();
+            if(pic == ''){
+               return $(document).dialog({
+                   infoText:'Please upload payment screenshot',
+                   autoClose:2000
+               })
+            }
+            var type = $(".czcd").val();
+            console.log(type)
+            
+            if(type == ''){
+                // type='USDT'
+            //   return $(document).dialog({
+            //       infoText:'请选择支付方式',
+            //       autoClose:2000
+            //   })
+            }
+            // console.log(pic)
+             var pay_address = $("input[name=pay_address]").val();
+            var data = {sn: '{$op_data.sn}', tNo:"",pic:pic,type:type,pay_address:pay_address};
+            $.ajax({
+                url: '{:url("/index/pay/user_ok")}',
+                type: 'post',
+                data: data,
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res)
+                    $(document).dialog({infoText: res.info});
+                    if (res.code == 1) {
+                        setTimeout(function () {
+                            window.location.replace('/');
+                        }, 2000);
+                    }
+                }
+            });
+        });
+    });
+
+    function copy_txt(xx) {
+        var text = document.getElementById("webcopyinput");
+        text.id = 'webcopyinput';
+        text.value = '' + xx + '';
+        text.focus(); //给input输入框聚焦
+        text.setSelectionRange(0, text.value.length);
+        copied = document.execCommand('Copy');
+        text.blur();
+        copied = false;
+        document.body.scrollTop = 0;
+        $(document).dialog({
+            infoText: '{$Think.lang.copy_ok}'
+        });
+    }
+     function check_type(val) {
+           $("input[name=type]").val(val)
+           
+            
+        }
+</script>
+</body>
+</html>

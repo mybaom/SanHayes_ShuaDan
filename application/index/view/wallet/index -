@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+  <meta name="description" content="">
+  <title>{$Think.lang.linkcard}</title>
+  <!-- Material design icons CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Roboto fonts CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/red/style.css?v=V1.24" rel="stylesheet">
+  <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+  <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+  <style>
+    .vip_bg_0 {
+      background: linear-gradient(240deg, rgb(12, 36, 66), rgb(79, 116, 146)) !important;
+    }
+
+    .vip_bg_1 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgb(89, 112, 149), rgb(118, 138, 170)) !important;
+    }
+
+    .vip_bg_2 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(219, 111, 33, 0.99), rgb(249, 153, 5)) !important;
+    }
+
+    .vip_bg_3 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(39, 53, 131, 0.99), rgb(47, 67, 177)) !important;
+    }
+
+    .vip_bg_4 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(61, 147, 181, 0.99), rgb(49, 179, 139)) !important;
+    }
+
+    .vip_bg_5 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(33, 35, 39, 0.99), rgb(67, 69, 73)) !important;
+    }
+
+    .vip_bg_6 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(72, 0, 154, 0.99), rgb(97, 0, 160)) !important;
+    }
+
+    .vip_bg_7 {
+      background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(to right, rgb(186, 139, 2), rgb(209, 145, 60)) !important;
+    }
+  </style>
+</head>
+<body class="" style="background: black; margin-top: -26px;">
+<div style="background-size: 100% 258px;">
+  <div class="wrapper homepage">
+
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+      <div class="row no-gutters">
+        <div class="col-auto">
+          <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+            <i class="material-icons">chevron_left</i></a>
+        </div>
+        <div class="col text-center">
+          <button class="btn w-100 text-white">{$Think.lang.linkcard}</button></div>
+        <div class="col-auto">
+          <a href="/index/my/msg" class="btn  btn-link text-white position-relative">
+            <i class="material-icons">notifications_none</i></a>
+        </div>
+      </div>
+    </div>
+    <!-- header ends -->
+
+
+
+    <div class="swiper-container card-slide swiper-container-horizontal swiper-container-ios"
+         style="padding-top: 0px">
+      <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="swiper-slide pb-4 swiper-slide-active">
+          <div class="container z-1 position-relative"
+               style="padding-right: 0;padding-left: 0;margin-top: 75px;">
+
+            <div style="background: black;">
+
+
+
+              <div class="container  z-0" style="margin-top: 20px; ">
+                <div class="card shadow " style=" background: #181625;    padding-left: 10px;padding-bottom: -10px;">
+                  <div class="card-body border-bottom" style="padding:7px;padding-bottom: 0px;">
+
+
+                    <div class="row" style="color: white;margin-top: 19px;">
+                      <div class="col" style="color: #989A99">
+
+                        <div class="form-group" style="display:flex;">
+                          <p style="width:150px;color: #FFFFFF;margin-top: 8px;">{$Think.lang.fullname}:</p>
+                          <p style="flex:1;">
+                            <input style="background: #181625;border-radius: 0;color: #ffffff;"
+                                   type="text"
+                                   name="full_name"
+                                   id="full_name"
+                                   class="form-control form-control-lg text-left"
+                                   placeholder="{$Think.lang.typehere}"
+
+                                   value="{$po.full_name}"
+
+
+                                   value=""
+                                   required=""
+                                   autofocus="">
+                          </p>
+
+
+                        </div>
+
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="card-body border-bottom" style="padding:7px;padding-bottom: 0px;">
+                    <div class="row" style="color: white;margin-top: 19px;">
+                    <div class="col" style="color: #989A99">
+
+                      <div class="form-group" style="display:flex;">
+                        <p style="width:150px;color: #FFFFFF;margin-top: 8px;">{$Think.lang.wallet_address}:</p>
+                        <p style="flex:1;">
+                          <input style="background: #181625;border-radius: 0;color: #ffffff;"
+                                 type="text"
+                                 name="address"
+                                 id="address"
+                                 class="form-control form-control-lg text-left"
+                                 placeholder="{$Think.lang.typehere}"
+
+                                 value="{$po.address}"
+
+
+                                 value=""
+                                 required=""
+                                 autofocus="">
+                        </p>
+
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                  </div>
+
+                  <div class="card-body" style="padding:7px;padding-bottom: 0px;">
+                  <div class="row" style="color: white;margin-top: 19px;">
+                    <div class="col" style="color: #989A99">
+
+                      <div class="form-group" style="display:flex;">
+                        <p style="width:150px;color: #FFFFFF;margin-top: 8px;">{$Think.lang.phone_no}:</p>
+                        <p style="flex:1;">
+                          <input style="background: #181625;border-radius: 0;color: #ffffff;"
+                                 type="text"
+                                 name="phone"
+                                 id="phone"
+                                 class="form-control form-control-lg text-left"
+                                 placeholder="{$Think.lang.typehere}"
+                                 value="{$po.phone}"
+
+
+                                 value=""
+                                 required=""
+                                 autofocus="">
+                        </p>
+
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+                  </div>
+
+
+
+
+
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+          </div>
+          <div class="card-footer bg-none">
+
+            <button class="btn btn-default shadow  btn-rounded btn-block btn-lg btn-important"
+                    style="background: #FB99BB;"
+                    onclick="saveLinkCard();"
+                    id="autoStart">{$Think.lang.confirm1208}
+            </button>
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- footer-->
+  {include file="public/floor" /}
+  <!-- footer ends-->
+
+  <style>.van-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+
+  .grabSuccess {
+    border-radius: .32rem;
+    margin: 1.373333rem auto 0;
+    position: relative
+  }
+
+  .grabSuccess .title {
+    height: 2.586667rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative
+  }
+
+  .grabSuccess .title:after, .grabSuccess .title:before {
+    content: "";
+    width: .893333rem;
+    height: .386667rem;
+    background-size: 100%;
+    position: absolute;
+    top: 1.093333rem
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_top {
+    font-size: .32rem;
+    color: #9e9e9e;
+    font-weight: 400;
+    text-align: left;
+    font-family: PingFangSC-Regular, PingFang SC
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_img {
+    width: 1.733333rem;
+    height: auto;
+    position: absolute;
+    top: .266667rem;
+    right: .133333rem
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_des {
+    background: #f2f2f2;
+    border-radius: .133333rem;
+    margin: .266667rem 0;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_img {
+    width: 4.8rem;
+    height: 2.4rem
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_img > img {
+    width: 4.8rem;
+    height: 2.4rem;
+    -o-object-fit: cover;
+    object-fit: cover
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_r {
+    text-align: left;
+    padding: .266667rem;
+    font-size: .266667rem
+  }
+
+  .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_r .tabs_box_des_r_tit {
+    overflow: hidden;
+    font-size: .373333rem;
+    color: #424242;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    font-family: PingFangSC-Regular, PingFang SC
+  }
+
+  .grabSuccess .records_tabs_box .tabs_box_des_r_pic {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: .4rem;
+    font-size: .373333rem;
+    color: #424242
+  }
+
+  .grabSuccess .records_tabs_box .gray {
+    color: #969696;
+    font-size: .373333rem
+  }
+
+  .grabSuccess .records_tabs_box .txt1 {
+    color: #ff9a2c;
+    font-size: .64rem !important
+  }
+
+  .grabSuccess .tabs_btn {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center
+  }</style>
+  <input name="" id="webcopyinput" type="text" style="top: -100px; position: absolute;" value="">
+  <textarea id="share_text" style="display: none">Participei da tarefa de ganhar 20 reais por dia no app mercadolivre. Espero que todos possam me incentivar a participar dessa atividade lucrativa. O aplicativo para ganhar dinheiro mais popular do Brasil: FelizGo A retirada está disponível 7 * 24 horas As retiradas estão disponíveis de segunda a domingo Clique aqui para se cadastrar ✅✅✅grátis 10 pedidos por dia 1 reais por pedido 10 reais por dia 300 reais por mês ?VIP1: 200 reais 26 pedidos por dia 0,3% de reembolso para cada pedido 35 reais por dia 1050 reais por mês ?VIP2: 500 reais 28 pedidos por dia 0,32% de reembolso por pedido 45 reais por dia 1350 reais por mês Para mais informações sobre os níveis VIP, clique no link do nosso produto para ver informações detalhadas. Esta é uma carta de recomendação para VIP. Convide seus amigos e receba uma recompensa de comissão de 16-4%. Apresse-se e inscreva-se! * _WHATSAPP REGISTER_ * {link} * _WHATSAPP GROUP WA_ * {grupo}</textarea>
+  <!-- jquery, popper and bootstrap js -->
+  <script src="/red/jquery-3.3.1.min.js"></script>
+  <script src="/red/popper.min.js"></script>
+  <script src="/red/bootstrap/js/bootstrap.min.js"></script>
+  <!-- swiper js -->
+  <script src="/red/swiper/swiper-bundle.min.js"></script>
+  <!-- cookie js -->
+  <script src="/red/jquery.cookie.js"></script>
+  <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+  <link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+  <script src="/public/js/layer_mobile/layer.js"></script>
+  <script charset="utf-8" src="/static_new/js/common.js"></script>
+  <!-- template custom js -->
+  <script src="/red/main.js?v=V1.24"></script>
+  <script src="https://www.recaptcha.net/recaptcha/1api.js?render=6LdC99EZAAAAABfzI41Q48ZSd2Pe2aHA_vJ61go4"></script>
+  <span style="display: none;">
+      <audio id="audio" src="/static_new/img/hongbao.mp3" controls="controls"></audio>
+    </span>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="vip_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button type="button" class="close close-rounded" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span></button>
+      <div class="modal-body text-center pt-0" style="max-height: 500px; overflow: scroll">
+        <style>.rule_msg img {
+          max-width: 100%;
+        }</style>
+        <p class="rule_msg" style="margin-top: 1rem;">
+
+        </p>
+        <p></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="orderDetail" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content grabSuccess">
+      <div class="modal-header border-0">
+        <h5>{$Think.lang.taks_ddtjz}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body text-center pt-0" id="orderListInfo">
+
+      </div>
+      <div class="modal-footer border-0 tabs_btn">
+        <div class="tabs_btn1 btn btn-cancel btn-rounded mr-2 shadow">{$Think.lang.task_qx}</div>
+        <div class="tabs_btn2 btn btn-default btn-rounded ml-2 shadow" style="background: #D2B87D">
+          {$Think.lang.task_tj}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-modal="true" id="add_link_popup">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content border-top border-bottom"
+         style="width:90%; margin: 0 auto; box-shadow:4px 4px 5px 3px #999;">
+      <div class="modal-header border-0 bg-template">
+        <h5>Informações do Grupo WhatsApp / Telegram</h5></div>
+      <div class="modal-body text-center" style="max-height: 300px; overflow: scroll;">
+         
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group float-label active">
+                <input type="text" class="form-control" required="" name="to_name" autocomplete="off"
+                       value="">
+                <label class="form-control-label">Nome do grupo</label></div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group float-label active">
+                <input type="text" class="form-control" required="" name="add_id" autocomplete="off"
+                       value="">
+                <label class="form-control-label">Link do grupo</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 text-center">
+        <button class="btn btn-cancel btn-sm btn-rounded shadow mr-2 add_link_cancel">{$Think.lang.quxiao}
+        </button>
+        <button class="btn btn-default btn-sm btn-rounded shadow ml-2 add_link_save">{$Think.lang.queding}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .no-padding-alert .dialog-content-bd {
+    margin: 0;
+  }
+</style>
+<script>
+  $(function () {
+    $('.footer').find('.btn-link-default').eq(2).addClass("active");
+  });
+  var cid = 1;
+  var oid = '';
+  var add_id = '';
+  var countdown = 0;
+  var audio = document.getElementById("audio");
+  var loading;
+  var isShare = ("0" == '0');
+  var isLoading = false;
+
+
+  function palySong(wi) {
+    audio.load();
+    stopSong();
+    audio.play();
+    if (wi == 0) {
+      audio.pause();
+    }
+  }
+
+  function stopSong() {
+    audio.pause();
+  }
+
+  function saveLinkCard() {
+    var address=$("#address").val();
+    var phone=$("#phone").val();
+    var full_name=$("#full_name").val();
+    $.ajax({
+      url: "/index/wallet/saveUserWallet",
+      type: "POST",
+      dataType: "JSON",
+      data: {address: address,
+        phone:phone,
+        full_name:full_name
+      },
+      success: function (res) {
+        var data = res.data;
+        if (res.code == 0) {
+           var bank_save_ok="{$Think.lang.bank_save_ok}";
+           alert(bank_save_ok);
+
+        }
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    })
+  }
+
+  function start(token, v, real) {
+    real = real || 0;
+    if (countdown <= 0) {
+      $.ajax({
+        url: "/index/rot_order/submit_order.html" + '?cid=' + cid + '&reCAPTCHA=' + token + '&v=' + v + '&m=' + Math.random() + "&real=" + real,
+        type: 'POST',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          loading.close();
+          $('#autoStart').text("{$Think.lang.qd_go|raw}");
+          $(document).dialog({
+            infoText: "{$Think.lang.qd_error}",
+            autoClose: 2000
+          });
+        },
+        success: function (data) {
+          loading.close();
+          $('#autoStart').text("{$Think.lang.qd_go|raw}");
+          if (data.code == 1) {
+            loading.close();
+            if (data.image) {
+              $(document).dialog({
+                type: 'alert',
+                titleShow: false,
+                dialogClass: "no-padding-alert",
+                content: "<img style='max-width: 100%' src='" + data.image + "'>",
+                buttonTextConfirm: "{$Think.lang.queding}",
+                autoClose: 0,
+                onClosed: function () {
+                  start(token, 1, 1);
+                }
+              });
+            } else {
+              $(document).dialog({
+                type: 'alert',
+                titleText: data.info,
+                buttonTextConfirm: "{$Think.lang.queding}",
+                autoClose: 0,
+                onClosed: function () {
+                  if (data.url) window.location.href = data.url;
+                }
+              });
+            }
+          } else if (data.code == 0 && data.oid) {
+            loading.close();
+            palySong(1);
+            sessionStorage.setItem('oid', data.oid);
+            $(document).dialog({
+              infoText: data.info
+            });
+            qdSuccess(data.oid);
+            oid = data.oid;
+            add_id = data.add_id;
+          } else {
+            loading.close();
+            if (data.info) {
+              $(document).dialog({
+                infoText: data.info,
+              });
+            } else {
+              $(document).dialog({
+                infoText: "{$Think.lang.qd_error_kucun}"
+              });
+            }
+          }
+        }
+      });
+    } else {
+      countdown--;
+      setTimeout(function () {
+        start(token, v)
+      }, 1000);
+    }
+  }
+
+  function sum(m, n) {
+    var num = Math.floor(Math.random() * (m - n) + n);
+    return num;
+  }
+
+  $('.tabs_btn1').click(function () {
+    if ("0" == 1) {
+      $(document).dialog({
+        type: 'confirm',
+        titleText: "Confirme cancelamento?",
+        buttonTextConfirm: "confirme",
+        buttonTextCancel: "cancelar",
+        autoClose: 0,
+        onClickConfirmBtn: function () {
+          $.ajax({
+            url: "/index/order/do_order",
+            type: "POST",
+            dataType: "JSON",
+            data: {
+              oid: oid,
+              status: 2
+            },
+            success: function (res) {
+              layer.closeAll();
+              if (res.code == 0) {
+                $(document).dialog({
+                  infoText: "Ordem Cancela o sucesso!",
+                  autoClose: 2000
+                });
+                $('#orderDetail').modal('hide');
+              } else {
+                $(document).dialog({
+                  type: 'alert',
+                  titleText: res.info,
+                  buttonTextConfirm: "{$Think.lang.queding}",
+                  autoClose: 0,
+                  onClosed: function (e) {
+                    if (res.url) window.location.href = res.url;
+                  }
+                });
+              }
+              sumbit = true;
+            },
+            error: function (err) {
+              console.log(err);
+              sumbit = true;
+            }
+          });
+        },
+        onClickCancelBtn: function () {
+
+        }
+      });
+    } else {
+      $('#orderDetail').modal('hide');
+    }
+  });
+
+  $('.close').click(function () {
+    $('#orderDetail').modal('hide');
+  });
+
+  $(function () {
+    $('.add_link').click(function () {
+      $('#add_link_popup').modal('show');
+      $('#publish_to').hide();
+    });
+    $('.add_link_save').click(function () {
+      var to_name = $('input[name=to_name]').val();
+      var add_id = $('input[name=add_id]').val();
+      if (to_name == '' || add_id == '') {
+        $(document).dialog({
+          infoText: 'Não pode estar vazio!'
+        });
+        return;
+      }
+      var option = '<option value="' + add_id + '" to_name="' + to_name + '" selected>[' + to_name + ']' + add_id + '</option>';
+      $('#publish_to').prepend(option);
+      $('#publish_to').show();
+      $('#add_link_popup').modal('hide');
+    });
+    $('.add_link_cancel').click(function () {
+      $('#publish_to').show();
+      $('#add_link_popup').modal('hide');
+    });
+
+    $('.copy_link').hide();
+    $('.copy_link').click(function () {
+      isShare = true;
+      var link = $(this).parent().parent().siblings('span').text();
+      copy_txt(link);
+    });
+    $('.send_with_whatsapp').click(function () {
+      isShare = true;
+      var link = $(this).parent().parent().siblings('span').text();
+      var group = $('select[name=publish_to]').val();
+      var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text));
+    });
+
+    $('.send_with_telegram').click(function () {
+      isShare = true;
+      var link = $(this).parent().parent().siblings('span').text();
+      var group = $('select[name=publish_to]').val();
+      var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+      window.open('https://telegram.me/share/url?url=' + encodeURI(link) + '&text=' + encodeURIComponent(text));
+    });
+
+    $('.send_with_tweet').click(function () {
+      isShare = true;
+      var link = $(this).parent().parent().siblings('span').text();
+      var group = $('select[name=publish_to]').val();
+      var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+      window.open('https://twitter.com/intent/tweet?via=&text=' + encodeURIComponent(text) + "&url=" + encodeURI(link) + "&related=" + encodeURIComponent('{:sysconf("site_name")}: ' + text));
+    });
+
+    $('#vip_modal').on('shown.bs.modal',
+            function () {
+              $('.vip-slide').width('100%');
+              var swiper = new Swiper('.vip-slide', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                pagination: {
+                  el: '.swiper-pagination',
+                },
+              });
+            })
+  })
+  var zhujiTime = "1";
+  var shopTime = "2";
+
+  zhujiTime = zhujiTime * 1000;
+  shopTime = shopTime * 1000;
+  //提交
+  $('.tabs_btn2').click(function () {
+    //--------------------------------
+    if (!isShare) {
+      $(document).dialog({
+        infoText: "{$Think.lang.taks_ddtjz}",
+        autoClose: 2000
+      });
+      return;
+    }
+    var publish_to = $(this).parent().siblings().find('select[name=publish_to]');
+    var to_name = publish_to.find('option:selected').attr('to_name');
+    var aid = publish_to.find('option:selected').attr('aid');
+    var add_id = publish_to.val();
+    var i = 0;
+    layer.open({
+      type: 2,
+      content: "{$Think.lang.task_ppshxx}",
+      time: zhujiTime,
+      shadeClose: false,
+    });
+
+    var timer = setInterval(function () {
+      i++;
+      if (i == 1) {
+        layer.open({
+          type: 2,
+          content: "{$Think.lang.task_sccpdd}",
+          time: zhujiTime,
+          shadeClose: false,
+        })
+      } else if (i == 2) {
+        layer.open({
+          type: 2,
+          content: "{$Think.lang.task_ddtjwc}",
+          time: shopTime,
+          shadeClose: false,
+        })
+        var ajaxT = setTimeout(function () {
+          $.ajax({
+            url: "/index/order/do_order",
+            type: "POST",
+            dataType: "JSON",
+            data: {
+              oid: oid,
+              add_id: add_id,
+              to_name: to_name,
+              aid: aid
+            },
+            success: function (res) {
+              layer.closeAll();
+              console.log(res)
+              if (res.code == 0) {
+                $(document).dialog({
+                  infoText: "{$Think.lang.task_qd_wc}",
+                  autoClose: 2000
+                });
+                clearInterval(timer);
+                var linkTime = setTimeout(function () {
+                          location.reload()
+                        },
+                        1800);
+              } else {
+                $(document).dialog({
+                  type: 'alert',
+                  titleText: res.info,
+                  buttonTextConfirm: "{$Think.lang.queding}",
+                  autoClose: 0,
+                  onClosed: function (e) {
+                    if (res.url) window.location.href = res.url;
+                  }
+                });
+              }
+              sumbit = true;
+            },
+            error: function (err) {
+              layer.closeAll();
+              console.log(err);
+              sumbit = true;
+            }
+          })
+        }, shopTime)
+      }
+    }, zhujiTime)
+  });
+
+  function copy_txt(xx) {
+    //var text = document.createElement('input');
+    var text = document.getElementById("webcopyinput");
+    text.id = 'webcopyinput';
+    text.value = '' + xx + '';
+    //text.style.position = 'fixed';
+    // text.style.top = '- 10000px';
+    // document.body.appendChild(text);
+    text.focus(); //给input输入框聚焦
+    text.setSelectionRange(0, text.value.length); //设置input框选中的范围
+    copied = document.execCommand('Copy'); //执行复制操作
+    text.blur();
+    copied = false;
+    document.body.scrollTop = 0;
+    $(document).dialog({
+      infoText: 'Copie o sucesso'
+    });
+  }
+</script>
+</body>
+</html>

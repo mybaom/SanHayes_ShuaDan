@@ -1,0 +1,102 @@
+{extend name='main'}
+
+{block name="button"}
+
+{if auth("add")}
+<button data-modal='{:url("add")}' data-title="添加代理" class='layui-btn layui-btn-sm layui-btn-primary'>添加代理</button>
+{/if}
+
+{/block}
+
+{block name="content"}
+
+<div class="think-box-shadow">
+    <fieldset>
+        <legend>条件搜索</legend>
+        <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false"
+              method="get" autocomplete="off">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">用户名称</label>
+                <div class="layui-input-inline">
+                    <input name="username" value="{$Think.get.username|default=''}" placeholder="请输入用户名称"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">手机号码</label>
+                <div class="layui-input-inline">
+                    <input name="phone" value="{$Think.get.tel|default=''}" placeholder="请输入手机号码" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <script>form.render()</script>
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>ID</th>
+            <th class='text-left nowrap'>绑定用户ID</th>
+            <th class='text-left nowrap'>级别</th>
+            <th class='text-left nowrap'>用户名</th>
+            <th class='text-left nowrap'>手机号</th>
+            <!--<th class='text-left nowrap'>推广地址</th>-->
+            <th class='text-left nowrap'>邀请码</th>
+            <th class='text-center nowrap'>登录次数</th>
+            <th class='text-center nowrap'>使用状态</th>
+            <th class='text-left nowrap'>客服链接</th>
+            <th class='text-left nowrap'>添加时间</th>
+            <th class='text-left nowrap'></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.user_id}</td>
+            <td class='text-left nowrap'>{if $vo.parent_id==0}一级{else}二级{/if}</td>
+            <td class='text-left nowrap'>{$vo.username}</td>
+            <td class='text-left nowrap'>{$vo.phone}</td>
+            <!--<td class='text-left nowrap'>
+                <a href="//{$vo.username}.<?php echo request()->rootDomain()?>" target="_blank">{$vo.username}.<?php echo request()->rootDomain()?></a>
+            </td>-->
+            <td class='text-center nowrap'>{$vo.invite_code}</td>
+            <td class='text-center nowrap'>{$vo.login_num|default=0}</td>
+            <td class='text-center nowrap'>{eq name='vo.status' value='0'}<span class="color-red">已禁用</span>{else}<span
+                    class="color-green">使用中</span>{/eq}
+            </td>
+            <td class='text-left nowrap'>{$vo.chats}</td>
+            <td class='text-left nowrap'>{$vo.create_at}</td>
+            <td class='text-left nowrap'>
+                {if $is_admin && $vo.parent_id==0}
+                <a class="layui-btn layui-btn-normal layui-btn-sm" data-title="设置密码"
+                   data-open='{:url("index")}?parent_id={$vo.id}'>下级</a>
+                {/if}
+                {if auth("pass")}
+                <a class="layui-btn layui-btn-normal layui-btn-sm" data-title="设置密码"
+                   data-modal='{:url("pass")}?id={$vo.id}'>密 码</a>
+                {/if}
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑"
+                   data-modal='{:url("edit")}?id={$vo.id}'>编 辑</a>
+                {/if}
+                {if $vo.status eq 1 and auth("forbid")}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('forbid')}"
+                   data-value="id#{$vo.id};status#0" data-csrf="{:systoken('forbid')}">禁 用</a>
+                {elseif $vo.status eq 0 and auth("resume")}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('resume')}"
+                   data-value="id#{$vo.id};status#1" data-csrf="{:systoken('resume')}">启 用</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

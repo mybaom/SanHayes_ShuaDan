@@ -1,0 +1,46 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分组名称</label>
+            <div class="layui-input-block">
+                <input name="title" value='{$vo.title|default=""}' placeholder="请输入分组名称" class="layui-input">
+                {:token()}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最低金额</label>
+            <div class="layui-input-block">
+                <input name="money" value='{$vo.money|default=""}' placeholder="请输入订单最低金额" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最低佣金比例</label>
+            <div class="layui-input-block">
+                <input name="bili" value='{$vo.bili|default=""}' placeholder="%" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单数量</label>
+            <div class="layui-input-block">
+                <input name="order_num" value='{$vo.order_num|default=""}' placeholder="订单数量" class="layui-input">
+                <p class="help-block">规则内第一次是从第几个订单开始增加订单数量，就填几 ( 如从第3个订单开始增加订单数，那么这里就填3 ) </p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否开启轮回</label>
+            <div class="layui-input-block">
+                <input name="is_roll" type="number" value='{$vo.is_roll|default="1"}' placeholder="是否开启轮回"
+                       class="layui-input">
+                <p class="help-block">1=开启，0=关闭； 如果开启轮回，那么用户可以重复在该组进行任务，禁止用户只能做一次</p>
+            </div>
+        </div>
+    </div>
+    <input type='hidden' value='{$agent_id}' name='agent_id'>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

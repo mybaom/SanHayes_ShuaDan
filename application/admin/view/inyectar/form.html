@@ -1,0 +1,45 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label">打针日期</label>
+            <div class="layui-input-block">
+                <input name="date" data-date-input value='{$vo.date|default=""}'
+                       placeholder="打针日期"
+                       class="layui-input">
+                {:token()}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">打针订单</label>
+            <div class="layui-input-block">
+                <input name="order_num" type="number" value='{$vo.order_num|default=""}' placeholder="指定订单打针"
+                       class="layui-input">
+                <p class="help-block">0=下一个订单</p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">打针金额</label>
+            <div class="layui-input-block">
+                <input name="scale" value='{$vo.scale|default=""}'
+                       placeholder="打针金额" class="layui-input">
+                <p class="help-block">账号余额 + 打针金额 = 订单金额</p>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">佣金比例</label>
+            <div class="layui-input-block">
+                <input name="multiple" value='{$vo.multiple|default=""}'
+                       placeholder="佣金比例" class="layui-input">
+                <p class="help-block">如：1%，那么就填写 0.01，计算方式：订单金额 x 佣金比例 = 得到佣金</p>
+            </div>
+        </div>
+    </div>
+    <input type='hidden' value='{$vo.uid|default=$uid}' name='uid'>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

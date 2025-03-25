@@ -1,0 +1,45 @@
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>{$Think.lang.lang}</title>
+    <style>
+     
+        .a{ width: 100%; }
+        .b{  width: 100%;height: 50px; background-color: #536a858c; text-align: center; line-height: 50px; color: #ffffff; }
+        .c{  color: #fff; display: block;
+        } 
+        ul{ list-style: none; margin-left: -40px; } 
+        ul li{ line-height: 50px; display: block; width: 100%; text-align: center; }
+        ul li a{
+            text-decoration: none;
+             color: #fff;
+        }
+        /*.a:hover{ cursor: pointer; } 
+        .a:hover .c{ display: block; }*/
+        /*.a:hover .b{ background-color: green; } */
+        li:hover{ background-color: gray; color: #FFFFFF; } 
+    </style>
+</head>
+<body style="   background: linear-gradient(#0066ff, #fff);">
+    <div class="a">
+
+        <div class="b">{$Think.lang.lang}</div> 
+        
+        <div class="c"> 
+        
+        <ul>
+         {volist name='language' id='vo'} 
+         <li>
+              <a href="/index/user/lang_set?lang={$vo.link}">
+             {$vo.name}
+              </a>
+         </li>
+         {/volist} 
+        </ul> 
+
+</div> 
+</div> 
+</body>
+</html>

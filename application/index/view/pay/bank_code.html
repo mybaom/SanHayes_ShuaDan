@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.pay_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>.document_id.float-label:not(.active) .form-control-label {
+        left: 95px
+    }</style>
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+</head>
+<style>
+    .box {
+        position: relative;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 4px;
+        background-image: linear-gradient(
+                45deg, #e7fff7, #fff, #e7fff7);
+        border: 1px solid #308368;
+    }
+
+    .box .title {
+        margin-bottom: 6px;
+        color: #171a4c;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .hn-main {
+        margin: 7px 0 5px;
+        line-height: 26px;
+        color: #333;
+        font-size: 26px;
+        user-select: all;
+    }
+
+    h1 {
+        color: darkred;
+    }
+
+    .input-group {
+        background: #ffffff;
+    }
+</style>
+</head>
+<body>
+<div class="wrapper homepage">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center">
+                <button class="btn w-100 text-white">{$Think.lang.pay_title}</button>
+            </div>
+            <div class="col-auto">
+                <!--<a href="{$user_service_chats}" class="btn  btn-link text-white position-relative">
+                    <i class="material-icons">support_agent</i></a>-->
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container">
+        <div class="box">
+            <h1>{:config('currency')} {$Think.get.num}</h1>
+        </div>
+        <input name="" id="webcopyinput" type="text" style="left: -1000px; position: absolute" value="">
+        <h6 class="subtitle">{$Think.lang.qxyxzhzz}</h6>
+        <div class="row">
+            {foreach $data.cardInfo as $k=>$v}
+            <div class="col-12 col-md-6">
+                <div class="form-group float-label active inp">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{$v}" readonly>
+                        <button onclick="copy_txt('{$v}')"
+                                class="btn btn-default btn-rounded">
+                            <i class="material-icons text-mute">insert_link</i>
+                            <span>{$Think.lang.copy}</span>
+                        </button>
+                    </div>
+                    <label class="form-control-label">{:lang($k)}</label>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group float-label active inp">
+                    <div class="input-group">
+                        <input type="text" id="transNo" class="form-control" value="" placeholder="" required>
+                    </div>
+                    <label class="form-control-label">{:lang('trans_id')}</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="button" id="save-btn"
+                        class="btn btn-lg btn-default btn-block btn-rounded shadow mt-4 submit-btn">
+                    {$Think.lang.recharge_u_btn}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charSet="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script charSet="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<!-- page level script -->
+<script>
+    function copy_txt(xx) {
+        var text = document.getElementById("webcopyinput");
+        text.id = 'webcopyinput';
+        text.value = '' + xx + '';
+        text.focus();
+        text.setSelectionRange(0, text.value.length);
+        copied = document.execCommand('Copy');
+        text.blur();
+        copied = false;
+        document.body.scrollTop = 0;
+        $(document).dialog({
+            infoText: '{$Think.lang.copy_ok}'
+        });
+    }
+
+    $(function () {
+        $('#save-btn').click(function () {
+            var tNo = $('#transNo').val();
+            if(tNo=='')return false;
+            var data = {sn: '{$data.orderInfo.sn}', tNo: tNo};
+            $.ajax({
+                url: '{:url("/index/pay/user_ok")}',
+                type: 'post',
+                data: data,
+                dataType: 'json',
+                success: function (res) {
+                    $(document).dialog({infoText: res.info});
+                    if (res.code == 1) {
+                        setTimeout(function () {
+                            window.location.replace('/');
+                        }, 2000);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+{extend name="main"}
+
+{block name="content"}
+{if auth('config')}
+<div class="think-box-shadow margin-bottom-15">
+    <span class="color-green font-w7 text-middle">系统参数(包括客服链接地址,默认手机区号)配置：</span>
+    <a class="layui-btn layui-btn-sm" data-modal="{:url('config')}">修改系统配置</a>
+</div>
+{/if}
+
+{if auth('config')}
+<div class="think-box-shadow margin-bottom-15">
+    <span class="color-green font-w7 text-middle">数据清理：</span>
+
+    <div class="layui-form layui-card">
+        <div class="layui-card-body">
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">显示选项</label>
+                <div class="layui-input-block" id="clear">
+                    <input type="checkbox" name="clear" value="1" lay-skin="primary" title="用户">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>用户</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="2" lay-skin="primary" title="交易">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>交易</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="3" lay-skin="primary" title="财务记录">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>财务记录</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="4" lay-skin="primary" title="充值">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>充值</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="5" lay-skin="primary" title="提现">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>提现</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="6" lay-skin="primary" title="银行卡">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>银行卡</span><i class="layui-icon layui-icon-ok"></i></div>
+                    <input type="checkbox" name="clear" value="7" lay-skin="primary" title="地址">
+                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                        <span>地址</span><i class="layui-icon layui-icon-ok"></i></div>
+<!--                    <input type="checkbox" name="clear" value="8" lay-skin="primary" title="利息宝">-->
+<!--                    <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">-->
+<!--                        <span>利息宝</span><i class="layui-icon layui-icon-ok"></i></div>-->
+                </div>
+                <div class="layui-input-block" style="width: 30%">
+                    <input value="" id="clearPwd" type="password" class="layui-input" placeholder="清理密码">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="layui-btn layui-btn-sm" onclick="clearData()">确定清理</a>
+</div>
+{/if}
+<form class="layui-form" action="" lay-filter="example">
+    <div class="think-box-shadow margin-bottom-15">
+        <span class="color-green font-w7 text-middle">语言选择：</span>
+        <div class="layui-form layui-card">
+            <div class="layui-card-body">
+                <div class="layui-form-item" pane="">
+                    <label class="layui-form-label">显示选项</label>
+                    <div class="layui-input-block" style="min-height: 70px;">
+                        {volist name='language' id='vo'}
+                            {if condition='$vo.state == 1' }
+                                <input type="checkbox" name="language[{$vo.id}]" value="{$vo.state}" data-id="{$vo.id}" checked  lay-skin="primary" title="{$vo.title}">
+                             {else/}
+                                <input type="checkbox" name="language[{$vo.id}]" value="{$vo.state}" data-id="{$vo.id}"  lay-skin="primary" title="{$vo.title}">
+                             {/if}
+                             <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary">
+                                <span>{$vo.title}</span>
+                                <i class="layui-icon layui-icon-ok"></i>
+                             </div>
+                        {/volist}
+                    </div>
+                    <button type="submit" class="layui-btn layui-btn-sm" lay-submit="" lay-filter="language">保存语言</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="think-box-shadow margin-bottom-15">
+    <span class="color-green font-w7 text-middle">系统时区配置：</span>
+    
+     <select name="key"  class="layui-input"  id="zone"  style="width:10%;display:inline-block;height:32px;margin-right:10px;">
+        
+        {foreach timelist as $k=>$v}
+        <option value="{$k}"{if $old==$k} selected{/if}>{$v}</option>
+        {/foreach}
+    </select>
+     <a class="layui-btn layui-btn-sm" onclick="setzone()">修改时区配置</a>
+</div>
+
+<div class="think-box-shadow margin-bottom-15">
+    <span class="color-green font-w7 text-middle">文件存储引擎：</span>
+    {foreach ['local'=>'本地服务器存储','qiniu'=>'七牛云对象存储','oss'=>'阿里云OSS存储'] as $k=>$v}
+    {if sysconf('storage_type') eq $k}
+    {if auth('file')}<a data-modal="{:url('file')}?type={$k}" class="layui-btn layui-btn-sm">{$v}</a>{else}<a
+        class="layui-btn layui-btn-sm">{$v}</a>{/if}
+    {elseif auth('file')}<a data-modal="{:url('file')}?type={$k}"
+                            class="layui-btn layui-btn-sm layui-btn-primary">{$v}</a>{/if}
+    {/foreach}
+</div>
+
+<div class="think-box-shadow padding-40">
+    <div class="layui-form-item">
+        <span class="color-green font-w7">网站名称 Website</span>
+        <label class="relative block">
+            <input readonly value="{:sysconf('site_name')}" class="layui-input layui-bg-gray">
+            <a data-copy="{:sysconf('site_name')}" class="fa fa-copy right-btn"></a>
+        </label>
+        <p class="help-block">网站名称及网站图标，将显示在浏览器的标签上</p>
+    </div>
+
+    <div class="layui-form-item">
+        <span class="color-green font-w7">网站名称 Website</span>
+        <label class="relative block">
+            <input readonly value="{:sysconf('site_name')}" class="layui-input layui-bg-gray">
+            <a data-copy="{:sysconf('site_name')}" class="fa fa-copy right-btn"></a>
+        </label>
+        <p class="help-block">网站名称及网站图标，将显示在浏览器的标签上</p>
+    </div>
+
+
+    <div class="layui-form-item">
+        <span class="color-green font-w7">管理程序名称 Name</span>
+        <label class="relative block">
+            <input readonly placeholder="请输入程序名称" value="{:sysconf('app_name')}" class="layui-input layui-bg-gray">
+            <a data-copy="{:sysconf('app_name')}" class="fa fa-copy right-btn"></a>
+        </label>
+        <p class="help-block">管理程序名称，将显示在后台左上角标题</p>
+    </div>
+    <div class="layui-form-item">
+        <span class="color-green font-w7">管理程序版本 Version</span>
+        <label class="relative block">
+            <input readonly value="{:sysconf('app_version')}" class="layui-input layui-bg-gray">
+            <a data-copy="{:sysconf('app_version')}" class="fa fa-copy right-btn"></a>
+        </label>
+        <p class="help-block">管理程序版本，将显示在后台左上角标题</p>
+    </div>
+
+    <div class="layui-form-item">
+        <span class="color-green font-w7">网站版权信息 Copyright</span>
+        <label class="relative block">
+            <input readonly value="{:sysconf('site_copy')}" class="layui-input layui-bg-gray">
+            <a data-copy="{:sysconf('site_copy')}" class="fa fa-copy right-btn"></a>
+        </label>
+        <p class="help-block">网站版权信息，在后台登录页面显示版本信息并链接到备案到信息备案管理系统</p>
+    </div>
+</div>
+{/block}
+
+{block name='style'}
+<style>
+    .right-btn {
+        top: 0;
+        right: 0;
+        width: 38px;
+        height: 38px;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+        line-height: 38px;
+    }
+</style>
+<script>
+
+    window.form.render();
+</script>
+<script>
+    function clearData() {
+        $.msg.confirm('确定要清理吗？', function (index) {
+            //history.back();
+            $.msg.close(index);
+            if ($('#clearPwd').val() == '') {
+                return;
+            }
+            var chk_value = [];
+            $('input[name="clear"]:checked').each(function () {
+                chk_value.push($(this).val());
+            });
+
+            console.log(chk_value)
+            console.log(JSON.stringify(chk_value))
+            $.ajax({
+                type: 'POST',
+                url: "{:url('clear')}",
+                data: {
+                    'id': 2,
+                    'pwd': $('#clearPwd').val(),
+                    'data': JSON.stringify(chk_value),
+                    '_csrf_': "{:systoken('clear')}"
+                },
+                success: function (res) {
+                    layer.msg(res.info, {time: 2500});
+                    //location.reload();
+                }
+            });
+
+
+        }, function () {
+            return false;
+        });
+
+
+    }
+    
+    function setzone() {
+        $.msg.confirm('确定要修改时区吗？', function (index) {
+            //history.back();
+            $.msg.close(index);
+            if ($('#zone').val() == '') {
+                return;
+            }
+            var chk_value = [];
+            $.ajax({
+                type: 'POST',
+                url: "{:url('setTime')}",
+                data: {
+                   
+                    'key': $('#zone').val(),
+                   
+                },
+                success: function (res) {
+                    layer.msg(res.msg, {time: 2500});
+                    location.reload();
+                }
+            });
+
+
+        }, function () {
+            return false;
+        });
+
+
+    }
+
+
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form,layer = layui.layer;
+      
+        //监听提交语言
+          form.on('submit(language)', function(data){
+               $.ajax({
+                    type: 'POST',
+                    url: "{:url('infoEdit')}",
+                    data: data.field,
+                    success: function (res) {
+                        if(res.status == 1){
+                             layer.msg(res.msg);
+                             location.reload();
+                        }else{
+                            layer.msg(res.msg, {time: 2500});
+                        }
+                    }
+                });
+                
+                return false;
+          });
+    })
+</script>
+{/block}

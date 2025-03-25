@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.my_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+        .list-group-item{ background:url('/public/img/MYlistbgc.png') no-repeat;color: white !important}
+        .avatar { background:url('/public/img/MYlistbgc.png') no-repeat!important;}
+    </style>
+</head>
+
+<body class="">
+<div class="wrapper homepage" style="background:#1E1818 url('/static/img/BG-01.c7fc7481.png') no-repeat;background-size: 100% 20%">
+
+    <!-- header -->
+    <div class="header" style="margin-top:0px;height: 60px;">
+        <div class="row no-gutters" style="height: 60px;line-height: 60px;">
+            <div class="col">
+                <a class="text-dark" href="/app" style="width: 120px; color: #FFFFFF !important;margin-left: 10px;">
+                    APP/AGENT
+                </a>
+
+            </div>
+            <div class="col-auto">
+
+                <img src="/img/my_profile.png" alt="" class="header-logo"  style="width: 20px;height:20px;"/>
+                <a href="/index/my/index.html" style="width: 100px; color: #FFFFFF !important;">
+                    <span style="margin-top:20px;vertical-align: middle;height: 20px;line-height: 20px;margin-right: 10px;">My Profile</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+
+
+    <!-- header -->
+    <div class="header" style="backdrop-filter:none;    background-color: rgb(0 0 0 / 0%);position: absolute;" >
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <!--<button class="btn  btn-link text-dark">
+                  <i class="material-icons">menu</i>
+                  <span class="new-notification"></span>
+                </button>-->
+            </div>
+            <div class="col text-center">
+                <h6 style="color: white;margin-top: 15px;font-size: 18px;margin-left: 42px">{$Think.lang.my_title}</h6>
+                <!--<img src="/red/logo-header.png" alt="" class="header-logo">--></div>
+            <div class="col-auto">
+                <a href="/index/my/msg" class="btn  btn-link text-dark position-relative">
+                    <i class="material-icons" style="  color: white;">notifications_none</i></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container" style="padding-top: 81px">
+        <div class="card bg-template shadow h-190" style="background:url('/static_indonesia/img/MYcart.png') no-repeat;background-size: 100% 100%; ">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" onclick="location.href=`/index/my/headimg.html`">
+                        <figure class="avatar avatar-60" style="width: 56px;height: 52px;background: black;border-radius: 50%">
+                            <img src="{$info.headpic}" onerror="this.src='/public/img/avatar.png'" alt=""></figure>
+                    </div>
+                    <div class="col-auto pl-0 align-self-center"  style=" color: white;">
+                        <h5 class="mb-1">{$info.tel}&nbsp;
+                            <span class="text-mute small" style="background: url('/public/img/MYvip.png') no-repeat;display: inline-block;color:#C56810;width: 66px;background-size: 100% 100%;font-size: 10px;height: 36px;vertical-align: middle;line-height: 42px;padding-left: 34px">{$level_name}</span></h5>
+                        <p style="line-height: 20px">
+                  <span class="text-mute small" >{$Think.lang.my_tgcode}&nbsp;
+                    <b>{$info.invite_code}</b>
+                  </span>
+                            <a href="/index/my/invite" style="display: inline-block; margin-left: 10px">
+                                <i class="material-icons text-template" style="font-size: 20px;    color: white;">card_giftcard</i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container top-100" style="padding-right: 0px;padding-left: 0px;)">
+        <div class="card mb-4 shadow" style="background: url('/public/img/myBODU.png') no-repeat;margin-top: -10px">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col" style="display: flex;justify-content: space-around">
+                        <p class="text-mute"style=" margin-left: 10px; margin-top: -9px;
+    color: white;">{$Think.lang.my_money}</p>
+                        <h3 class="mb-0 font-weight-normal" style="    font-size: 18px;
+    margin-left: 10px;
+    color: white;
+    margin-top: -9px;">{:config('currency')}
+                            {$info.balance+$info.freeze_balance}</h3>
+                        <div class="col-auto" style="margin-top: -28px;">
+                            <button class="btn btn-default btn-rounded-54 shadow"
+                                    onclick="window.location.href=`/index/ctrl/recharge`">
+                                <i class="material-icons">add</i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer bg-none">
+                <div class="row">
+                    <div class="col text-center">
+                        <p>
+                            <span  style="color: white;font-size: 18px;font-weight: 900">{:config('currency')} {$info.balance}</span>
+                            <br>
+                            <small class="text-mute" style="color: white">Available balance</small></p>
+                    </div>
+                    <div class="col text-center border-left-dotted">
+                        <p>
+                            <span style="color: white;font-size: 18px;font-weight: 900">{:config('currency')} {$info.freeze_balance}</span>
+                            <br>
+                            <small class="text-mute" style="color: white">Frozen amount</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card" style="background:url('/public/img/MYlistbgc.png') no-repeat ">
+            <div class="card-body shadow pl-0 pr-0" style="background:url('/public/img/MYlistbgc.png') no-repeat;padding: 0 ">
+                <div class="list-group list-group-flush border-color"style="background:url('/public/img/MYlistbgc.png') no-repeat ">
+                    <a href="/index/ctrl/deposit" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded"style="float: left;width: 25px;border-radius:0px!important;height: 25px;" >
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/tixian.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.with}
+                                        <i class="material-icons float-right" style="margin-right: -30px;" >chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/ctrl/junior" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/baobiao.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.my_team}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/ctrl/recharge_admin" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/chongzhi.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.pay_log}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/ctrl/deposit_admin" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/tikuan.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.with_log}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                    <a href="/index/my/caiwu" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/Buser.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.my_alllog}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </a>
+                    <a href="/index/my/msg" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/xinxi.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.my_msg}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/my/edit_address" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/dizhi.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.edit_address}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/my/bind_bank" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/bangding.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.bank_title}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/index/ctrl/edit_pwd.html" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/setpass.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.edit_pass}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                    <a href="/index/ctrl/edit_pwd2.html" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/settixian.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.edit_pass2}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+
+                    <a href="/index/user/lang.html" class="list-group-item list-group-item-action border-color">
+                        <div class="row">
+                            <div class="col-auto" style="width: 100%">
+                                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                                    <img src="/public/img/yuyan.png" style="float: left;">
+                                </div>
+                                <div class="col align-self-center pl-0">
+                                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.lang}
+                                        <i class="material-icons float-right" style="margin-right: -30px;">chevron_right</i></h6>
+                                    <p class="text-secondary"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="list-group-item border-color tabs_btn1" style="width: 90%;margin: 30px auto;text-align: center">
+
+        <div class="row">
+            <div class="col-auto" style="width: 100%">
+                <div class="avatar avatar-50 rounded" style="float: left;width: 25px;border-radius:0px!important;height: 25px;">
+                    <div class="overlay bg-template" style="border-radius: 0"></div>
+                </div>
+                <div class="col align-self-center pl-0">
+                    <h6 class="mb-1" style="margin-left: 50px;">{$Think.lang.Logout}
+
+                        <p class="text-secondary"></p>
+                </div>
+            </div>
+        </div>
+
+    </a>
+    <!-- footer-->
+    {include file="public/floor" /}
+    <!-- footer ends-->
+    <!--tj--></div>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<!-- page level script -->
+<script>
+    var msg = '{$msg|RAW}';
+    $(function () {
+        if (msg.length > 1) {
+            $(document).dialog({
+                type: 'alert',
+                titleText: '',
+                content: msg,
+                buttonTextConfirm: "{$Think.lang.queding}",
+                autoClose: 0,
+            });
+        }
+        $('.footer').find('.btn-link-default').eq(4).addClass("active");
+        $('.tabs_btn1').click(function () {
+            $(document).dialog({
+                type: 'confirm',
+                titleText: "{$Think.lang.my_logout}",
+                buttonTextConfirm: "{$Think.lang.queding}",
+                buttonTextCancel: "{$Think.lang.quxiao}",
+                autoClose: 0,
+                onClickConfirmBtn: function () {
+                    window.location.href = "/index/user/logout.html";
+                },
+                onClickCancelBtn: function () {
+
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

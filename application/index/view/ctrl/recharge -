@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.pay_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+
+
+        .recharge-slide .swiper-slide {
+            padding: 2px 30px 29px 15px;
+            width: 250px;
+        }
+
+        .recharge-slide .swiper-slide .card {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+        }
+
+        .recharge-slide.swiper-container-horizontal > .swiper-pagination-bullets {
+            margin-bottom: -10px;
+        }
+
+        .recharge-slide .swiper-slide .card {
+            height: auto;
+            padding: 5px;
+        }
+
+        .btn-channel {
+            margin-bottom: 15px;
+        }
+        .bg1130 {
+            background-image: url(/img/tixian.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+            padding: 20px 15px;
+            color: #fff;
+        }
+        
+        /*.selectColor>div:odd{*/
+        /*    background: #18aa56 ;*/
+        /*}*/
+        /*.selectColor>div:even{*/
+        /*    background: red ;*/
+        /*}*/
+    </style>
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+</head>
+<body style="background: linear-gradient(#0066ff, #fff);">
+<a href="javascript:void(0)" class="closesidemenu">
+    <i class="material-icons icons-raised bg-dark ">close</i></a>
+<div class="wrapper homepage" style="min-height:0;padding-bottom:0">
+    <!-- header -->
+    <div class="header bg-template" style="backdrop-filter:none">
+        <div class="row no-gutters" >
+            <div class="col-auto">
+                <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+                    <i class="material-icons">chevron_left</i></a>
+            </div>
+            <div class="col text-center">
+                <button class="btn w-100 text-white">{$Think.lang.pay_title}</button>
+            </div>
+            <div class="col-auto">
+                <!--<a href="{$csURL}" class="btn  btn-link text-white position-relative">-->
+                <!--    <i class="material-icons">support_agent</i></a>-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- header ends -->
+    <div class="container" style="padding:0px;position: relative;z-index: 10;">
+
+
+        <div class="row no-gutters" style=";margin-left: 10px;margin-right: 10px;">
+
+            <div class="col">
+                <a class="text-dark" href="javascript:;" style="width: 120px; color: #ffde41 !important;font-weight:bold;">
+                    {$Think.lang.withdraw_now}
+                </a>
+
+            </div>
+            <div class="col-auto">
+                <a class="text-dark" href="/index/ctrl/deposit_admin" style="width: 100px; color: #adadad !important;font-weight:bold;">
+                    <span style="margin-top:20px;vertical-align: middle;height: 20px;line-height: 20px;"> {$Think.lang.withdraw_history}</span>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="row no-gutters" style="margin-top:10px;margin-left: 10px;margin-right: 10px;border-bottom: 1px solid #666;">
+
+        </div>
+        <!--  -->
+
+
+        <div class="container top-50" style="margin-top: 30px;">
+            <div class="card shadow  bg1130" style="height: 100px;">
+                <div class="card-body">
+                    <div class="row text-dark">
+                        <dt class="col-10  small" style="margin-top: -20px;"><h5>{$Think.lang.total_balance}</h5></dt>
+
+                        <dt class="col-10  small"><h5> {if $user.balance} <?php  echo round($user['balance'],2); ?> {else} {$user.balance}{/if}</h5></dt>
+
+
+                        <!--<dt class="col-10  small"> {$Think.lang.withdraw_tip}</dt>-->
+
+
+                    </div>
+                </div>
+                <div id="usdt_code_div"  style="display: none;background: rgb(37 42 50);color: white;">
+                    <input type="tel" class="form-control form-control-lg" name="USDT_code" id="USDT_code"  autocomplete="off" placeholder="USDT code" style="background: rgb(37 42 50);color: white;">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!--<h6 class="subtitle" style="padding-top: 15px;margin-bottom: 0px;margin-left: 20px;background-color: #1A1A1A">{$Think.lang.pay_type_click}</h6>-->
+        <!--<div class="row">-->
+             <!--Swiper -->
+        <!--    <div class="swiper-container recharge-slide swiper-container-horizontal swiper-container-ios" style="margin-top: 10px;background-color: #1A1A1A">-->
+        <!--        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">-->
+        <!--            {foreach $pay as $key=>$vo}-->
+        <!--            <div class="swiper-slide swiper-slide-active" style="margin-right: 2px;">-->
+        <!--                <div class="card shadow border-0 bg-template text-white" style="background-color: #1A1A1A;width: 100%">-->
+        <!--                    <div class="card-body  p-1">-->
+        <!--                        <h5 class="small">{$vo.name}</h5>-->
+        <!--                        <p class="text-mute small  mb-2">{:config("currency")} {$vo.min} ~ {:config("currency")}-->
+        <!--                            {$vo.max}</p></div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            {/foreach}-->
+        <!--        </div>-->
+                 <!--Add Pagination -->
+        <!--        <div class="swiper-pagination swiper-pagination-bullets">-->
+        <!--            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>-->
+        <!--        </div>-->
+        <!--        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>-->
+        <!--    </div>-->
+        <!--</div>-->
+
+    <div class="container" style="width: 90%;margin: 10px auto; background-color: #92beff;padding: 0;border-radius: 5px">
+        <h6 class="tmb-1 mt-3" style="color: #fff;padding-top: 20px;margin-left: 20px;">{$Think.lang.pay_money}</h6>
+        <style>
+            .vip_bg_0 {
+                background: linear-gradient(240deg, rgb(12, 36, 66), rgb(79, 116, 146)) !important;
+            }
+
+            .vip_bg_1 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgb(89, 112, 149), rgb(118, 138, 170)) !important;
+            }
+
+            .vip_bg_2 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(219, 111, 33, 0.99), rgb(249, 153, 5)) !important;
+            }
+
+            .vip_bg_3 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(39, 53, 131, 0.99), rgb(47, 67, 177)) !important;
+            }
+
+            .vip_bg_4 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(61, 147, 181, 0.99), rgb(49, 179, 139)) !important;
+            }
+
+            .vip_bg_5 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(33, 35, 39, 0.99), rgb(67, 69, 73)) !important;
+            }
+
+            .vip_bg_6 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(240deg, rgba(72, 0, 154, 0.99), rgb(97, 0, 160)) !important;
+            }
+
+            .vip_bg_7 {
+                background: url(../../static/images/vip-bg.png?) center center / 160px 64px no-repeat, linear-gradient(to right, rgb(186, 139, 2), rgb(209, 145, 60)) !important;
+            }
+        </style>
+        {if $vip_info}
+        <div class="card shadow border-0 mb-3 bg-template vip_bg_{$vip_info.level}" >
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-auto pr-0">
+                        <img src="/red/graphics-carousel-scheme1.png" alt="" class="mw-100">
+                    </div>
+                    <div class="col align-self-center">
+                        <h5 class="mb-2 font-weight-normal">
+                            <span style="float: left">{$vip_info.name}</span>
+                        </h5>
+                        <div style="clear: both"></div>
+                        <p class="text-mute" style="margin-bottom: 0;font-size: 12px">{$Think.lang.sxtz}&nbsp;{:config("currency")}
+                            {$vip_info.num}</p>
+                        <p class="text-mute" style="font-size: 12px">{$Think.lang.commission}&nbsp;{$vip_info.bili*100}%
+                            | {$vip_info.order_num}&nbsp;{$Think.lang.Record}</p>
+                    </div>
+                    <input name="vip_id" type="hidden" value="{$vip_info.id}">
+                </div>
+            </div>
+        </div>
+        <input name="price" type="hidden" value="{$vip_info.num}">
+        {else}
+        <div class="" style="">
+            <input name="price" type="tel" class="text-dark form-control-lg border " style="background-color: #92bdff;color: #FFFFFF!important;border-radius: 0;border: none!important;" value=""
+                   placeholder="00.00">
+        </div>
+        <div class="form-group mb-9" >
+            <div class="row">
+                <div class="col text-center" style="width: 500px;">
+                    <?php
+$list = config('recharge_money_list');
+$list = explode('/',$list);
+?>
+                    {foreach $list as $v}
+                    <button class=" btn border btn-light rounded mb-2 ml-2 mr-2 num-list p-3"
+                            style="width:25%;height: 80px;color:#fff!important;border-color:#18aa56!important;background:#18aa56">
+                        
+                        </br>
+                        <!--<h5>{:sprintf("%.2f",$v)}</h5>-->
+                        <h5>{$v}</h5>
+                    </button>
+                    {/foreach}
+                </div>
+
+
+            </div>
+        </div>
+        {/if}
+    </div>
+
+        <!--<btn class="btn btn-default btn-block btn-outline-primary shadow-sm float-top-mid btn-channel"-->
+        <!--     data-id="{$vo.id}" style="background-color: #F8A2D1;border: none;width: 90%;margin: auto" data-type="{$vo.name2}" data-pay_type="{$vo.type}" next_url="{$vo.url}" fields="">-->
+        <!--    {$Think.lang.pay_title}-->
+        <!--</btn>-->
+
+
+
+        <!-- <a class="btn btn-lg btn-default text-white btn-block btn-rounded shadow"><span>Submit</span></a>-->
+        <br></div>
+</div>
+
+
+ <div class="container">
+        <h6 class="subtitle">{$Think.lang.pay_type_click}</h6>
+        <div class="row">
+            <!-- Swiper -->
+            <div class="swiper-container recharge-slide swiper-container-horizontal swiper-container-ios">
+                <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+                    {foreach $pay as $key=>$vo}
+                    <div class="swiper-slide swiper-slide-active selectColor" style="margin-right: 2px;">
+                        <div class="card shadow border-0 bg-template text-white " >
+                            <div class="card-body  p-1">
+                                <btn class="btn btn-default btn-block btn-outline-primary shadow-sm float-top-mid btn-channel"
+                                     data-id="{$vo.id}" data-pay_name="" data-type="{$vo.name2}" data-pay_type="{$vo.name2}" next_url="{$vo.url}" fields="">
+                                    <i class="material-icons md-20">payment</i>{$Think.lang.pay_title}
+                                </btn>
+                                <h5 class="small">{$vo.name}</h5>
+                                <p class="text-mute small  mb-2">{:config("currency")} {$vo.min} ~ {:config("currency")}
+                                    {$vo.max}</p></div>
+                        </div>
+                    </div>
+                    {/foreach}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination swiper-pagination-bullets">
+                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+
+        <div class="card shadow border-0 mb-3">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col pr-0">
+                        <p class="text-mute small text-secondary">
+                            <span>*</span>{$Think.lang.pay_ts_1}
+                            <br>
+                            <span>*</span>{$Think.lang.pay_ts_2}
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <a class="btn btn-lg btn-default text-white btn-block btn-rounded shadow"><span>Submit</span></a>-->
+        <br></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="sendmoney" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5>Valores a pagar&nbsp;
+                    <span class="payable text-default"></span></h5>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="form-group float-label active payer_bank" style="display: none">
+                    <div class="dropdown">
+                <span class="form-control form-control-lg dropdown-toggle text-left bank-select" href="#"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="width: 95%; display: inline-block" class="text-mute"></span>
+                </span>
+                        <div class="dropdown-menu no-arrows" style="width: 100%">
+                            <a class="dropdown-item row bank-item" href="#" style="display: flex">
+                                <div class="col-2">
+                                    <img class="dropdown-item-icon " src=" "></div>
+                                <div class="col-10 dropdown-item-text overflow-hidden">
+                                    <span class="mb-1"></span>
+                                    <p class="text-mute "></p>
+                                </div>
+                            </a>
+                        </div>
+                        <input type="hidden" name="payer_bank" required="" value=""></div>
+                    <label class="form-control-label">Por favor selecione um banco pagador</label></div>
+                <div class="form-group float-label active payer_cardno" style="display: none">
+                    <input name="payer_cardno" type="tel" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira o número do cartão do pagador</label></div>
+                <div class="form-group float-label active payer_id" style="display: none">
+                    <input name="payer_id" type="number" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira o número do ID do pagador</label></div>
+                <div class="form-group float-label active payer_name" style="display: none">
+                    <input name="payer_name" type="text" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira seu nome</label></div>
+                <div class="form-group float-label active payer_mobile" style="display: none">
+                    <input name="payer_mobile" type="tel" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira o número do usuário do pagador</label></div>
+                <div class="form-group float-label active payer_upi" style="display: none">
+                    <input name="payer_upi" type="text" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira o ID do UPI do pagador</label></div>
+                <div class="form-group float-label active payer_email" style="display: none">
+                    <input name="payer_email" type="text" class="form-control form-control-lg" value="" required=""
+                           placeholder="">
+                    <label class="form-control-label">Por favor, insira a caixa de correio do pagador</label></div>
+                <div class="form-group float-label active pay_in_usd" style="display: none">
+                    <input name="pay_in_usd" type="text" class="form-control form-control-lg text-default border-0"
+                           value="" readonly="" placeholder="">
+                    <label class="form-control-label">Valor a pagar em dólares americanos</label></div>
+                <p class="text-mute text-center"></p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block save-btn2">Próxima
+                    Etapa
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notification shadow pt-0 pl-0 pr-0 border-0 bg-template-light" style="background-color: black">
+    <div id="notification_countdown"></div>
+    <div class="row pt-2 pl-3 pr-3">
+        <div class="col-auto align-self-center pr-0">
+            <i class="material-icons text-template md-36">redeem</i></div>
+        <div class="col small notification-content">loading...</div>
+        <div class="col-auto align-self-center pl-0">
+            <button class="btn btn-link closenotification">
+                <i class="material-icons text-template md-18 ">close</i></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">var app = {
+    'online_popup': "",
+}</script>
+<!-- jquery, popper and bootstrap js -->
+<script src="/red/jquery-3.3.1.min.js"></script>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+<script src="/public/js/layer_mobile/layer.js"></script>
+<script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<!-- template custom js -->
+<script src="/red/main.js?v=V1.24"></script>
+<script type="application/javascript">
+$(".selectColor>div:even").css('background','#0066ff')
+$(".selectColor>div:odd").css('background','#18aa56')
+
+$("input[name=price]").focus();
+var id = '';
+var type = '';
+$(function () {
+    var width = $(document).width(); //to fix ios12 Over screen width issue, the swiper-container must be set to a very samll width first
+    $('.recharge-slide').width(width + 'px');
+    var swiper = new Swiper('.recharge-slide', {
+        slidesPerView: 'auto',
+        spaceBetween: 2,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+
+    $('.btn-channel').click(function () {
+        
+        
+        //  console.log('dddddddddddd')
+        //     $(document).dialog({
+        //         infoText: '{$Think.lang.qlxkf}'
+        //     });
+        // return;
+        if (check()) {
+            var amount = $("input[name=price]").val();
+            $('.payable').text(amount);
+            $('input[name=pay_in_usd]').val('$ ' + amount * 0.19);
+            $('.save-btn2').attr('data-id', $(this).data('id'));
+            $('.save-btn2').attr('data-type', $(this).data('type'));
+            $('.save-btn2').attr('data-pay_type', $(this).data('pay_type'));
+            $('.save-btn2').attr('next_url', $(this).attr('next_url'));
+            var fields_str = $(this).attr('fields');
+            if (fields_str) {
+                var fields = fields_str.split(",");
+                $(fields).each(function () {
+                    $("." + this).show();
+                })
+                $("#sendmoney").modal('show');
+            } else {
+                setTimeout(function () {
+                        $('.save-btn2').click();
+                    },
+                    150)
+            }
+        }
+    });
+
+    $('.bank-item').click(function () {
+        
+        var span = $('.bank-select').find('span');
+        span.html('');
+        span.append($(this).find('.dropdown-item-icon').clone().css('height', '28px').css('width', '28px'));
+        span.append(' ');
+        var bankcode = $(this).find('.dropdown-item-text').children().eq(0).clone();
+        span.append(bankcode);
+        $("input[name=payer_bank]").val(bankcode.text());
+    });
+
+    function check() {
+        
+        if ($("input[name=price]").val() == '') {
+            $(document).dialog({
+                infoText: 'Please enter the recharge amount'
+            });
+            $("input[name=price]").focus();
+            return false;
+        }
+        /*if ($("input[name=price]").val() < 50 || $("input[name=price]").val() > 1000000) {
+            $(document).dialog({
+                infoText: "A quantidade de recarga deve estar entre 50 para 1000000"
+            });
+            $("input[name=price]").focus();
+            return false;
+        }*/
+        return true;
+    }
+
+    $('.num-list').click(function () {
+        var tt = $.trim($(this).text());
+        $("input[name=price]").val(tt);
+    })
+
+    $(".save-btn").on('click',
+        function () {
+            
+            if (check()) {
+                if ($('.save-btn2').length == 1) {
+                    $('.save-btn2')[0].click();
+                } else {
+                    $('.paytype').show();
+                    $('.main2').hide();
+                    $('.save-btn').hide();
+                    return false;
+                }
+            }
+        });
+
+    $('.save-btn2').click(function () {
+        
+       
+        id = $(this).data('id');
+        type = $(this).data('type');
+        var next_url = $(this).attr('next_url');
+        var type2 = $(this).data('pay_type');
+
+        if ($("input[name=price]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira o valor da recarga'
+            });
+            $("input[name=price]").focus();
+            return false;
+        }
+        if (id == '') {
+            $(document).dialog({
+                infoText: 'Por favor, selecione um canal de pagamento'
+            });
+            return false;
+        }
+
+        if ($(".payer_bank").is(":visible") && $("input[name=payer_bank]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor selecione um banco pagador'
+            });
+            $("input[name=payer_bank]").focus();
+            return false;
+        }
+        if ($(".payer_cardno").is(":visible") && $("input[name=payer_cardno]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira o número do cartão do pagador'
+            });
+            $("input[name=payer_cardno]").focus();
+            return false;
+        }
+        if ($(".payer_name").is(":visible") && $("input[name=payer_name]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira seu nome'
+            });
+            $("input[name=payer_name]").focus();
+            return false;
+        }
+        if ($(".payer_mobile").is(":visible") && $("input[name=payer_mobile]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira o número do usuário do pagador'
+            });
+            $("input[name=payer_mobile]").focus();
+            return false;
+        }
+        if ($(".payer_upi").is(":visible") && $("input[name=payer_upi]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira o ID do UPI do pagador'
+            });
+            $("input[name=payer_upi]").focus();
+            return false;
+        }
+        if ($(".payer_email").is(":visible") && $("input[name=payer_email]").val() == '') {
+            $(document).dialog({
+                infoText: 'Por favor, insira a caixa de correio do pagador'
+            });
+            $("input[name=payer_email]").focus();
+            return false;
+        }
+
+        var loading = null;
+        var price = $("input[name=price]").val();
+        var payer_bank = $("input[name=payer_bank]").val();
+        var payer_cardno = $("input[name=payer_cardno]").val();
+        var payer_mobile = $("input[name=payer_mobile]").val();
+        var payer_name = $("input[name=payer_name]").val();
+        var payer_upi = $("input[name=payer_upi]").val();
+        var payer_email = $("input[name=payer_email]").val();
+        var vip_id = $("input[name=vip_id]").val();
+        // if(id==8){
+             
+        //     $(document).dialog({
+        //         infoText: '{$Think.lang.qlxkf}'
+        //     });
+        //     //刷新页面
+        //     setTimeout(function () {
+        //         location.reload();
+        //     },1000)
+        // return; 
+        // }
+        
+        $.ajax({
+            url: '/index/ctrl/recharge_do_before',
+            data: {
+                "price": price,
+                "id": id,
+                "type": type
+            },
+            type: 'POST',
+            beforeSend: function () {
+                loading = $(document).dialog({
+                    type: 'notice',
+                    infoIcon: '/static_new/img/loading.gif',
+                    infoText: 'loading...',
+                    autoClose: 0
+                });
+            },
+            success: function (data) {
+
+                if (data.code == 0) {
+                    $(document).dialog({
+                        infoText: '{$Think.lang.pay_ok_loding}'
+                    });
+                    setTimeout(function () {
+                            if (next_url) {
+                                var join = '?';
+                                if (next_url.indexOf('?') > -1) {
+                                    join = '&'
+                                }
+                               
+                                var url = next_url + join + 'num=' + data.info.num + '&id=' + id + '&payer_name=' + payer_name + '&payer_bank=' + payer_bank + '&payer_cardno=' + payer_cardno + '&payer_name=' + payer_name + '&payer_mobile=' + payer_mobile + '&payer_upi=' + payer_upi + '&payer_email=' + payer_email + "&vip_id=" + vip_id + "&type=" + type2;
+                                if (next_url.indexOf('paydragon') > -1 || next_url.indexOf('recharge2') > -1) {
+                                    window.location.href = url;
+                                } else {
+                                    window.location.href = url;
+                                }
+                            } else {
+                                window.location.href = '/index/ctrl/recharge2?num=' + data.info.num + '&type=' + type + "&vip_id=" + vip_id;
+                            }
+                        },
+                        1500);
+                } else {
+                    loading.close();
+                    $(document).dialog({
+                        infoText: data.info
+                    });
+                }
+            }
+        });
+
+    })
+
+    //-----------------------------------
+})
+</script>
+</body>
+</html>

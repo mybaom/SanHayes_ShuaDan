@@ -1,0 +1,123 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0">
+    <title data-lang="string_wallet_title">钱包</title>
+    <link href="/alllang/static/css/base.css" rel="stylesheet">
+    <link href="/alllang/static/css/funding.css" rel="stylesheet">
+    <script src="/static/plugs/jquery/jquery.min.js"></script>
+    <script src="/public/js/common.js"></script>
+    <script charset="utf-8" src="/static_new/js/jquery.i18n.properties-1.0.9.js"></script>
+  </head>
+  
+  <body>
+    <header class="header">
+      <div class="left_btn" onclick="window.location.href=`/index/my/index`">
+        <img src="/alllang/static/image/logo2.png" alt="" style="width: 90%;      margin-left: 3%;  margin-top: 10%;" class="return"></div>
+    </header>
+    <section class="container vpay-container" style="margin-top: 20%;">
+      <div class="vpay-account">
+        <div class="vpay-account-balance" style=" width: 50%;">
+          <span style="color: #b5a483;" data-lang="string_wallet_balance">{$Think.lang.qb_mymoney}</span>
+          <h1 style="color: #ea5514;">{$balance}</h1></div>
+        <div class="vpay-account-details" style=" padding-bottom: 1.2rem;">
+          <ul>
+            <li>
+              <a href="">
+                <span style="color: #b5a483;" data-lang="string_wallet_withdraw_balanc">{$Think.lang.qb_ktxye}</span>
+                <h3 style="color: #ea5514;">{$balance}</h3></a>
+            </li>
+            <li>
+              <a href="">
+                <span style="color: #b5a483;" data-lang="string_lixibao_total_revenue">{$Think.lang.qb_zsy}</span>
+                <h3 style="color: #ea5514;">{$balance_shouru}</h3></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="vpay-record">
+        <div class="tab-title tab-title-s" style="    background-color: #5d5e5f;   margin: auto; border-radius: 50px;">
+          <div class="tab-item">
+            <div class="lava" style="left: 0px; background-color: rgb(234, 85, 20);  border-radius: 50px;"></div>
+            <span class="active" data-lang="string_wallet_revenue_records">{$Think.lang.qb_sylog}</span>
+            <span data-lang="string_my_withdrawal_record">{$Think.lang.qb_txlog}</span>
+            <span class="" data-lang="string_my_recharge_record">{$Think.lang.qb_czlog}</span></div>
+        </div>
+        <div class="tab-content vpay-list" style="left: 0px;">
+          <div>
+            <div class="record-list">
+              <div class="record-list-title">
+                <span data-lang="string_rotorder_time">{$Think.lang.qb_time}</span>
+                <span data-lang="string_wallet_profit">{$Think.lang.qb_sy}</span>
+                <span data-lang="string_wallet_income_type">{$Think.lang.qb_sytype}</span></div>
+                {if $shouyi}
+                {volist name='shouyi' id='vo'}
+                <div class="record-list-content">
+                    <span><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?></span>
+                    <span><b class="record-red">{$vo.commission}</b></span>
+                    <span>{$Think.lang.qb_task}</span>
+                </div>
+                {/volist}
+                {else\}
+                {/if}
+            </div>
+          </div>
+          <div>
+            <div class="record-list">
+              <div class="record-list-title">
+                <span data-lang="string_rotorder_time">{$Think.lang.qb_time}</span>
+                <span data-lang="string_amount">{$Think.lang.qb_money}</span>
+                <span data-lang="string_status">{$Think.lang.qb_status}</span></div>
+                {if $tixian}
+                  {volist name='tixian' id='vo'}
+                  <div class="record-list-content">
+                    <span><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?></span>
+                    <span>
+                      <b class="record-red">{$vo.num}</b></span>
+                    <span data-lang="string_wallet_waiting_review">{$Think.lang.qb_with}</span>
+                  </div>
+                  {/volist}
+                {else\}
+                {/if}
+            </div>
+          </div>
+          <div>
+            <div class="record-list">
+              <div class="record-list-title">
+                <span data-lang="string_rotorder_time">{$Think.lang.qb_time}</span>
+                <span data-lang="string_amount">{$Think.lang.qb_money}</span>
+                <span data-lang="string_status">{$Think.lang.qb_status}</span></div>
+                  {if $chongzhi}
+                  {volist name='chongzhi' id='vo'}
+                  <div class="record-list-content">
+                    <span><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?></span>
+                    <span>
+                      <b class="record-red">{$vo.num}</b></span>
+                    <span data-lang="string_wallet_waiting_review">{$Think.lang.qb_pay}</span>
+                  </div>
+                  {/volist}
+                {else\}
+                {/if}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="vpay-toolbar">
+      <a href="/index/ctrl/recharge.html" style="border-radius: 50px; width: 40%; margin: 5%; background-color: #ea5514;" data-lang="string_home_recharge">{$Think.lang.qb_pay}</a>
+      <a href="/index/ctrl/deposit.html" style="border-radius: 50px; width: 40%; margin: 5%; background-color: #b5a483;" data-lang="string_home_withdrawal">{$Think.lang.qb_with}</a></div>
+    <script src="/alllang/static/js/main.js"></script>
+    <script>$(function() {
+
+        setTimeout(function() {
+          $('.tab-item .active').prev().click();
+          $('.tab-item .active').prev().trigger("click");
+
+        },
+        3000);
+      })</script>
+  </body>
+
+</html>

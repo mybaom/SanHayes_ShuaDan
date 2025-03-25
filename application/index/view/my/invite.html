@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" >
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>Convite</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style id="dialog-body-no-scroll">.body-no-scroll { position: absolute; overflow: hidden; width: 100%; }</style></head>
+  
+  <body style="background-color: black">
+    <a href="javascript:void(0)" class="closesidemenu">
+      <i class="material-icons icons-raised bg-dark ">close</i></a>
+    <div class="wrapper invite">
+      <!-- header -->
+      <div class="header" style="backdrop-filter:none">
+        <div class="row no-gutters">
+          <div class="col-auto">
+            <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+              <i class="material-icons">chevron_left</i></a>
+          </div>
+          <div class="col text-center">
+            <button class="btn w-100 text-white"></button>
+          </div>
+          <div class="col-auto">
+            <a href="/index/my/msg" class="btn  btn-link text-white position-relative">
+              <i class="material-icons">notifications_none</i></a>
+          </div>
+        </div>
+      </div>
+      <!-- header ends -->
+      <div class="container bg-template" style="min-height: 250px;padding-top: 50px">
+        <div class="row">
+          <div class="col text-center">
+            <img src="/static_indonesia/img/banner.6e3d838.png" style="height: 200px; width: 80%; opacity: 0.1"></div>
+        </div>
+        <div class="row top-150">
+          <div class="col text-center text-white">
+            <h3>{$Think.lang.invite_desc}</h3></div>
+        </div>
+      </div>
+      <div class="container top-30">
+        <div class="row text-center">
+          <div class="col-12 col-md-3">
+            <div class="card shadow border-0 mb-3">
+<!--              <div class="card-body" style="max-height: 260px; overflow-y: scroll">-->
+              <div class="card-body">
+                <div class="avatar avatar-100 no-shadow border-0">
+                  <div class="overlay bg-template"></div>
+                  <i class="material-icons vm md-32 text-template">monetization_on</i>
+                  <i class="material-icons vm md-34 text-template">monetization_on</i>
+                  <i class="material-icons vm md-36 text-template">monetization_on</i>
+                </div>
+<!--                <p class="mt-3 mb-0 font-weight-normal text-dark text-left">{$Think.lang.intive_desc_two}</p></div>-->
+                <div class="mt-3 mb-0 font-weight-normal  text-left">{$invite_msg|RAW}</div>
+              </div>
+              <div class="card-footer bg-none">
+                <p>
+                  <span>{$Think.lang.my_tgcode}</span>
+                  <b class="ml-2 btn-link" onclick="copy_txt('{$invite_code}')">{$invite_code}</b></p>
+                <input name="" id="webcopyinput" type="text" style="left: -1000px; position: absolute" value="">
+                <button onclick="copy_txt('{$url}')" class="btn btn-default shadow btn-rounded btn-block btn-lg" style="background-color: #D2B87D;color: white">
+                  <i class="material-icons text-mute">insert_link</i>
+                  <span>{$Think.lang.copy_url}</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- jquery, popper and bootstrap js -->
+    <script src="/red/jquery-3.3.1.min.js"></script>
+    <script src="/red/popper.min.js"></script>
+    <script src="/red/bootstrap/js/bootstrap.min.js"></script>
+    <!-- swiper js -->
+    <script src="/red/swiper/swiper-bundle.min.js"></script>
+    <!-- cookie js -->
+    <script src="/red/jquery.cookie.js"></script>
+    <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+    <script charset="utf-8" src="/static_new/js/common.js"></script>
+    <!-- template custom js -->
+    <script src="/red/main.js?v=V1.24"></script>
+    <!-- page level script -->
+    <script>$(function() {});
+      function copy_txt(xx) {
+        //var text = document.createElement('input');
+        var text = document.getElementById("webcopyinput");
+        text.id = 'webcopyinput';
+        text.value = '' + xx + '';
+        //text.style.position = 'fixed';
+        // text.style.top = '- 10000px';
+        // document.body.appendChild(text);
+        text.focus(); //给input输入框聚焦
+        text.setSelectionRange(0, text.value.length); //设置input框选中的范围
+        copied = document.execCommand('Copy'); //执行复制操作
+        text.blur();
+        copied = false;
+        document.body.scrollTop = 0;
+        $(document).dialog({
+          infoText: '{$Think.lang.copy_ok}'
+        });
+      }</script>
+  </body>
+
+</html>

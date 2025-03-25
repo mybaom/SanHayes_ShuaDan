@@ -1,0 +1,42 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">会员等级</label>
+            <div class="layui-input-block">
+                <select name="level">
+                    {foreach $level as $key=>$vo}
+                    <option value="{$vo.level}" <?php echo $info['level']==$vo['level'] ? 'selected': ''; ?> >{$vo.name}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">叠加组</label>
+            <div class="layui-input-block">
+                <select name="group_id">
+                    <option value="0">不加入</option>
+                    {foreach $groupList as $key=>$vo}
+                    <option value="{$vo.id}" <?php echo $info['group_id']==$vo['id'] ? 'selected': ''; ?> >{$vo.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">级别任务数</label>
+            <div class="layui-input-block">
+                <input name="converNumber" value="{$converNumber}" readonly class="layui-input">
+                <p class="help-block">当前任务做到第几轮</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+    <input name="id" type="hidden" value="{$info.id}">
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>
+

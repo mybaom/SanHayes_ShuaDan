@@ -1,0 +1,149 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body" >
+         {if $admin_id ==10000}
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label">所属代理</label>
+            <div class="layui-input-block">
+                <select name="agent_id" class="layui-select" id="selectList">
+                    <option value="0">平台</option>
+                    {foreach $agent_list as $v}
+                    <option value="{$v.id}"{if $v.id==$info.agent_id} selected{/if}>{$v.username}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label label-required">二级代理</label>
+            <div class="layui-input-block">
+                <input name="agent_service_id" placeholder="二级代理" value="{$info.agent_service_id}" class="layui-input">
+            </div>
+        </div>
+        {/if}
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">用户名称</label>
+            <div class="layui-input-block">
+                <input name="user_name" required placeholder="请输入用户名称" value="{$info.username}" class="layui-input">
+                <input type="hidden" name="_csrf_" value="{:systoken('edit_users')}">
+
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">关联用户ID</label>
+            <div class="layui-input-block">
+                <input name="relation_id" placeholder="关联用户ID" value="{$info.relation_id}" class="layui-input">
+                 <p class="color-desc">取消关联请设置为0</p>
+            </div>
+           
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">手机号码</label>
+            <div class="layui-input-block">
+                <input name="tel" required placeholder="请输入手机号码" value="{$info.tel}" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display:none;">
+            <label class="layui-form-label label-required">账号余额</label>
+            <div class="layui-input-block">
+                <input type="number" min="0" required placeholder="请输入账号余额" name="balance" value="{$info.balance|round=###,2}" class="layui-input">
+            </div>
+        </div>
+
+        <!--<div class="layui-form-item" >-->
+        <!--    <label class="layui-form-label label-required">钱包地址</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input type="text"  placeholder="钱包地址" name="address" value="{$info.address}" class="layui-input">-->
+        <!--    </div>-->
+        <!--</div>-->
+
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label label-required">匹配区间:</label>
+            <div class="layui-input-block">
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="deal_min_num" id='min' autocomplete="off" class="layui-input" value="{$info.deal_min_num}">
+                </div>
+                <div class="layui-form-mid">% -</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="deal_max_num" id='max'  autocomplete="off" class="layui-input"  value="{$info.deal_max_num}">
+                </div>
+                <div class="layui-form-mid">%</div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display:none;">
+            <label class="layui-form-label label-required">会员等级</label>
+            <div class="layui-input-block">
+                <select name="level">
+                    {foreach $level as $key=>$vo}
+                    <option value="{$vo.level}" <?php echo $info['level']==$vo['level'] ? 'selected': ''; ?> >{$vo.name}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="display:none;">
+            <label class="layui-form-label label-required">叠加组</label>
+            <div class="layui-input-block">
+                <select name="group_id">
+                    <option value="0">不加入</option>
+                    {foreach $groupList as $key=>$vo}
+                    <option value="{$vo.id}" <?php echo $info['group_id']==$vo['id'] ? 'selected': ''; ?> >{$vo.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">交易状态</label>
+            <div class="layui-input-block">
+                <select name="deal_status">
+                    <option value="1" <?php echo $info['deal_status']==1 ? 'selected': ''; ?> >正常</option>
+                    <option value="0" <?php echo $info['deal_status']==0 ? 'selected': ''; ?> >冻结</option>
+                </select>
+                <!--<input name="freeze_balance" type="number" min="0" required placeholder="冻结金额" value="{$info.freeze_balance}" class="layui-input">-->
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录密码</label>
+            <div class="layui-input-block">
+                <input name="pwd" placeholder="留空不修改密码" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">交易密码</label>
+            <div class="layui-input-block">
+                <input name="pwd2" placeholder="留空不修改交易密码" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">级别任务数</label>
+            <div class="layui-input-block">
+                <input name="converNumber" value="{$converNumber}" readonly class="layui-input">
+                <p class="help-block">当前任务做到第几轮</p>
+            </div>
+        </div>
+        <div class="layui-form-item"{if $info.id} style="display: none"{/if}>
+            <label class="layui-form-label">上级ID</label>
+            <div class="layui-input-block">
+                <input name="parent_id" placeholder="请输入上级ID" value="{$info.parent_id}" class="layui-input">
+            </div>
+        </div>
+        <!--信用分-->
+        <div class="layui-form-item" >
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <input name="remarks" placeholder="请输入备注" value="{$info.remarks}" class="layui-input">
+            </div>
+        </div>
+        
+    </div>
+    <input name="id" type="hidden" value="{$info.id}">
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

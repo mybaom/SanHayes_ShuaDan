@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$Think.lang.msg_title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/alllang/static/css/light7.css">
+    <link rel="stylesheet" href="/alllang/static/css/common.css">
+    <link rel="stylesheet" href="/alllang/static/css/announcement.css"></head>
+  
+  <body>
+    <div class="page index-page" id="announcement" style="   background: linear-gradient(#0066ff, #fff);">
+      <header class="bar bar-nav fxbt">
+        <a href="/index/my/index" class="icon icon-left pull-left"></a>
+        <div class="title" style="background:#0066ff">{$Think.lang.msg_title}</div></header>
+      <div class="content scroll-wrapper">
+        <img src="/alllang/static/picture/announcement.png" class="announcement-img">
+        <div class="system-announcement" style="background:none">
+          <img src="/alllang/static/picture/icon-gg.png" class="ggico">{$Think.lang.msg_text}</div>
+        {volist name='info' id='v'}
+        <div class="notice__wrap">
+          <div class="notice__wrap--title">{$v.title}</div>
+          <p>
+            <p>{$v.content|raw}</p>
+        </div>
+        {/volist}
+      </div>
+    </div>
+    <script type='text/javascript' src='/alllang/static/js/jquery.min.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/light7.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/utils.js'></script>
+    <script type='text/javascript'>$(function() {
+
+});</script>
+  </body>
+
+</html>

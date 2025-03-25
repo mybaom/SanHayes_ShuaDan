@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.reg_title}</title>
+    <meta property="og:site_name" content="{:sysconf('site_name')}">
+    <meta property="og:type" content="website">
+    <meta name="title" content=" {:sysconf('site_name')}">
+    <meta property="og:title" content=" {:sysconf('site_name')}">
+    <meta name="twitter:title" content="{:sysconf('site_name')}">
+    <meta name="description" content=" {:sysconf('site_name')}">
+    <meta property="og:description" content="{:sysconf('site_name')}">
+    <meta name="twitter:description" content="{:sysconf('site_name')}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{:url('/index/user/register','',true,true)}">
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <script src="/red/jquery-3.3.1.min.js"></script>
+    <script src="/statics/vender/intl-tel-input-master/js/intlTelInput.js"></script>
+    <link rel="stylesheet" href="/statics/vender/intl-tel-input-master/css/intlTelInput.css">
+    <style>
+        .iti--allow-dropdown {
+            width: 100%
+        }
+
+        .iti--separate-dial-code .iti__selected-flag {
+            background: none
+        }
+    </style>
+</head>
+<body class="">
+<div class="wrapper passport">
+    <!-- header -->
+    <div class="header">
+        <div class="row no-gutters">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                <span class="btn small" style="width: 100%;display: none">{$Think.lang.reg_title}</span>
+            </div>
+            <div class="col-2 text-right">
+                <a href="/index/user/lang" class="btn btn-link text-dark">
+                    <i class="material-icons" style="display: inline-block">language</i></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    <div class="container">
+        <div class="bg-default">
+            <div class="row no-gutters login-row">
+                <div class="col align-self-center px-3 text-center mt-3">
+                    <img src="{:sysconf('site_icon')}" style="width:100px;height:100px;border-radius: 10px">
+                    <p class="mt-2">
+                        <b>{:sysconf('site_name')}</b>
+                    </p>
+                    <p class="mt-1 small">
+                        <i>{$Think.lang.login_comment}</i>
+                    </p>
+                    <form class="form-signin ">
+
+                        <div class="form-group">
+                            <input type="text" name="user_name" class="form-control form-control-lg text-center"
+                                   placeholder="{$Think.lang.login_name}" value="" required="" autofocus="">
+                        </div>
+                        <!--<div class="form-group">
+                            <input type="text" class="form-control form-control-lg text-center" name="tel" value=""
+                                   placeholder="{$Think.lang.login_phone}" class="form-control">
+                        </div>-->
+                        <!--<div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn dropdown-toggle address" type="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">{:config('lang_tel_pix')}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">{:config('lang_tel_pix')}</a>
+                                </div>
+                            </div>
+                            <input type="text" name="tel" placeholder="{$Think.lang.login_phone}" class="form-control"
+                                   aria-label="Recipient's username">
+                            <div class="input-group-append">
+                                <button class="btn btn-link get-code" type="button">{$Think.lang.send_sms}</button>
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <input type="text" name="tel" id="phone" class="form-control form-control-lg"
+                                   placeholder="{$Think.lang.login_phone}" value="" required="" autofocus="">
+                        </div>
+                        <!--<div class="form-group">
+                            <input type="password" name="verify" class="form-control form-control-lg text-center"
+                                   placeholder="{$Think.lang.login_q_yzm}" value="" required="" autofocus="">
+                        </div>-->
+                        <div class="form-group">
+                            <input type="password" name="pwd" class="form-control form-control-lg text-center"
+                                   placeholder="{$Think.lang.login_pass}" value="" required="" autofocus="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="deposit_pwd" class="form-control form-control-lg text-center"
+                                   placeholder="{$Think.lang.login_pass2}" value="" required="" autofocus="">
+                        </div>
+                        <?php if(!empty($invite_code)){ ?>
+                        <div class="form-group">
+                            <input type="text" name="invite_code" class="form-control form-control-lg text-center"
+                                   placeholder="{$Think.lang.login_qr}" value="{$invite_code}" required="" autofocus="">
+                        </div>
+                        <?php }else{ ?>
+                        <input type="text" name="invite_code" class="form-control form-control-lg text-center"
+                               placeholder="{$Think.lang.login_qr}" value="" required="" autofocus="">
+                        <?php } ?>
+                        <!--<div class="form-group my-4 text-left"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="rememberme"><label class="custom-control-label" for="rememberme">Remember Me</label></div></div>-->
+                    </form>
+                </div>
+            </div>
+            <!-- login buttons -->
+            <div class="row mx-0 mt-4">
+                <div class="col">
+                    <a class="btn btn-default btn-lg btn-rounded shadow btn-block form-buttom">{$Think.lang.reg_title}</a>
+                </div>
+            </div>
+            <!-- login buttons -->
+            <div class="row mx-0 text-center justify-content-center"  style="background:#172CE9 ">
+                <a href="/index/user/login" class="mt-4 d-block">{$Think.lang.login}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/red/popper.min.js"></script>
+<script src="/red/bootstrap/js/bootstrap.min.js"></script>
+<!-- swiper js -->
+<script src="/red/swiper/swiper-bundle.min.js"></script>
+<!-- cookie js -->
+<script src="/red/jquery.cookie.js"></script>
+<script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+<script charset="utf-8" src="/static_new/js/common.js"></script>
+<script type="application/javascript">
+    $(function () {
+        var countdown = 180;
+        var flag = true;
+        var loading = null;
+
+        /*检查表单*/
+        function check() {
+            if (!check_phone()) return false;
+            /*if($("input[name=verify]").val()==''){
+                $(document).toast( $.i18n.prop('string_register_verify')});
+                return false;
+            }*/
+            if ($("input[name=pwd]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_pass}'
+                });
+                return false;
+            }
+            if ($("input[name=deposit_pwd]").val() == '' || $("input[name=deposit_pwd_re]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_pass2}'
+                });
+                return false;
+            }
+            if ($("input[name=deposit_pwd]").val() !== $("input[name=pwd]").val()) {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_passnot}'
+                });
+                return false;
+            }
+            if ($("input[name=invite_code]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_qr}'
+                });
+                return false;
+            }
+            return true;
+        }
+
+        /*Verifikasi nomor ponsel*/
+        function check_phone() {
+            if ($("input[name=user_name]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_name}'
+                });
+                return false;
+            }
+            var myreg = /^([0-9|A-Z|a-z]|[\u4E00-\u9FA5\uF900-\uFA2D]){2,12}$/;
+            if ($("input[name=tel]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_phone}'
+                });
+                return false;
+            }
+            return true;
+        }
+
+        /*验证码倒计时*/
+        function time_down(obj) {
+            if (countdown == 0) {
+                flag = true;
+                obj.text("Enviar");
+                countdown = 180;
+                return;
+            } else {
+                flag = false;
+                obj.text(countdown + "s");
+                countdown--;
+            }
+            setTimeout(function () {
+                time_down(obj)
+            }, 1000);
+        }
+
+        /*获取验证码*/
+        $(".get-code").on('click', function () {
+            if ($("input[name=tel]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_phone}'
+                });
+                return false;
+            }
+            if ($("input[name=user_name]").val() == '') {
+                $(document).dialog({
+                    infoText: '{$Think.lang.login_name}'
+                });
+                return false;
+            }
+            sendCode(123)
+        });
+
+
+        function sendCode(reCAPTCHA) {
+            $.ajax({
+                url: '/index/send/sendsms',
+                data: {
+                    'tel': $("input[name=tel]").val(),
+                    'code': $(".address").text()
+                },
+                type: 'POST',
+                success: function (data) {
+                    $('#reCAPTCHA_V2').modal('hide');
+                    if (data.code == 0) {
+                        $(document).dialog({infoText: data.info, autoClose: 3000});
+                        time_down($(".get-code"));
+                        if (data.verify) {
+                            $("input[name=verify]").val(data.verify);
+                        }
+                    } else {
+                        flag = true;
+                        $(document).dialog({infoText: data.info});
+                    }
+                },
+                error: function (err) {
+                    $('#reCAPTCHA_V2').modal('hide');
+                    flag = true;
+                    console.log(err);
+                }
+            });
+        }
+
+        /*提交*/
+        $(".form-buttom").on('click', function () {
+            var ret = check();
+            console.log(ret);
+            if (ret) {
+                var pix = iit.getSelectedCountryData();
+                $.cookie('use_country', pix.iso2);
+                var _csrf_ = "{:systoken('do_login')}";
+                var dataB = {
+                    _csrf_:_csrf_,
+                    user_name: $('input[name=user_name]').val(),
+                    tel: pix.dialCode + "" + $('input[name=tel]').val(),
+                    pwd: $('input[name=pwd]').val(),
+                    deposit_pwd: $('input[name=deposit_pwd]').val(),
+                    invite_code: $('input[name=invite_code]').val(),
+                };
+                $.ajax({
+                    url: "/index/user/do_register.html",
+                    data: dataB,
+                    type: 'POST',
+                    beforeSend: function () {
+                        loading = $(document).dialog({
+                            type: 'notice',
+                            infoIcon: '/static_new/img/loading.gif',
+                            infoText: 'loading...',
+                            autoClose: 0
+                        });
+                    },
+                    success: function (data) {
+                        loading.close();
+                        if (data.code == 0) {
+                            $(document).dialog({infoText: '{$Think.lang.reg_ok}'});
+                            setTimeout(function () {
+                                location.href = "/index/user/login.html"
+                            }, 1500);
+                        } else {
+                            $(document).dialog({infoText: data.info});
+                        }
+                    }
+                });
+            }
+            return false;
+        });
+
+        var iit = intlTelInput(document.querySelector("#phone"), {
+            excludeCountries: ["cn", "hk", "tw", "mo"],
+            separateDialCode: true,
+            utilsScript: "/statics/vender/intl-tel-input-master/js/utils.js",
+            initialCountry: "auto",
+            geoIpLookup: function (success, failure) {
+                var c = $.cookie('use_country');
+                success(c ? c : 'us');
+            },
+        });
+    })
+</script>
+</body>
+
+</html>

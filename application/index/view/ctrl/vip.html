@@ -1,0 +1,212 @@
+<html class="pixel-ratio-2 retina ios ios-13 ios-13-2-3 ios-gt-12 ios-gt-11 ios-gt-10 ios-gt-9 ios-gt-8 ios-gt-7 ios-gt-6">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$Think.lang.open_vip}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/alllang/static/css/light7.css">
+    <link rel="stylesheet" href="/alllang/static/css/light7-swiper.css">
+    <link rel="stylesheet" href="/alllang/static/css/iconfont.css">
+    <link rel="stylesheet" href="/alllang/static/css/common.css">
+    <link rel="stylesheet" href="/alllang/static/css/unlock.css">
+    <link rel="stylesheet" href="/alllang/static/css/account.css"></head>
+  
+  <body style="">
+    <div class="page bgc-f3 page-current page-inited" id="unlock">
+      <header class="bar bar-nav fxbt">
+        <a onclick="window.history.back(-1)" class="icon icon-left pull-left"></a>
+        <div class="title">{$Think.lang.open_vip}</div></header>
+      <div class="content scroll-wrapper">
+        <div class="big-box">
+          <div class="level-box">
+            <div>{$Think.lang.my_level}</div>
+            <div class="dsai-level">{$level_name}</div></div>
+ 
+          <div class="sdahxu" style="text-align: center;">{$Think.lang.my_is_money}
+            <span style="color: red;">{$info.balance|round=###,2}</span></div>
+          <div class="sdahxu">{$Think.lang.vip_up_desc}</div>
+          <!-- <div class="kxwa">Swipe left and right to see more</div>-->
+          <div id="level-swiper" class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+              <div class="swiper-slide swiper-slide-active" style="width: 330px;">
+                  
+                <div class="sjwka">
+                 {foreach $member_level as $key=>$vo}
+                  {if $key<2 }
+                  <div class="sjwka-item <?php echo $vo['level'] > $info['level'] ? 'lv' :'' ;?>  " data-id="{$vo.level}" data-price="{$vo.num}">
+                    <div class="sadko">{$vo.name}</div>
+                    {if $key ==0} 
+                        <div class="kjfdsd">100USDT</div>
+                         <div class="icka">
+                    3 withdrawals per day Maximum of 3 sets of tasks per day, 120 orders Commission of 0.5% per order
+                    </div>
+                  
+                    {else} 
+                        <div class="kjfdsd">1500USDT</div>
+                        <div class="icka">
+                           5 withdrawals per day Maximum of 3 sets of tasks per day, 150 orders Commission of 0.6% per order
+                        </div>
+                    {/if}
+                    
+                    <div class="icka" style="display:none">
+                    {$Think.lang.vip_cs}: {$vo['tixian_ci']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_tx}: {$vo['tixian_max']} <br>
+                    {$Think.lang.vip_num}: {$vo['order_num']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_bl}: {$vo['bili']}</div>
+                    <div class="djakl">{$Think.lang.vip_desc}</div></div>
+                   {/if}
+                 {/foreach}
+                </div>
+                
+                <div class="sjwka">
+                 {foreach $member_level as $key=>$vo}
+                  {if $key>=2 && $key<4 }
+                  <div class="sjwka-item <?php echo $vo['level'] > $info['level'] ? 'lv' :'' ;?>  " data-id="{$vo.level}" data-price="{$vo.num}">
+                    <div class="sadko">{$vo.name}</div>
+                    {if $key ==2} 
+                        <div class="kjfdsd">5000USDT</div>
+                         <div class="icka">
+                    8 withdrawals per day Maximum of 4 sets of tasks per day, 220 orders Commission of 0.8% per order
+                    </div>
+                  
+                    {else} 
+                        <div class="kjfdsd">10000USDT</div>
+                        <div class="icka">
+                          10 withdrawals per day Maximum of 5 sets of tasks per day, 300 orders 1% commission per order
+                        </div>
+                    {/if}
+                    
+                    
+                   
+                    <div class="icka" style="display:none">
+                    {$Think.lang.vip_cs}: {$vo['tixian_ci']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_tx}: {$vo['tixian_max']} <br>
+                    {$Think.lang.vip_num}: {$vo['order_num']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_bl}: {$vo['bili']}</div>
+                    <div class="djakl">{$Think.lang.vip_desc}</div></div>
+                   {/if}
+                 {/foreach}
+                </div>
+                
+                <div class="sjwka" style="display: none">
+                 {foreach $member_level as $key=>$vo}
+                  {if $key>=4 && $key<6 }
+                  <div class="sjwka-item <?php echo $vo['level'] > $info['level'] ? 'lv' :'' ;?>  " data-id="{$vo.level}" data-price="{$vo.num}">
+                    <div class="sadko">{$vo.name}</div>
+                    <div class="kjfdsd">{$vo.num}</div>
+                    <div class="icka">
+                    {$Think.lang.vip_cs}: {$vo['tixian_ci']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_tx}: {$vo['tixian_max']} <br>
+                    {$Think.lang.vip_num}: {$vo['order_num']}/{$Think.lang.day} <br>
+                    {$Think.lang.vip_bl}: {$vo['bili']}</div>
+                    <div class="djakl">{$Think.lang.vip_desc}</div></div>
+                   {/if}
+                 {/foreach}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="modal" class="modal">
+      <div class="modal-inner">
+        <div class="dasd-title">{$Think.lang.my_logout}</div>
+        <div class="btn-box">
+          <div class="cancel-btn">{$Think.lang.quxiao}</div>
+          <div class="confirm-btn">{$Think.lang.queding}</div></div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="/alllang/static/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/alllang/static/js/light7.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/alllang/static/js/light7-swiper.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/alllang/static/js/utils.js" charset="utf-8"></script>
+    <script type="text/javascript">$('#level-swiper').swiper({
+        autoplay: false,
+        autoplayDisableOnInteraction: false,
+        loop: false,
+      });</script>
+    <script>
+        var level=0;
+        // $('.sjwka .lv').click(function(){
+        //     var price = $(this).attr('data-price');
+        //     level = $(this).attr('data-id');
+            
+        //     $('.dasd-title').text('{$Think.lang.is_qd_pay}'+price+'{$Think.lang.open_vip}');
+            
+        //     $('#modal-overlay').addClass('modal-overlay-visible') 
+        //     $('#modal').show() 
+        //     setTimeout(function() {
+        //     $('#modal').removeClass('modal-out').addClass('modal-in')
+        //     },
+        //     50)
+            
+            
+            
+        // });
+        
+        $('.cancel-btn').click(function() {
+          $('#modal-overlay').removeClass('modal-overlay-visible') 
+          $('#modal').removeClass('modal-in').addClass('modal-out') 
+          setTimeout(function() {
+            $('#modal').hide()
+          },
+          200)
+        }) 
+        $('.confirm-btn').click(function() {
+          $('#modal-overlay').removeClass('modal-overlay-visible') 
+          $('#modal').removeClass('modal-in').addClass('modal-out') 
+          
+          
+              $.ajax({
+                type:"POST",
+                url:"{:url('recharge_dovip')}",
+                data :{level:level,type:999},
+                dataType:"json",
+                async : false,
+                success:function(coordinates){
+                    result = coordinates;
+                    if (result.code == 0) {
+                        $.toast(result.info);
+                        setTimeout(function (){
+                           location.reload();
+                        }, 1500);
+
+                        return true;
+                        if (result.paytype == 'alipay_wap' && result.redirect_url) {
+                            window.location.href = result.redirect_url;
+                            return false;
+                        }
+                        if (result.paytype != '' && result.redirect_url) {
+                            window.location.href = result.redirect_url;
+                            return false;
+                        }
+                    }else{
+                        $.toast(result.info);
+                    }
+    
+    
+                },
+                error:function(data){
+                    console.log('error'+data.status)
+                }
+            });
+          
+          setTimeout(function() {
+            $('#modal').hide()
+          },
+          200)
+        })
+    
+    </script>
+  </body>
+
+</html>

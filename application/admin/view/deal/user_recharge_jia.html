@@ -1,0 +1,116 @@
+{extend name='main'}
+
+{block name="content"}
+
+<div class="think-box-shadow">
+    {include file='deal/user_recharge_search'}
+    <fieldset>
+        <legend>数据统计</legend>
+        <div class="row">
+            <div class="col-12">
+                <!--第三方累计充值：{:config("currency")}{$rechargeAmount}，-->
+                <!--第三方手续费：{:config("currency")}{$rechargePayCom}，-->
+                <!--第三方成功收款：{$rechargeCount}笔，-->
+                <!--第三方充值成功人数：{$rechargeUserCount}人-->
+                <!--<br>-->
+                <!--<div class="col-12">-->
+                <!--用户充值：{$user_recharge}，-->
+                <!--今日新增充值：{$today_user_recharge}，-->
+                <!--昨日新增充值：{$yes_user_recharge}，-->
+                <!--充值人数：{$user_recharge_people}，-->
+                <!--今日充值人数：{$today_user_recharge_people}，-->
+                <!--昨日充值人数：{$yes_user_recharge_people}-->
+                <!--</div>-->
+                <div class="col-12">
+                    当前列表用户充值：{$list_count1}，
+                    当前列表今日新增充值：{$list_count2}，
+                    当前列表昨日新增充值：{$list_count3}，
+                    当前列表充值人数：{$list_count4}，
+                    当前列表今日充值人数：{$list_count5}，
+                    当前列表昨日充值人数：{$list_count6}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>订单号</th>
+            <th class='text-left nowrap'>用户</th>
+            <!--<th class='text-left nowrap'>一级代理/二级代理</th>-->
+           <th class='text-left nowrap'>充值金额</th>
+               <!--<th class='text-left nowrap'>付款地址</th>-->
+<!--            <th class='text-left nowrap'>支付方式</th>-->
+<!--            <th class='text-left nowrap'>打款凭证</th>-->
+            <th class='text-left nowrap'>类型</th>
+            <th class='text-left nowrap'>申请/处理时间</th>
+            <th class='text-left nowrap'>操作</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.username}<br>{$vo.tel}</td>
+           <!--<td class='text-left nowrap'>-->
+           <!--     {if !empty($agent_list[$vo['agent_id']])}-->
+           <!--     {$agent_list[$vo['agent_id']]}-->
+           <!--     {else}-->
+           <!--     ----->
+           <!--     {/if}-->
+           <!--     <br>-->
+           <!--     {if !empty($agent_service_list[$vo['agent_service_id']])}-->
+           <!--     {$agent_service_list[$vo['agent_service_id']]}-->
+           <!--     {else}-->
+           <!--     ----->
+           <!--     {/if}-->
+           <!-- </td>-->
+            <td class='text-left nowrap'>
+                {$vo.num}
+            </td>
+            <!-- <td class='text-left nowrap'>-->
+            <!--    {$vo.pay_address|default="-"}-->
+            <!--</td>-->
+<!--            <td class='text-left nowrap'>-->
+<!--                {$vo.pay_name|default="-"}-->
+<!--            </td>-->
+<!--            <td class='text-left nowrap'>-->
+<!--                {if $vo.pic}<a data-dbclick data-title="查看图片" data-modal='{:url("admin/users/picinfo")}?pic={$vo.pic}'><img src="{$vo.pic}" style="width:150px;height:100px;"></a>{else /}<img src="{$vo.pic}" style="width:150px;height:100px;">{/if}-->
+<!--            </td>-->
+            
+            <td class='text-left nowrap'>
+                {if $vo.type==2 }
+                <button class="layui-btn layui-btn-xs layui-btn layui-btn-warm">USDT</button>
+                {else/}
+                <button class="layui-btn layui-btn-xs layui-btn layui-btn-danger">线下充值</button>
+                {/if}
+            </td>
+            <td class='text-left nowrap'>
+                申请时间：{$vo.addtime|format_datetime}<br>处理时间：{$vo.endtime|format_datetime|default='-'}
+            </td>
+
+            <td class='text-left nowrap'>
+                {switch $vo.status}
+                    {case 0}待付款{/case}
+                    {case 1}
+                        {if auth("edit_recharge")}
+                            <a data-csrf="{:systoken('edit_recharge')}" class="layui-btn layui-btn-xs layui-btn" data-action="{:url('edit_recharge',['status'=>2,'id'=>$vo.id])}" data-value="id#{$vo.id};status#2" >通过</a>
+                            <a data-csrf="{:systoken('edit_recharge')}" class="layui-btn layui-btn-xs layui-btn-warm" data-action="{:url('edit_recharge',['status'=>3,'id'=>$vo.id])}" data-value="id#{$vo.id};status#3" >驳回</a>
+                        {else}
+                            待付款
+                        {/if}
+                    {/case}
+                    {case 2}<a class="layui-btn layui-btn-xs">审核通过</a>{/case}
+                    {case 3}<a class="layui-btn layui-btn-xs layui-btn-danger">审核驳回</a>{/case}
+                {/switch}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+
+</div>
+{/block}

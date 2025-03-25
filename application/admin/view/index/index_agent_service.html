@@ -1,0 +1,49 @@
+<div class="think-box-shadow store-total-container">
+    <div class="margin-bottom-15">
+        <fieldset>
+            <legend>客服统计</legend>
+            <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false"
+                  method="get" autocomplete="off">
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">统计时间</label>
+                    <div class="layui-input-inline">
+                        <input data-date-range name="addtime" value="{$Think.get.addtime|default=''}"
+                               placeholder="请选择统计时间"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <table class="layui-table margin-top-15" lay-skin="line">
+            <thead>
+            <tr>
+                <th class='text-left nowrap'>姓名</th>
+                <th class='text-left nowrap'>累计用户</th>
+                <th class='text-left nowrap'>团队余额</th>
+                <th class='text-left nowrap'>今日充值</th>
+                <th class='text-left nowrap'>累计充值</th>
+                <th class='text-left nowrap'>今日提现</th>
+                <th class='text-left nowrap'>累计提现</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $list as $key=>$vo}
+            <tr>
+                <td class='text-left nowrap'>{$vo.username}</td>
+                <td class='text-left nowrap'>{$vo.user_count}</td>
+                <td class='text-left nowrap'>{$vo.user_balance}</td>
+                <td class='text-left nowrap'>{$vo.today_recharge_count}</td>
+                <td class='text-left nowrap'>{$vo.recharge_count}</td>
+                <td class='text-left nowrap'>{$vo.today_deposit_count}</td>
+                <td class='text-left nowrap'>{$vo.deposit_count}</td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>

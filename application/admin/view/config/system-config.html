@@ -1,0 +1,101 @@
+<form onsubmit="return false" data-auto="true" action="{:url()}" method="post" class='layui-form layui-card' autocomplete="off">
+    <div class="layui-card-body padding-left-40">
+
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">网站名称 Website</span>
+                <input name="site_name" required placeholder="请输入网站名称" value="{:sysconf('site_name')}" class="layui-input">
+            </label>
+            <p class="help-block">网站名称，将在浏览器的标签上显示名称</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">管理程序名称 Name</span>
+                <input name="app_name" required placeholder="请输入程序名称" value="{:sysconf('app_name')}" class="layui-input">
+            </label>
+            <p class="help-block">管理程序名称，在后台左上角标题处理显示</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">管理程序版本 Version</span>
+                <input name="app_version" placeholder="请输入程序版本" value="{:sysconf('app_version')}" class="layui-input">
+            </label>
+            <p class="help-block">管理程序版本，在后台左上角标题处理显示</p>
+        </div>
+         <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">用户注册IP是否唯一</span>
+                 <select name="reg_ip"  class="layui-input"  id="reg_ip"  style="width:10%;display:block;height:32px;margin-right:10px;">
+        
+              
+                <option value="0"  {if sysconf('reg_ip')==0} selected{/if}>关</option>
+                 <option value="1" {if sysconf('reg_ip')==1} selected{/if}>开</option>
+               
+                 </select>
+                <!--<input name="reg_ip" placeholder="请输入程序版本" value="{:sysconf('reg_ip')}" class="layui-input">-->
+            </label>
+            <p class="help-block">开启后每个IP只能注册一个账号</p>
+        </div>
+        <div class="layui-form-item">
+            <span class="color-green font-w7">浏览器图标 Browser</span>
+            <div class="relative block">
+                <img alt="icon" data-tips-image style="height:auto;max-height:42px;min-width:42px" src="{:sysconf('site_icon')}"/>
+                <input type="hidden" name="site_icon" onchange="$(this).prev('img').attr('src', this.value)" value="{:sysconf('site_icon')}" class="layui-input">
+                <a class="margin-left-10" data-file="btn" data-type="ico,png" data-field="site_icon">上传图片</a>
+                <p class="help-block">建议上传 ICO 图标的尺寸为 128x128 <a href="http://www.favicon-icon-generator.com" target="_blank">ICON在线制作</a></p>
+            </div>
+        </div>
+        <!--<div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">客服链接 Service</span>
+                <input name="chats_link" required placeholder="输入客服链接" value="{:sysconf('chats_link')}" class="layui-input">
+            </label>
+            <p class="help-block">链接在前台用户点击联系客服时候跳转的链接</p>
+        </div>-->
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">客服连接地址</span>
+                <input name="miitbeian"  value="{:sysconf('miitbeian')}"
+                       required placeholder="请输入客服连接地址" class="layui-input">
+            </label>
+            <p class="help-block">客服连接地址</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">USDT充值地址</span>
+                <input name="master_cardnum"  value="{:sysconf('master_cardnum')}"
+                       required placeholder="请输入USDT充值地址" class="layui-input">
+            </label>
+            <p class="help-block">USDT充值地址</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">提现手续费</span>
+                <input name="fees"  value="{:sysconf('fees')}"
+                       required placeholder="请输入提现手续费" class="layui-input">
+            </label>
+            <p class="help-block">提现手续费（%）</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">默认手机区号</span>
+                <input name="area_code"  value="{:sysconf('area_code')}"
+                       required placeholder="默认手机区号" class="layui-input">
+            </label>
+            <p class="help-block">默认手机区号</p>
+        </div>
+        <div class="layui-form-item">
+            <label class="relative block">
+                <span class="color-green font-w7">网站版权信息 Copyright</span>
+                <input name="site_copy" required placeholder="请输入版权信息" value="{:sysconf('site_copy')}" class="layui-input">
+            </label>
+            <p class="help-block">网站版权信息，在后台登录页面显示版本信息并链接到备案到信息备案管理系统</p>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="layui-form-item text-center">
+            <button class="layui-btn" type="submit">保存配置</button>
+            <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消修改吗？" data-close>取消修改</button>
+        </div>
+    </div>
+
+</form>

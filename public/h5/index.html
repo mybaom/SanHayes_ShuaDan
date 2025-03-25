@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="./ebaylogo.png" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>ebay Review RoBoT</title>
+  <style>
+    :root:root {
+      --adm-color-primary: #ff2750;
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-CaFXBUsq.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BoA0Cacm.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const appVersion = "__BUILD_HASH__";  // Webpack/Vite 在构建时替换
+  const storedVersion = localStorage.getItem('app_version');
+
+  if (storedVersion !== appVersion) {
+    console.log('检测到新版本，清除本地存储...');
+    localStorage.clear();
+    localStorage.setItem('app_version', appVersion);
+    location.reload();
+  }
+</script>
+</body>
+</html>

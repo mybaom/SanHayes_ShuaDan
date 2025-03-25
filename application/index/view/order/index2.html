@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.task_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss"></head>
+  
+  <body>
+    <div class="wrapper homepage">
+      <!-- header -->
+      <div class="header" style="backdrop-filter:none">
+        <div class="row no-gutters">
+          <div class="col-auto">
+            <!--<button class="btn  btn-link text-dark">
+              <i class="material-icons">menu</i>
+              <span class="new-notification"></span>
+            </button>-->
+          </div>
+          <div class="col text-center">
+            <!--<img src="/red/logo-header.png" alt="" class="header-logo">--></div>
+          <div class="col-auto">
+            <a href="/index/my/msg" class="btn  btn-link text-dark position-relative">
+              <i class="material-icons">notifications_none</i></a>
+          </div>
+        </div>
+      </div>
+      <!-- header ends -->
+      <div class="container mb-3">
+        <!-- Swiper -->
+        <div class="swiper-container icon-slide swiper-container-horizontal swiper-container-ios" style="height: auto">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-active" style="padding: 0">
+              <a class="btn btn-sm  <?php echo !$status ? 'btn-outline-default' : ''?> btn-rounded" href="/index/order/index.html">{$Think.lang.task_tab1}</a></div>
+            <div class="swiper-slide swiper-slide-next" style="padding: 0">
+              <a class="btn btn-sm <?php echo $status == -1 ? 'btn-outline-default' : ''?> btn-rounded ml-1" href="/index/order/index.html?status=-1">{$Think.lang.task_tab2}</a></div>
+            <div class="swiper-slide" style="padding: 0">
+              <a class="btn btn-sm <?php echo $status == 1 ? 'btn-outline-default' : ''?> btn-rounded ml-1" href="/index/order/index.html?status=1">{$Think.lang.task_tab3}</a></div>
+            <div class="swiper-slide" style="padding: 0">
+              <a class="btn btn-sm <?php echo $status == 5 ? 'btn-outline-default' : ''?> btn-rounded ml-1" href="/index/order/index.html?status=5">{$Think.lang.task_tab4}</a></div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination white-pagination text-left mb-3"></div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+      </div>
+      <div class="container">
+          {if $list}
+          {volist name='list' id='v'}
+           <div class="card mb-3">
+              <div class="card-header bg-none">
+                <div class="row">
+                  <div class="col">
+                    <p class="text-secondary small"><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></p></div>
+                  <div class="col-auto">
+                    <p class="badge badge-warning">A aguardar processamento</p></div>
+                </div>
+              </div>
+              <div class="card-body position-relative">
+                <div class="media">
+                  <div class="icon icon-60 mr-3 rounded">
+                    <img src="{$v.goods_pic}" class="icon-60" alt="Generic placeholder image"></div>
+                  <div class="media-body">
+                    <p class="small text-secondary mb-1">{$v.goods_name}</p></div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col">
+                    <p class="gray">{$Think.lang.task_all_money}:</p>
+                    <p class="gray">{$Think.lang.commission}:</p></div>
+                  <div class="col-auto">
+                    <p class="text-right text-mute">{:config("currency")} {$v.num}</p>
+                    <p class="text-right text-mute">{:config("currency")} {$v.commission}</p></div>
+                </div>
+                <div class="mt-2"  style="<?php echo $v['status']==0 ? '':'display:none'; ?>;">
+                  <button onclick="tijiao('{$v.id}')" class="btn btn-default shadow  btn-rounded btn-block btn-lg" style="display: block;">{$Think.lang.task_tj}</button></div>
+              </div>
+            </div>
+             {/volist}
+                {else\}
+
+                {/if}
+            
+    </div>
+    </div>
+    <!-- footer-->
+    <div class="footer">
+      <div class="no-gutters">
+        <div class="col-auto mx-auto">
+          <div class="row no-gutters justify-content-center">
+            <div class="col-auto">
+              <a href="/index/index/home.html" class="btn btn-link-default">
+                <i class="material-icons">home</i>
+                <!--<p>Pagina inicial</p>--></a>
+            </div>
+            <div class="col-auto">
+              <a href="/index/order/index.html" class="btn btn-link-default active">
+                <i class="material-icons">playlist_add_check</i>
+                <!--<p>Histórico de encomendas</p>--></a>
+            </div>
+            <div class="col-auto">
+              <a href="/index/rot_order/index.html" class="btn btn-link-default">
+                <i class="material-icons">swipe</i>
+                <!--<p>Realizar tarefas</p>--></a>
+            </div>
+            <div class="col-auto">
+              <a href="/index/support/index.html" class="btn btn-link-default">
+                <i class="material-icons">chat</i>
+                <!--<p>CS</p>--></a>
+            </div>
+            <div class="col-auto">
+              <a href="/index/my/index.html" class="btn btn-link-default">
+                <i class="material-icons">person</i>
+                <!--<p>minha</p>--></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer ends-->
+    <!--tj-->
+    <style>.van-overlay{position:fixed;top:0;left:0;width:100%;height:100%} .grabSuccess{border-radius:.32rem;margin:1.373333rem auto 0;position:relative} .grabSuccess .title{height:2.586667rem;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;position:relative} .grabSuccess .title:after,.grabSuccess .title:before{content:"";width:.893333rem;height:.386667rem;background-size:100%;position:absolute;top:1.093333rem} .grabSuccess .records_tabs_box .records_tabs_box_top{font-size:.32rem;color:#9e9e9e;font-weight:400;text-align:left;font-family:PingFangSC-Regular,PingFang SC} .grabSuccess .records_tabs_box .records_tabs_box_img{width:1.733333rem;height:auto;position:absolute;top:.266667rem;right:.133333rem} .grabSuccess .records_tabs_box .records_tabs_box_des{background:#f2f2f2;border-radius:.133333rem;margin:.266667rem 0;display:-ms-flexbox;display:flex;overflow:hidden} .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_img{width:4.8rem;height:2.4rem} .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_img > img{width:4.8rem;height:2.4rem;-o-object-fit:cover;object-fit:cover} .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_r{text-align:left;padding:.266667rem;font-size:.266667rem} .grabSuccess .records_tabs_box .records_tabs_box_des .tabs_box_des_r .tabs_box_des_r_tit{overflow:hidden;font-size:.373333rem;color:#424242;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;font-family:PingFangSC-Regular,PingFang SC} .grabSuccess .records_tabs_box .tabs_box_des_r_pic{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;margin-top:.4rem;font-size:.373333rem;color:#424242} .grabSuccess .records_tabs_box .gray{color:#969696;font-size:.373333rem} .grabSuccess .records_tabs_box .txt1{color:#ff9a2c;font-size:.64rem !important} .grabSuccess .tabs_btn{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center}</style>
+    <!-- Modal -->
+    <div class="modal fade" id="orderDetail" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content grabSuccess">
+          <div class="modal-header border-0">
+            <h5>{$Think.lang.taks_ddtjz}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body text-center pt-0">
+            <!--<img src="/red/infomarmation-graphics2.png" alt="logo" class="logo-small">-->
+            <div class="records_tabs_box">
+              <div class="records_tabs_box_top">{$Think.lang.task_time}&nbsp;
+                <span id="otime">2020-03-17T17:11:41</span>
+                <br>{$Think.lang.task_ordero_num}&nbsp;
+                <span id="oid">202003171711414080</span></div>
+              <div class="records_tabs_box_des">
+                <div class="tabs_box_des_img">
+                  <img alt="" id="oimg" src="/static_indonesia/img/wenhao.png"></div>
+                <div class="tabs_box_des_r">
+                  <p class="tabs_box_des_r_tit" id="otitle" style="max-height: 95px;">&nbsp;</p>
+                  <div class="tabs_box_des_r_pic" style="display: none">
+                    <p id="oprice">&nbsp;</p>
+                    <p id="onum">x 1</p></div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col text-left">{$Think.lang.task_all_money}</div>
+                <div class="col-auto text-right text-mute" id="ototal">&nbsp;</div></div>
+              <div class="row mt-3">
+                <div class="col text-left">{$Think.lang.commission}</div>
+                <div class="col-auto text-right txt1">
+                  <span id="yongjin">&nbsp;</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 tabs_btn">
+            <div class="tabs_btn1 btn btn-cancel btn-rounded mr-2 shadow">{$Think.lang.task_qx}</div>
+            <div class="tabs_btn2 btn btn-default btn-rounded ml-2 shadow">{$Think.lang.task_tj}</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-modal="true" id="add_link_popup">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content border-top border-bottom" style="width:90%; margin: 0 auto; box-shadow:4px 4px 5px 3px #999;">
+          <div class="modal-header border-0 bg-template">
+            <h5>Informações do Grupo WhatsApp / Telegram</h5></div>
+          <div class="modal-body text-center" style="max-height: 300px; overflow: scroll;">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="form-group float-label active">
+                    <input type="text" class="form-control" required="" name="to_name" autocomplete="off" value="">
+                    <label class="form-control-label">Nome do grupo</label></div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group float-label active">
+                    <input type="text" class="form-control" required="" name="add_id" autocomplete="off" value="">
+                    <label class="form-control-label">Link do grupo</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 text-center">
+            <button class="btn btn-cancel btn-sm btn-rounded shadow mr-2 add_link_cancel">cancelar</button>
+            <button class="btn btn-default btn-sm btn-rounded shadow ml-2 add_link_save">Preservação</button></div>
+        </div>
+      </div>
+    </div>
+    <input name="" id="webcopyinput" type="text" style="top: -100px; position: absolute" value="">
+    <textarea id="share_text" style="display: none">Participei da tarefa de ganhar 20 reais por dia no app mercadolivre. Espero que todos possam me incentivar a participar dessa atividade lucrativa. O aplicativo para ganhar dinheiro mais popular do Brasil: FelizGo A retirada está disponível 7 * 24 horas As retiradas estão disponíveis de segunda a domingo Clique aqui para se cadastrar ✅✅✅grátis 10 pedidos por dia 1 reais por pedido 10 reais por dia 300 reais por mês ?VIP1: 200 reais 26 pedidos por dia 0,3% de reembolso para cada pedido 35 reais por dia 1050 reais por mês ?VIP2: 500 reais 28 pedidos por dia 0,32% de reembolso por pedido 45 reais por dia 1350 reais por mês Para mais informações sobre os níveis VIP, clique no link do nosso produto para ver informações detalhadas. Esta é uma carta de recomendação para VIP. Convide seus amigos e receba uma recompensa de comissão de 16-4%. Apresse-se e inscreva-se! * _WHATSAPP REGISTER_ * {link} * _WHATSAPP GROUP WA_ * {grupo}</textarea>
+    <!-- jquery, popper and bootstrap js -->
+    <script src="/red/jquery-3.3.1.min.js"></script>
+    <script src="/red/popper.min.js"></script>
+    <script src="/red/bootstrap/js/bootstrap.min.js"></script>
+    <!-- swiper js -->
+    <script src="/red/swiper/swiper-bundle.min.js"></script>
+    <!-- cookie js -->
+    <script src="/red/jquery.cookie.js"></script>
+    <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+    <link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+    <script src="/public/js/layer_mobile/layer.js"></script>
+    <script charset="utf-8" src="/static_new/js/common.js"></script>
+    <!-- template custom js -->
+    <script src="/red/main.js?v=V1.24"></script>
+    <!-- page level script -->
+    <script>$(function() {
+        $('.footer').find('.btn-link-default').eq(1).addClass("active");
+      });
+      var oid, add_id = '';
+      var isShare = ("0" == '0');
+      $(function() {
+        $('#load').hide();
+      });
+      $('.pagination li').click(function() {
+        var class2 = $(this).attr('class');
+        if (class2 == 'active' || class2 == 'disabled') {
+
+} else {
+          var url = $(this).find('a').attr('href');
+          window.location.href = url;
+        }
+      });
+      $(function() {
+        $('.pagination-container select').attr('disabled', 'disabled');
+      })
+
+      $('.tabs_btn1').click(function() {
+        if ("0" == 1) {
+          $(document).dialog({
+            type: 'confirm',
+            titleText: "Confirme cancelamento?",
+            buttonTextConfirm: "confirme",
+            buttonTextCancel: "cancelar",
+            autoClose: 0,
+            onClickConfirmBtn: function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  status: 2
+                },
+                success: function(res) {
+                  layer.closeAll();
+                  console.log(res) 
+                  if (res.code == 0) {
+                    $(document).dialog({
+                      infoText: "Ordem Cancela o sucesso!",
+                      autoClose: 2000
+                    });
+                    var linkTime = setTimeout(function() {
+                      location.reload()
+                    },
+                    1800);
+                  } else {
+                    $(document).dialog({
+                      type: 'alert',
+                      titleText: res.info,
+                      buttonTextConfirm: "{$Think.lang.queding}",
+                      autoClose: 0
+                    });
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  console.log(err);
+                  sumbit = true;
+                }
+              });
+            },
+            onClickCancelBtn: function() {
+
+}
+          });
+        } else {
+          $('#orderDetail').modal('hide');
+        }
+      });
+
+      $('.close').click(function() {
+        $('#orderDetail').modal('hide');
+      });
+      $(function() {
+        $('.add_link').click(function() {
+          $('#add_link_popup').modal('show');
+        });
+        $('.add_link_save').click(function() {
+          var to_name = $('input[name=to_name]').val();
+          var add_id = $('input[name=add_id]').val();
+          if (to_name == '' || add_id == '') {
+            $(document).dialog({
+              infoText: 'Não pode estar vazio!'
+            });
+            return;
+          }
+          var option = '<option value="' + add_id + '" to_name="' + to_name + '" selected>[' + to_name + ']' + add_id + '</option>';
+          $('#publish_to').prepend(option);
+          $('#add_link_popup').modal('hide');
+        });
+        $('.add_link_cancel').click(function() {
+          $('#add_link_popup').modal('hide');
+        });
+
+        $('.copy_link').click(function() {
+          isShare = true;
+          var link = $(this).parent().parent().siblings('span').text();
+          copy_txt(link);
+        });
+        $('.send_with_whatsapp').click(function() {
+          isShare = true;
+          var link = $(this).parent().parent().siblings('span').text();
+          if ($(this).attr('id')) {
+            var group = $('select[name=publish_to]').val();
+          } else {
+            var group = $(this).parent().attr('group');
+          }
+          var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+          window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text));
+        });
+
+        $('.send_with_telegram').click(function() {
+          isShare = true;
+          var link = $(this).parent().parent().siblings('span').text();
+          if ($(this).attr('id')) {
+            var group = $('select[name=publish_to]').val();
+          } else {
+            var group = $(this).parent().attr('group');
+          }
+          var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+          window.open('https://telegram.me/share/url?url=' + encodeURI(link) + '&text=' + encodeURI(text));
+        });
+
+        $('.send_with_tweet').click(function() {
+          isShare = true;
+          var link = $(this).parent().parent().siblings('span').text();
+          if ($(this).attr('id')) {
+            var group = $('select[name=publish_to]').val();
+          } else {
+            var group = $(this).parent().attr('group');
+          }
+          var text = $('#share_text').val().replace("{link}", link).replace("{group}", group);
+          window.open('https://twitter.com/intent/tweet?via=&text=' + encodeURI(text) + "&url=" + encodeURI(link) + "&related=" + encodeURIComponent('{:sysconf("site_name")}: ' + text));
+        });
+      }) 
+      function tijiao(id) {
+        oid = id;
+        $('#orderDetail').modal('show');
+        $.ajax({
+          url: "/index/order/order_info",
+          type: "POST",
+          dataType: "JSON",
+          data: {
+            id: id
+          },
+          beforeSend: function() {
+            loading = $(document).dialog({
+              type: 'notice',
+              infoIcon: '/static_new/img/loading.gif',
+              infoText: 'loading...',
+              autoClose: 0
+            });
+          },
+          success: function(res) {
+            console.log(res);
+            loading.close();
+            var data = res.data;
+            if (res.code == 0) {
+              $('#otime').html(data.addtime) 
+              $('#oid').html(data.oid) 
+              $('#otitle').html(data.goods_name) 
+              $('#oimg').attr('src', data.goods_pic) 
+              $('#oprice').html(data.goods_price) 
+              $('#onum').html(data.goods_count) 
+              $('#ototal').html(data.num) 
+              $('#yongjin').html(data.commission);
+              $('#ad_link').html(data.ad_link);
+              $('#copy_link').parent().attr('link', data.ad_link);
+              $('#copy_link').parent().attr('group', data.add_id);
+              if (data.add_id) {
+                $('#publish_to').val(data.add_id);
+              }
+              if (data.status != 0) {
+                $('.tabs_btn1').hide();
+                $('.tabs_btn2').hide();
+              } else {
+                $('.tabs_btn1').show();
+                $('.tabs_btn2').show();
+              }
+              oid = data.oid;
+              add_id = data.add_id;
+            }
+
+          },
+          error: function(err) {
+            loading.close();
+            console.log(err)
+          }
+        })
+      }
+      var zhujiTime = "1";
+      var shopTime = "2";
+
+      zhujiTime = zhujiTime * 1000;
+      shopTime = shopTime * 1000;
+
+      //提交
+      $('.tabs_btn2').click(function() {
+        //--------------------------------
+        if (!isShare) {
+          $(document).dialog({
+            infoText: "{$Think.lang.taks_ddtjz}",
+            autoClose: 2000
+          });
+          return;
+        }
+        var publish_to = $(this).parent().siblings().find('select[name=publish_to]');
+        var to_name = publish_to.find('option:selected').attr('to_name');
+        var aid = publish_to.find('option:selected').attr('aid');
+        var add_id = publish_to.val();
+        var i = 0;
+        layer.open({
+          type: 2,
+          content: "{$Think.lang.task_ppshxx}",
+          time: zhujiTime,
+          shadeClose: false,
+        });
+
+        var timer = setInterval(function() {
+          i++;
+          if (i == 1) {
+            layer.open({
+              type: 2,
+              content: "{$Think.lang.task_sccpdd}",
+              time: zhujiTime,
+              shadeClose: false,
+            })
+          } else if (i == 2) {
+            layer.open({
+              type: 2,
+              content: "{$Think.lang.task_ddtjwc}",
+              time: shopTime,
+              shadeClose: false,
+            }) 
+            var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  add_id: add_id,
+                  to_name: to_name,
+                  aid: aid
+                },
+                success: function(res) {
+                  layer.closeAll();
+                  console.log(res) 
+                  if (res.code == 0) {
+                    $(document).dialog({
+                      infoText: "{$Think.lang.task_qd_wc}",
+                      autoClose: 2000
+                    });
+                    clearInterval(timer);
+                    var linkTime = setTimeout(function() {
+                      location.reload()
+                    },
+                    1800);
+                  } else {
+                    $(document).dialog({
+                      type: 'alert',
+                      titleText: res.info,
+                      buttonTextConfirm: "{$Think.lang.queding}",
+                      autoClose: 0
+                    });
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  layer.closeAll();
+                  console.log(err);
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+          }
+        },
+        zhujiTime)
+
+      });
+      function copy_txt(xx) {
+        //var text = document.createElement('input');
+        var text = document.getElementById("webcopyinput");
+        text.id = 'webcopyinput';
+        text.value = '' + xx + '';
+        //text.style.position = 'fixed';
+        // text.style.top = '- 10000px';
+        // document.body.appendChild(text);
+        text.focus(); //给input输入框聚焦
+        text.setSelectionRange(0, text.value.length); //设置input框选中的范围
+        copied = document.execCommand('Copy'); //执行复制操作
+        text.blur();
+        copied = false;
+        document.body.scrollTop = 0;
+        $(document).dialog({
+          infoText: 'Copie o sucesso'
+        });
+      }</script>
+  </body>
+
+</html>

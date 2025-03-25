@@ -1,0 +1,69 @@
+{extend name='main'}
+
+{block name="button"}
+{if auth("add")}
+<button data-modal='{:url("add")}' data-title="添加分组" class='layui-btn layui-btn-sm layui-btn-primary'>添加分组</button>
+{/if}
+{/block}
+{block name="content"}
+<div class="think-box-shadow">
+    <p class="help-block">添加分组后，必须添加规则，并且规则需要对应好订单个数，若出现不对称情况，会导致用户无法做单</p>
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <label><input data-auto-none data-check-target='.list-check-box' type='checkbox'></label>
+            </th>
+            <th class='text-left nowrap'>所属代理</th>
+            <th class='text-left nowrap'>名称</th>
+            <th class='text-left nowrap'>最低金额</th>
+            <th class='text-left nowrap'>最低佣金比例</th>
+            <th class='text-left nowrap'>订单数量</th>
+            <th class='text-left nowrap'>规则数量</th>
+            <th class='text-left nowrap'>用户数量</th>
+            <th class='text-left nowrap'>允许轮回</th>
+            <th class='text-left nowrap'></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class='list-table-check-td think-checkbox'>
+                <label><input class="list-check-box" value='{$vo.id}' type='checkbox'></label>
+            </td>
+            <td class='text-left nowrap'>{$agentList[$vo.agent_id]}</td>
+            <td class='text-left nowrap'>{$vo.title|default=''}</td>
+            <td class='text-left nowrap'>{$vo.money|default='0'}</td>
+            <td class='text-left nowrap'>{$vo.bili|default='0'}%</td>
+            <td class='text-left nowrap'>{$vo.order_num|default='0'}</td>
+            <td class='text-left nowrap'>{$vo.rule_count|default='0'}</td>
+            <td class='text-left nowrap'>{$vo.user_count|default='0'}</td>
+            <td class='text-left nowrap'>{if $vo.is_roll==1}
+                允许
+                {else}
+                不允许
+                {/if}
+            </td>
+            <td class='text-left nowrap'>
+                {if auth("rule")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="叠加规则列表"
+                   data-open='{:url("rule")}?group_id={$vo.id}'>规则</a>
+                {/if}
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑分组"
+                   data-modal='{:url("edit")}?id={$vo.id}'>编辑</a>
+                {/if}
+                {if auth("remove")}
+                <a class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要删除吗？"
+                   data-action="{:url('remove')}" data-value="id#{$vo.id}" data-csrf="{:systoken('remove')}">删除</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}
